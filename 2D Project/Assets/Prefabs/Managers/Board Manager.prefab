@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6754043260414440879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4446374324203035830}
+  - component: {fileID: 5819108107809745540}
+  m_Layer: 0
+  m_Name: Board Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4446374324203035830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6754043260414440879}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.6275969, y: -0.12225274, z: -8.393188}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5819108107809745540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6754043260414440879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ac273c9cc3d4545acefd54bf425412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _boardWidth: 15
+  _boardHeigth: 9
+  _tileMap: {fileID: 0}
+  _tileWall: {fileID: 7703991039889603216, guid: 083d2c7e9ebfdb946a0b0dce5ccacf7a,
+    type: 3}
+  _tilePath: {fileID: 4105014132427854483, guid: 89ee726a9d0dfc745b93b19a20b1509a,
+    type: 3}
+  _tileMinigame: {fileID: 5457850465913397191, guid: d05b2041d703e0946821dae56109bb68,
+    type: 3}
+  _tileStart: {fileID: 4131205000143235837, guid: ac2b34cfc10660e4ca09527f405de5b0,
+    type: 3}
+  _tileEnd: {fileID: 9087133974298741281, guid: fd71323167e2dde499be9c5eb057534b,
+    type: 3}

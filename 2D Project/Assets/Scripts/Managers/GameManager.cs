@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     #region Singleton
     private static GameManager _instance = null;
+    [SerializeField] private GameObject _player;
+    private int playerPosition;
 
     public static GameManager Instance
     {
@@ -30,5 +32,20 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
         #endregion
+    }
+
+    int rolledNumber;
+    public void RollDice()
+    {
+        rolledNumber = Random.Range(1, 7);
+        UIManager.Instance.ChangeDice(rolledNumber);
+    }
+
+    public void MovePlayer()
+    {
+        PlayerManager.Instance.CurrentPlayer.MovePosition(rolledNumber);
+        rolledNumber = 0;
+        UIManager.Instance.ChangeDice(rolledNumber);
+        PlayerManager.Instance.NextPlayer();
     }
 }
