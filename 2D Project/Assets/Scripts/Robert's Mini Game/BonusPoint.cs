@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BonusPoint : MonoBehaviour
 {
-    bool playerEnterBlue , playerEnterYellow, playerEnterGreen = true;
+    bool playerEnterBlue = true , playerEnterYellow = true , playerEnterGreen = true;
     // Start is called before the first frame update
     void Start()
     {
