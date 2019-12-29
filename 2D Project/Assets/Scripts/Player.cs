@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private int _wonCount = 0;
     private int _lossCount = 0;
 
+    private float _positionToMove = 0.0f;
+    [SerializeField] private float _moveSpeed = 2.0f;
     public int Position { get => _position; }
     public string Name { get => _name; set => _name = value; }
     public Tile CurrentTile { get => BoardManager.Instance.Tiles[_position]; }
@@ -31,13 +33,24 @@ public class Player : MonoBehaviour
 
     public void MovePosition(int value)
     {
+        var futurePosition = _position + value;
+        if (futurePosition >= BoardManager.Instance.Tiles.Count)
+        {
+            futurePosition = BoardManager.Instance.Tiles.Count - 1;
+        }
+        _positionToMove = futurePosition - _position;
+
+
         _position += value;
+        if (_position < 0)
+        {
+            _position = 0;
+        }
         if (_position >= BoardManager.Instance.Tiles.Count)
         {
             _position = BoardManager.Instance.Tiles.Count - 1;
         }
         this.transform.position = BoardManager.Instance.Tiles[_position].transform.position;
-        PlayerManager.Instance.CurrentPlayer.CurrentTile.Action();
     }
 
     public void SetPosition(int value)
@@ -55,5 +68,10 @@ public class Player : MonoBehaviour
     public void AddLost()
     {
         _lossCount++;
+    }
+
+    public void LerpPosition()
+    {
+
     }
 }

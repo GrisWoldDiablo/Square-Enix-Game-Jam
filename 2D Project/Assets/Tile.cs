@@ -92,6 +92,7 @@ public class Tile : MonoBehaviour
                 break;
             case TileType.SnakeTail:
                 Debug.Log("Tile Snake Tail");
+                GameManager.Instance.RoundEnd();
                 break;
             case TileType.LadderStart:
                 Debug.Log("Tile Ladder");

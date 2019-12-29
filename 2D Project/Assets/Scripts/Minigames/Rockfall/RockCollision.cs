@@ -17,7 +17,7 @@ public class RockCollision : MonoBehaviour
         {
             //Once we have fail logic, implement here
             Destroy(other.gameObject);
-            GameManager.Instance.MinigameEnd(false); //...Alex... set loosing status
+            GameManager.Instance.MinigameEnd(false,-2); //...Alex... set loosing status
         }
 
         Destroy(this.gameObject);

@@ -42,8 +42,12 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateCurrentPlayer();
+        if (PlayerManager.Instance.Players.Count > 0)
+        {
+            UpdateCurrentPlayer();
+        }
     }
+
     public void ChangeDice(int value)
     {
         _dice.text = value.ToString();
