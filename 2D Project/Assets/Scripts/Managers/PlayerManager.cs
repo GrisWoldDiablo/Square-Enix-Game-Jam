@@ -6,7 +6,6 @@ public class PlayerManager : MonoBehaviour
 {
     #region Singleton
     private static PlayerManager _instance = null;
-
     public static PlayerManager Instance
     {
         get
@@ -20,6 +19,14 @@ public class PlayerManager : MonoBehaviour
     }
     #endregion
 
+    [SerializeField] private List<Player> _players;
+    [SerializeField] private int _currentPlayerNumber = 0;
+    private Player _currentPlayer;
+
+    public List<Player> Players { get => _players; set => _players = value; }
+    public int CurrentPlayerNumber { get => _currentPlayerNumber; set => _currentPlayerNumber = value; }
+    public Player CurrentPlayer { get => _players[_currentPlayerNumber]; }
+
     void Awake()
     {
         #region Dont Destroy On Load
@@ -30,5 +37,15 @@ public class PlayerManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
         #endregion
+    }
+
+    public void NextPlayer()
+    {
+        _currentPlayerNumber++;
+        if (_currentPlayerNumber >= _players.Count)
+        {
+            _currentPlayerNumber = 0;
+        }
+        UIManager.Instance.UpdateCurrentPlayer();
     }
 }
