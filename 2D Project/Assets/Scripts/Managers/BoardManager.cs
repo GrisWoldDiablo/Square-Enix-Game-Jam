@@ -47,19 +47,19 @@ public class BoardManager : MonoBehaviour
 
     private void Start()
     {
-        var tiles = new List<GameObject>();
-        var boardZeroX = ((_boardWidth - 1) / 2) * -1;
-        var boardZeroY = ((_boardHeight - 1) / 2) * -1;
-        for (int i = 0; i < _boardWidth; i++)
-        {
-            tiles.Add(Instantiate(_tileWall, new Vector3(boardZeroX + i, boardZeroY + _boardHeight-1), Quaternion.identity, _tileMap.transform));
-            tiles.Add(Instantiate(_tileWall, new Vector3(boardZeroX + i, boardZeroY), Quaternion.identity, _tileMap.transform));
-        }
-        for (int i = 1; i < _boardHeight - 1; i++)
-        {
-            tiles.Add(Instantiate(_tileWall, new Vector3(boardZeroX, boardZeroY + i), Quaternion.identity, _tileMap.transform));
-            tiles.Add(Instantiate(_tileWall, new Vector3(boardZeroX + _boardWidth-1, boardZeroY + i), Quaternion.identity, _tileMap.transform));
-        }
+        //var tiles = new List<GameObject>();
+        //var boardZeroX = ((_boardWidth - 1) / 2) * -1;
+        //var boardZeroY = ((_boardHeight - 1) / 2) * -1;
+        //for (int i = 0; i < _boardWidth; i++)
+        //{
+        //    tiles.Add(Instantiate(_tileWall, new Vector3(boardZeroX + i, boardZeroY + _boardHeight-1), Quaternion.identity, _tileMap.transform));
+        //    tiles.Add(Instantiate(_tileWall, new Vector3(boardZeroX + i, boardZeroY), Quaternion.identity, _tileMap.transform));
+        //}
+        //for (int i = 1; i < _boardHeight - 1; i++)
+        //{
+        //    tiles.Add(Instantiate(_tileWall, new Vector3(boardZeroX, boardZeroY + i), Quaternion.identity, _tileMap.transform));
+        //    tiles.Add(Instantiate(_tileWall, new Vector3(boardZeroX + _boardWidth-1, boardZeroY + i), Quaternion.identity, _tileMap.transform));
+        //}
 
         //var startTile = Instantiate(_tileStart, new Vector3(boardZeroX + 1, boardZeroY + 1), Quaternion.identity, _tileMap.transform);
         //tiles.Add(startTile);

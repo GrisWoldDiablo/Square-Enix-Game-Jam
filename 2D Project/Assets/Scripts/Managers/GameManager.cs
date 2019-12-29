@@ -6,9 +6,6 @@ public class GameManager : MonoBehaviour
 {
     #region Singleton
     private static GameManager _instance = null;
-    [SerializeField] private GameObject _player;
-    private int playerPosition;
-
     public static GameManager Instance
     {
         get
@@ -44,6 +41,7 @@ public class GameManager : MonoBehaviour
     public void MovePlayer()
     {
         PlayerManager.Instance.CurrentPlayer.MovePosition(rolledNumber);
+        PlayerManager.Instance.CurrentPlayer.CurrentTile.Action();
         rolledNumber = 0;
         UIManager.Instance.ChangeDice(rolledNumber);
     }
@@ -53,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void MinigameEnd(bool playerWon)
+    public void MinigameEnd(bool playerWon, int positionChange = 0)
     {
         if (playerWon)
         {
@@ -65,6 +63,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player lost!");
             PlayerManager.Instance.CurrentPlayer.AddLost();
         }
+        PlayerManager.Instance.CurrentPlayer.MovePosition(positionChange);
         BackToBoard();
         RoundEnd();
     }
@@ -75,8 +74,11 @@ public class GameManager : MonoBehaviour
         BoardManager.Instance.TileMap.gameObject.SetActive(true);
         LevelManager.Instance.UnloadLastScene();
     }
+    
     public void RoundEnd()
     {
         PlayerManager.Instance.NextPlayer();
     }
+
+    
 }
