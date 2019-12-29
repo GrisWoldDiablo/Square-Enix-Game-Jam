@@ -46,6 +46,37 @@ public class GameManager : MonoBehaviour
         PlayerManager.Instance.CurrentPlayer.MovePosition(rolledNumber);
         rolledNumber = 0;
         UIManager.Instance.ChangeDice(rolledNumber);
+    }
+
+    public void RoundStart()
+    {
+
+    }
+
+    public void MinigameEnd(bool playerWon)
+    {
+        if (playerWon)
+        {
+            Debug.Log("Player win!");
+            PlayerManager.Instance.CurrentPlayer.AddWon();
+        }
+        else
+        {
+            Debug.Log("Player lost!");
+            PlayerManager.Instance.CurrentPlayer.AddLost();
+        }
+        BackToBoard();
+        RoundEnd();
+    }
+       
+    public void BackToBoard()
+    {
+        UIManager.Instance.MainCanvas.gameObject.SetActive(true);
+        BoardManager.Instance.TileMap.gameObject.SetActive(true);
+        LevelManager.Instance.UnloadLastScene();
+    }
+    public void RoundEnd()
+    {
         PlayerManager.Instance.NextPlayer();
     }
 }
