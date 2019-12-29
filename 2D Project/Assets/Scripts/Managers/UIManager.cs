@@ -19,11 +19,14 @@ public class UIManager : MonoBehaviour
         }
     }
     #endregion
-    
+
     [SerializeField] private Text _dice;
     [SerializeField] private Text _currentPlayer;
     [SerializeField] private Text _playerOrder;
     [SerializeField] private Image _currentPlayerSprite;
+    [SerializeField] private Canvas _mainCanvas;
+
+    public Canvas MainCanvas { get => _mainCanvas; }
 
     void Awake()
     {
@@ -54,7 +57,7 @@ public class UIManager : MonoBehaviour
         _playerOrder.text = string.Empty;
         foreach (var Player in PlayerManager.Instance.Players)
         {
-            _playerOrder.text += $"{Player.Position} : {Player.Name} : {Player.CurrentTile.Type}\n";
+            _playerOrder.text += $"{Player.Position} : {Player.Name}, W:{Player.WonCount},L:{Player.LossCount}\n";
         }
     }
 }

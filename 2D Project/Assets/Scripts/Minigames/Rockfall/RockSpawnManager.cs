@@ -19,12 +19,15 @@ public class RockSpawnManager : MonoBehaviour
     private void Start()
     {
         timerUI.text = timer.ToString();
+        hasSpawned = false;
     }
 
     void Spawn()
     {
-        spawnObject.transform.position = new Vector2(Random.Range(start.position.x, end.position.x), start.position.y);
-        Instantiate(spawnObject, spawnObject.transform);
+        //spawnObject.transform.position = new Vector2(Random.Range(start.position.x, end.position.x), start.position.y);
+        //...Alex... Fix spawn Position and parent transform 
+        var spawnPosition = new Vector2(Random.Range(start.position.x, end.position.x), start.position.y);
+        Instantiate(spawnObject,spawnPosition,Quaternion.identity, this.transform);
         hasSpawned = false;
     }
 
@@ -46,10 +49,10 @@ public class RockSpawnManager : MonoBehaviour
         {
             //Win logic
             timerUI.text = timer.ToString("Minigame Won");
-            Time.timeScale = 0;
+            //Time.timeScale = 0; //...Alex... Remove time scale reduction
+            GameManager.Instance.MinigameEnd(true); //...Alex... set winning status
         }
 
 
     }
-
 }

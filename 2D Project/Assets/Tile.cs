@@ -13,7 +13,8 @@ enum TileType
     End,
     SnakeHead,
     SnakeTail,
-    Ladder
+    LadderStart,
+    LadderEnd
 }
 
 #if (UNITY_EDITOR)
@@ -45,11 +46,13 @@ public class ObjectBuilderEditor : Editor
 public class Tile : MonoBehaviour
 {
     [SerializeField] private TileType _type;
+    [SerializeField] private Tile gotoTile;
+    [SerializeField] private List<string> _minigameSceneNames;
     private int _position;
+
 
     internal TileType Type { get => _type; set => _type = value; }
     public int Position { get => _position; set => _position = value; }
-    public Tile gotoTile;
 
     private void Start()
     {
@@ -68,32 +71,38 @@ public class Tile : MonoBehaviour
             case TileType.Wall:
                 break;
             case TileType.Path:
-                Debug.Log("Path Tile");
+                Debug.Log("Tile Path");
+                GameManager.Instance.RoundEnd();
                 break;
             case TileType.Minigame:
-                Debug.Log("Path Minigame");
+                Debug.Log("Tile Minigame");
+                LevelManager.Instance.LoadMinigameScene(_minigameSceneNames[Random.Range(0,_minigameSceneNames.Count)]);
                 break;
             case TileType.Start:
                 break;
             case TileType.End:
-                Debug.Log("Path End");
+                Debug.Log("Tile End");
                 break;
             case TileType.SnakeHead:
-                Debug.Log("Path Snake Head");
+                Debug.Log("Tile Snake Head");
                 if (gotoTile != null)
                 {
                     PlayerManager.Instance.CurrentPlayer.SetPosition(gotoTile.Position);
                 }
                 break;
             case TileType.SnakeTail:
-                Debug.Log("Path Snake Tail");
+                Debug.Log("Tile Snake Tail");
                 break;
-            case TileType.Ladder:
-                Debug.Log("Path Ladder");
+            case TileType.LadderStart:
+                Debug.Log("Tile Ladder");
                 if (gotoTile != null)
                 {
                     PlayerManager.Instance.CurrentPlayer.SetPosition(gotoTile.Position);
                 }
+                break;
+            case TileType.LadderEnd:
+                Debug.Log("Tile LadderEnd");
+                GameManager.Instance.RoundEnd();
                 break;
             default:
                 break;

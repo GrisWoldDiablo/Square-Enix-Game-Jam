@@ -7,7 +7,6 @@ public class BoardManager : MonoBehaviour
 {
     #region Singleton
     private static BoardManager _instance = null;
-
     public static BoardManager Instance
     {
         get
@@ -31,7 +30,7 @@ public class BoardManager : MonoBehaviour
     [SerializeField] private GameObject _tileEnd;
     [SerializeField] private List<Tile> tiles;
     public List<Tile> Tiles { get => tiles; set => tiles = value; }
-
+    public Tilemap TileMap { get => _tileMap; set => _tileMap = value; }
 
     void Awake()
     {
