@@ -40,8 +40,9 @@ public class GameManager : MonoBehaviour
 
     public void MovePlayer()
     {
+        UIManager.Instance.ToggleButtons(false);
         PlayerManager.Instance.CurrentPlayer.MovePosition(rolledNumber);
-        PlayerManager.Instance.CurrentPlayer.CurrentTile.Action();
+        //PlayerManager.Instance.CurrentPlayer.CurrentTile.Action();
         rolledNumber = 0;
         UIManager.Instance.ChangeDice(rolledNumber);
     }
@@ -77,6 +78,7 @@ public class GameManager : MonoBehaviour
     
     public void RoundEnd()
     {
+        UIManager.Instance.ToggleButtons(true);
         PlayerManager.Instance.NextPlayer();
     }
 

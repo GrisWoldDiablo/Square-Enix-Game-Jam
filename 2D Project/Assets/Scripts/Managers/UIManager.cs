@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text _playerOrder;
     [SerializeField] private Image _currentPlayerSprite;
     [SerializeField] private Canvas _mainCanvas;
+    [SerializeField] private Button _rollButton;
+    [SerializeField] private Button _moveButton;
 
     public Canvas MainCanvas { get => _mainCanvas; }
 
@@ -63,5 +65,11 @@ public class UIManager : MonoBehaviour
         {
             _playerOrder.text += $"{Player.Position} : {Player.Name}, W:{Player.WonCount},L:{Player.LossCount}\n";
         }
+    }
+
+    public void ToggleButtons(bool value)
+    {
+        _rollButton.interactable = value;
+        _moveButton.interactable = value;
     }
 }
