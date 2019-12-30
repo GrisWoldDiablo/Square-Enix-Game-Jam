@@ -43,16 +43,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ac273c9cc3d4545acefd54bf425412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boardWidth: 15
-  _boardHeigth: 9
+  _noneSprite: {fileID: 21300000, guid: c0eb1a6e18720054cac0df76c913a4fa, type: 3}
+  _wallSprite: {fileID: 21300000, guid: ebe4b8576815f574b849542028af820b, type: 3}
+  _pathSprite: {fileID: 21300000, guid: c8690ef3d2be4ac40b105049cba2597d, type: 3}
+  _startSprite: {fileID: 21300000, guid: 2af07216fee541849817de2ba64137c2, type: 3}
+  _endSprite: {fileID: 21300000, guid: 9950658224d7643449cf81fa0ab1c737, type: 3}
+  _snakeHeadSprite: {fileID: 21300000, guid: 5b4c26282b10cb64fb9ea46e2285dc58, type: 3}
+  _snakeTailSprite: {fileID: 21300000, guid: 3c4e881e059089f44923657ccdecbe37, type: 3}
+  _ladderStartSprite: {fileID: 21300000, guid: 6df1041a0c42d044eab2237f0b4646b0, type: 3}
+  _ladderEndSprite: {fileID: 21300000, guid: e8cd6fb2fc4e43e4795d043acecbf9c8, type: 3}
+  _minigameDefaultSprite: {fileID: 21300000, guid: 1e7b75735a2994043983d13b750d8dab,
+    type: 3}
   _tileMap: {fileID: 0}
-  _tileWall: {fileID: 7703991039889603216, guid: 083d2c7e9ebfdb946a0b0dce5ccacf7a,
-    type: 3}
-  _tilePath: {fileID: 4105014132427854483, guid: 89ee726a9d0dfc745b93b19a20b1509a,
-    type: 3}
-  _tileMinigame: {fileID: 5457850465913397191, guid: d05b2041d703e0946821dae56109bb68,
-    type: 3}
-  _tileStart: {fileID: 4131205000143235837, guid: ac2b34cfc10660e4ca09527f405de5b0,
-    type: 3}
-  _tileEnd: {fileID: 9087133974298741281, guid: fd71323167e2dde499be9c5eb057534b,
-    type: 3}
+  playTiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

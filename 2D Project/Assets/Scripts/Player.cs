@@ -13,11 +13,15 @@ public class Player : MonoBehaviour
 
     private float _positionToMove = 0.0f;
     [SerializeField] private float _moveSpeed = 2.0f;
+    private float _speedPerTile;
+    private Vector3 _currentPosition;
+
     public int Position { get => _position; }
     public string Name { get => _name; set => _name = value; }
     public Tile CurrentTile { get => BoardManager.Instance.PlayTiles[_position]; }
     public Sprite PlayerSprite { get => _playerSprite; }
     public Color PlayerColor { get => _playerColor; }
+
     public int WonCount { get => _wonCount; }
     public int LossCount { get => _lossCount; }
 
@@ -39,25 +43,25 @@ public class Player : MonoBehaviour
             futurePosition = BoardManager.Instance.PlayTiles.Count - 1;
         }
         _positionToMove = futurePosition - _position;
+        _speedPerTile = _moveSpeed / _positionToMove;
 
+        StartCoroutine(LerpMove());
+        //_position += value;
 
-        _position += value;
-        if (_position < 0)
-        {
-            _position = 0;
-        }
-        if (_position >= BoardManager.Instance.PlayTiles.Count)
-        {
-            _position = BoardManager.Instance.PlayTiles.Count - 1;
-        }
-        this.transform.position = BoardManager.Instance.PlayTiles[_position].transform.position;
+        //if (_position < 0)
+        //{
+        //    _position = 0;
+        //}
+        //if (_position >= BoardManager.Instance.PlayTiles.Count)
+        //{
+        //    _position = BoardManager.Instance.PlayTiles.Count - 1;
+        //}
+        //this.transform.position = BoardManager.Instance.PlayTiles[_position].transform.position;
     }
 
     public void SetPosition(int value)
     {
-        _position = value;
-        this.transform.position = BoardManager.Instance.PlayTiles[_position].transform.position;
-        PlayerManager.Instance.CurrentPlayer.CurrentTile.Action();
+        StartCoroutine(LerpPosition(value));
     }
 
     public void AddWon()
@@ -70,8 +74,37 @@ public class Player : MonoBehaviour
         _lossCount++;
     }
 
-    public void LerpPosition()
+    public IEnumerator LerpMove()
     {
+        float lerpValue;
+        for (int i = 1; i <= _positionToMove; i++)
+        {
+            lerpValue = 1.0f;
+            _currentPosition = this.transform.position;
+            _position++;
+            while (lerpValue > 0)
+            {
+                lerpValue -=  Time.deltaTime / _speedPerTile;
+                this.transform.position = Vector3.Lerp(BoardManager.Instance.PlayTiles[_position].transform.position,_currentPosition,lerpValue);
+                yield return null;
+            }
+        }
+        CurrentTile.Action();
+    }
 
+    public IEnumerator LerpPosition(int newPosition)
+    {
+        
+        float lerpValue = 1.0f;
+        _currentPosition = this.transform.position;
+        _position = newPosition;
+        while (lerpValue > 0)
+        {
+            lerpValue -= Time.deltaTime / _moveSpeed;
+            this.transform.position = Vector3.Lerp(BoardManager.Instance.PlayTiles[_position].transform.position, _currentPosition, lerpValue);
+            yield return null;
+        }
+
+        CurrentTile.Action();
     }
 }

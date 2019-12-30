@@ -126,14 +126,8 @@ public class ObjectBuilderEditor : Editor
         if (value == -1)
         {
             _myTile.GetComponent<SpriteRenderer>().sprite = BoardManager.Instance.MinigameDefaultSprite;
-            //_myTile.MinigameSceneNames.Clear();
-            //foreach (var minigame in LevelManager.Instance.Minigames)
-            //{
-            //    _myTile.MinigameSceneNames.Add(minigame.sceneName);
-            //}
-            //_myTile.MinigameSceneName = "random";
+
             sceneName.stringValue = "random";
-            //_myTile.ChangeSceneName("random");
             Debug.Log($"Minigame is set to Random.");
             _myTile.gameObject.name = "Tile Minigame Random";
             
@@ -142,14 +136,9 @@ public class ObjectBuilderEditor : Editor
         {
             Debug.Log($"Minigame : {LevelManager.Instance.Minigames[value].name} set.");
             _myTile.GetComponent<SpriteRenderer>().sprite = LevelManager.Instance.Minigames[value].minigameIcon;
-            //_myTile.MinigameSceneNames.Clear();
-            //_myTile.MinigameSceneNames.Add(LevelManager.Instance.Minigames[value].sceneName);
-            //_myTile.MinigameSceneName = LevelManager.Instance.Minigames[value].sceneName;
-            //_myTile.ChangeSceneName(LevelManager.Instance.Minigames[value].sceneName);
             sceneName.stringValue = LevelManager.Instance.Minigames[value].sceneName;
             _myTile.gameObject.name = $"Tile Minigame ({LevelManager.Instance.Minigames[value].name})";
         }
-        //serializedObject.ApplyModifiedProperties();
     }
 }
 #endif
@@ -159,14 +148,10 @@ public class Tile : MonoBehaviour
     [SerializeField] private TileType _type;
     [SerializeField] private Tile _gotoTile;
     [SerializeField] private string _minigameSceneName;
-    //[SerializeField] private List<string> _minigameSceneNames;
     private int _position;
     
     internal TileType Type { get => _type; set => _type = value; }
     public int Position { get => _position; set => _position = value; }
-    //public string MinigameSceneName { get => _minigameSceneName; set => _minigameSceneName = value; }
-
-    //public List<string> MinigameSceneNames { get => _minigameSceneNames; set => _minigameSceneNames = value; }
 
     private void Start()
     {
@@ -190,7 +175,6 @@ public class Tile : MonoBehaviour
                 break;
             case TileType.Minigame:
                 Debug.Log("Tile Minigame");
-                //LevelManager.Instance.LoadMinigameScene(_minigameSceneNames[UnityEngine.Random.Range(0,_minigameSceneNames.Count)]);
                 LevelManager.Instance.LoadMinigameScene(_minigameSceneName);
                 break;
             case TileType.Start:

@@ -466,7 +466,7 @@ PrefabInstance:
     - target: {fileID: 4717407584166422230, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
       propertyPath: m_Name
-      value: Tile Minigame (Rock Fall)
+      value: Tile Minigame (Maze Runner)
       objectReference: {fileID: 0}
     - target: {fileID: 5112196501991763978, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
@@ -531,13 +531,13 @@ PrefabInstance:
     - target: {fileID: 6964660766818775090, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
       propertyPath: _minigameSceneName
-      value: Rockfall_Minigame
+      value: MazeRunner
       objectReference: {fileID: 0}
     - target: {fileID: 8535788459212763631, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ee79be1068544f241ade4cb9789aad91,
+      objectReference: {fileID: 21300000, guid: 99371066c7e481348948226823eb1113,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe7b2bbaf027ca94f948381deb47d99b, type: 3}
@@ -897,7 +897,6 @@ GameObject:
   m_Component:
   - component: {fileID: 69067959}
   - component: {fileID: 69067958}
-  - component: {fileID: 69067957}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -905,14 +904,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &69067957
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69067956}
-  m_Enabled: 0
 --- !u!20 &69067958
 Camera:
   m_ObjectHideFlags: 0
@@ -1491,6 +1482,11 @@ PrefabInstance:
       propertyPath: _name
       value: Cath
       objectReference: {fileID: 0}
+    - target: {fileID: 5025072611333948570, guid: 1b490f8d839e1a44eb47bfdb83d1390f,
+        type: 3}
+      propertyPath: _moveSpeed
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7220488881547673894, guid: 1b490f8d839e1a44eb47bfdb83d1390f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1679,7 +1675,7 @@ PrefabInstance:
     - target: {fileID: 4717407584166422230, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
       propertyPath: m_Name
-      value: Tile Minigame (Rock Fall 2)
+      value: Tile Minigame (Maze Runner)
       objectReference: {fileID: 0}
     - target: {fileID: 5112196501991763978, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
@@ -1744,7 +1740,7 @@ PrefabInstance:
     - target: {fileID: 6964660766818775090, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
       propertyPath: _minigameSceneName
-      value: Rockfall_Minigame
+      value: MazeRunner
       objectReference: {fileID: 0}
     - target: {fileID: 8535788459212763631, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
@@ -2813,6 +2809,11 @@ PrefabInstance:
       propertyPath: _name
       value: Gen
       objectReference: {fileID: 0}
+    - target: {fileID: 5025072611333948570, guid: 1b490f8d839e1a44eb47bfdb83d1390f,
+        type: 3}
+      propertyPath: _moveSpeed
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7220488881547673894, guid: 1b490f8d839e1a44eb47bfdb83d1390f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3613,6 +3614,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _type
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964660766818775090, guid: fe7b2bbaf027ca94f948381deb47d99b,
+        type: 3}
+      propertyPath: _minigameSceneName
+      value: MazeRunner
       objectReference: {fileID: 0}
     - target: {fileID: 8535788459212763631, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
@@ -4518,7 +4524,7 @@ PrefabInstance:
     - target: {fileID: 4717407584166422230, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
       propertyPath: m_Name
-      value: Tile Minigame (Rock Fall 2)
+      value: Tile Minigame (Maze Runner)
       objectReference: {fileID: 0}
     - target: {fileID: 5112196501991763978, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
@@ -4583,7 +4589,7 @@ PrefabInstance:
     - target: {fileID: 6964660766818775090, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
       propertyPath: _minigameSceneName
-      value: Rockfall_Minigame
+      value: MazeRunner
       objectReference: {fileID: 0}
     - target: {fileID: 8535788459212763631, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
@@ -9006,7 +9012,7 @@ Transform:
   m_Children:
   - {fileID: 1621098686}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1577146803 stripped
 Transform:
@@ -10675,7 +10681,7 @@ PrefabInstance:
     - target: {fileID: 4717407584166422230, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
       propertyPath: m_Name
-      value: Tile Path
+      value: Tile Ladder Start
       objectReference: {fileID: 0}
     - target: {fileID: 5112196501991763978, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
@@ -10735,13 +10741,18 @@ PrefabInstance:
     - target: {fileID: 6964660766818775090, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
       propertyPath: _type
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6964660766818775090, guid: fe7b2bbaf027ca94f948381deb47d99b,
+        type: 3}
+      propertyPath: _gotoTile
+      value: 
+      objectReference: {fileID: 1933208287}
     - target: {fileID: 8535788459212763631, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c8690ef3d2be4ac40b105049cba2597d,
+      objectReference: {fileID: 21300000, guid: 6df1041a0c42d044eab2237f0b4646b0,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe7b2bbaf027ca94f948381deb47d99b, type: 3}
@@ -11012,7 +11023,7 @@ PrefabInstance:
     - target: {fileID: 4717407584166422230, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
       propertyPath: m_Name
-      value: Tile Minigame Random
+      value: Tile Minigame (Maze Runner)
       objectReference: {fileID: 0}
     - target: {fileID: 5112196501991763978, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
@@ -11077,13 +11088,13 @@ PrefabInstance:
     - target: {fileID: 6964660766818775090, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
       propertyPath: _minigameSceneName
-      value: random
+      value: MazeRunner
       objectReference: {fileID: 0}
     - target: {fileID: 8535788459212763631, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1e7b75735a2994043983d13b750d8dab,
+      objectReference: {fileID: 21300000, guid: 99371066c7e481348948226823eb1113,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe7b2bbaf027ca94f948381deb47d99b, type: 3}
@@ -13944,12 +13955,7 @@ PrefabInstance:
     - target: {fileID: 3259725270757879734, guid: c6a24e44391595f45989414a4f321975,
         type: 3}
       propertyPath: _minigames.Array.data[1].name
-      value: Rock
-      objectReference: {fileID: 0}
-    - target: {fileID: 3259725270757879734, guid: c6a24e44391595f45989414a4f321975,
-        type: 3}
-      propertyPath: _minigames.Array.data[1].sceneName
-      value: Rockfall_Minigame
+      value: Maze Runner
       objectReference: {fileID: 0}
     - target: {fileID: 7314775245818294807, guid: c6a24e44391595f45989414a4f321975,
         type: 3}
@@ -14009,6 +14015,75 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1438115661918322608, guid: c6a24e44391595f45989414a4f321975, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c6a24e44391595f45989414a4f321975, type: 3}
+--- !u!1001 &2596926391588580461
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1090255282785222916, guid: d16a0fcdd518a564eade232352551041,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.22446707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090255282785222916, guid: d16a0fcdd518a564eade232352551041,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.46516365
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090255282785222916, guid: d16a0fcdd518a564eade232352551041,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.6875
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090255282785222916, guid: d16a0fcdd518a564eade232352551041,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090255282785222916, guid: d16a0fcdd518a564eade232352551041,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090255282785222916, guid: d16a0fcdd518a564eade232352551041,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090255282785222916, guid: d16a0fcdd518a564eade232352551041,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090255282785222916, guid: d16a0fcdd518a564eade232352551041,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090255282785222916, guid: d16a0fcdd518a564eade232352551041,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090255282785222916, guid: d16a0fcdd518a564eade232352551041,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090255282785222916, guid: d16a0fcdd518a564eade232352551041,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6442450107951317911, guid: d16a0fcdd518a564eade232352551041,
+        type: 3}
+      propertyPath: m_Name
+      value: Audio Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d16a0fcdd518a564eade232352551041, type: 3}
 --- !u!1001 &3214517587733720126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14079,6 +14154,75 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5149480707578375651, guid: 83444f9ebb6941040b7f3013b34107f5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 83444f9ebb6941040b7f3013b34107f5, type: 3}
+--- !u!1001 &3318778023660501886
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1382282033706218380, guid: 5acda31de9e38d8469bbf3744edecde2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.22446707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382282033706218380, guid: 5acda31de9e38d8469bbf3744edecde2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.46516365
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382282033706218380, guid: 5acda31de9e38d8469bbf3744edecde2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.6875
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382282033706218380, guid: 5acda31de9e38d8469bbf3744edecde2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382282033706218380, guid: 5acda31de9e38d8469bbf3744edecde2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382282033706218380, guid: 5acda31de9e38d8469bbf3744edecde2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382282033706218380, guid: 5acda31de9e38d8469bbf3744edecde2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382282033706218380, guid: 5acda31de9e38d8469bbf3744edecde2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382282033706218380, guid: 5acda31de9e38d8469bbf3744edecde2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382282033706218380, guid: 5acda31de9e38d8469bbf3744edecde2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382282033706218380, guid: 5acda31de9e38d8469bbf3744edecde2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6632157317813362636, guid: 5acda31de9e38d8469bbf3744edecde2,
+        type: 3}
+      propertyPath: m_Name
+      value: Camera Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5acda31de9e38d8469bbf3744edecde2, type: 3}
 --- !u!1001 &3613787947897854356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14181,6 +14325,16 @@ PrefabInstance:
       propertyPath: _mainCanvas
       value: 
       objectReference: {fileID: 2006749260}
+    - target: {fileID: 4253968794464306729, guid: 8badbff05c3e7d146bba7d7ba82419fc,
+        type: 3}
+      propertyPath: _rollButton
+      value: 
+      objectReference: {fileID: 1430692328}
+    - target: {fileID: 4253968794464306729, guid: 8badbff05c3e7d146bba7d7ba82419fc,
+        type: 3}
+      propertyPath: _moveButton
+      value: 
+      objectReference: {fileID: 72378580}
     - target: {fileID: 5207550297982843606, guid: 8badbff05c3e7d146bba7d7ba82419fc,
         type: 3}
       propertyPath: m_Name
@@ -14345,6 +14499,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _name
       value: Alex
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025072611333948570, guid: 1b490f8d839e1a44eb47bfdb83d1390f,
+        type: 3}
+      propertyPath: _moveSpeed
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7220488881547673894, guid: 1b490f8d839e1a44eb47bfdb83d1390f,
         type: 3}
