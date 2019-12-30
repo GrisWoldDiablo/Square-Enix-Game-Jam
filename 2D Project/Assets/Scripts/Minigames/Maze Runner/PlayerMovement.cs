@@ -31,16 +31,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (gyroCheck)
-        //{
-        //    transform.rotation = GyroUnity(Input.gyro.attitude);
-        //}
-
+        //Get the float of the direction of the acceleration
         directionX = Input.acceleration.x * speed;
         directionY = Input.acceleration.y * speed;
 
 
-        //Input arrow key to test
+        //Input arrow key to test the game , uncomment to use key
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         body.MovePosition(body.position + movement * speed * Time.deltaTime);
@@ -51,10 +47,5 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         body.velocity = new Vector2(body.velocity.x + directionX, body.velocity.y + directionY);
-    }
-
-    private Quaternion GyroUnity(Quaternion point)
-    {
-        return new Quaternion(point.x, point.y, -point.z, -point.w);
     }
 }
