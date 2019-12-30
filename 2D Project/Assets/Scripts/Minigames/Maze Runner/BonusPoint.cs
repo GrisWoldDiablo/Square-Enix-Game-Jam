@@ -42,6 +42,7 @@ public class BonusPoint : MonoBehaviour
         if(collision.gameObject.tag == "Goal")
         {
             Debug.Log("You win !");
+            GameManager.Instance.MinigameEnd(true);
         }
     }
 }
