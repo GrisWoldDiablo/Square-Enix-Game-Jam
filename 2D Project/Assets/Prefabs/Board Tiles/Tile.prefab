@@ -94,3 +94,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
+  gotoTile: {fileID: 0}
+  _minigameSceneNames: []

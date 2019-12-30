@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -19,26 +20,136 @@ enum TileType
 
 #if (UNITY_EDITOR)
 [CustomEditor(typeof(Tile))]
-[CanEditMultipleObjects]
 public class ObjectBuilderEditor : Editor
 {
     private TileType _tileType;
-    private Tile _myScript;
-
+    private Tile _myTile;
+    SerializedProperty sceneName;
     private void OnEnable()
     {
-        _myScript = (Tile)target;
+        _myTile = (Tile)target;
+        sceneName = serializedObject.FindProperty("_minigameSceneName");
     }
 
     public override void OnInspectorGUI()
     {
-        DrawDefaultInspector();
+        if (!_myTile.gameObject.activeInHierarchy)
+        {
+            DrawDefaultInspector();
+            return;
+        }
+        EditorGUI.BeginChangeCheck();
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("_type"), true);
+
+        if (_myTile.Type == TileType.LadderStart || _myTile.Type == TileType.SnakeHead)
+        {
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_gotoTile"), true); 
+        }
+
+        if (_myTile.Type == TileType.Minigame)
+        {
+            EditorGUILayout.PropertyField(sceneName);
+            SetMinigameButtons();
+        }
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            serializedObject.ApplyModifiedProperties();
+        }
+
         UpdateObject();
     }
 
-    public void UpdateObject()
+    private void UpdateObject()
     {
-        _tileType = _myScript.Type;
+        switch (_myTile.Type)
+        {
+            case TileType.None:
+                _myTile.gameObject.name = "Tile None";
+                _myTile.GetComponent<SpriteRenderer>().sprite = BoardManager.Instance.NoneSprite;
+                break;
+            case TileType.Wall:
+                _myTile.gameObject.name = "Tile Wall";
+                _myTile.GetComponent<SpriteRenderer>().sprite = BoardManager.Instance.WallSprite;
+                break;
+            case TileType.Path:
+                _myTile.gameObject.name = "Tile Path";
+                _myTile.GetComponent<SpriteRenderer>().sprite = BoardManager.Instance.PathSprite;
+                break;
+            case TileType.Start:
+                _myTile.gameObject.name = "Tile Start";
+                _myTile.GetComponent<SpriteRenderer>().sprite = BoardManager.Instance.StartSprite;
+                break;
+            case TileType.End:
+                _myTile.gameObject.name = "Tile End";
+                _myTile.GetComponent<SpriteRenderer>().sprite = BoardManager.Instance.EndSprite;
+                break;
+            case TileType.SnakeHead:
+                _myTile.gameObject.name = "Tile Snake Head";
+                _myTile.GetComponent<SpriteRenderer>().sprite = BoardManager.Instance.SnakeHeadSprite;
+                break;
+            case TileType.SnakeTail:
+                _myTile.gameObject.name = "Tile Snake Tail";
+                _myTile.GetComponent<SpriteRenderer>().sprite = BoardManager.Instance.SnakeTailSprite;
+                break;
+            case TileType.LadderStart:
+                _myTile.gameObject.name = "Tile Ladder Start";
+                _myTile.GetComponent<SpriteRenderer>().sprite = BoardManager.Instance.LadderStartSprite;
+                break;
+            case TileType.LadderEnd:
+                _myTile.gameObject.name = "Tile Ladder End";
+                _myTile.GetComponent<SpriteRenderer>().sprite = BoardManager.Instance.LadderEndSprite;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void SetMinigameButtons()
+    {
+        GUILayout.Box("Minigame choices");
+        for (int i = 0; i < LevelManager.Instance.Minigames.Count; i++)
+        {
+            if (GUILayout.Button($"Set {LevelManager.Instance.Minigames[i].name}", GUILayout.MaxWidth(175), GUILayout.Height(25)))
+            {
+                ChangeMinigame(i);
+            }
+        }
+        if (GUILayout.Button($"Set Random", GUILayout.MaxWidth(175), GUILayout.Height(25)))
+        {
+            ChangeMinigame(-1);
+        }
+    }
+
+    private void ChangeMinigame(int value)
+    {
+        if (value == -1)
+        {
+            _myTile.GetComponent<SpriteRenderer>().sprite = BoardManager.Instance.MinigameDefaultSprite;
+            //_myTile.MinigameSceneNames.Clear();
+            //foreach (var minigame in LevelManager.Instance.Minigames)
+            //{
+            //    _myTile.MinigameSceneNames.Add(minigame.sceneName);
+            //}
+            //_myTile.MinigameSceneName = "random";
+            sceneName.stringValue = "random";
+            //_myTile.ChangeSceneName("random");
+            Debug.Log($"Minigame is set to Random.");
+            _myTile.gameObject.name = "Tile Minigame Random";
+            
+        }
+        else
+        {
+            Debug.Log($"Minigame : {LevelManager.Instance.Minigames[value].name} set.");
+            _myTile.GetComponent<SpriteRenderer>().sprite = LevelManager.Instance.Minigames[value].minigameIcon;
+            //_myTile.MinigameSceneNames.Clear();
+            //_myTile.MinigameSceneNames.Add(LevelManager.Instance.Minigames[value].sceneName);
+            //_myTile.MinigameSceneName = LevelManager.Instance.Minigames[value].sceneName;
+            //_myTile.ChangeSceneName(LevelManager.Instance.Minigames[value].sceneName);
+            sceneName.stringValue = LevelManager.Instance.Minigames[value].sceneName;
+            _myTile.gameObject.name = $"Tile Minigame ({LevelManager.Instance.Minigames[value].name})";
+        }
+        //serializedObject.ApplyModifiedProperties();
     }
 }
 #endif
@@ -46,19 +157,22 @@ public class ObjectBuilderEditor : Editor
 public class Tile : MonoBehaviour
 {
     [SerializeField] private TileType _type;
-    [SerializeField] private Tile gotoTile;
-    [SerializeField] private List<string> _minigameSceneNames;
+    [SerializeField] private Tile _gotoTile;
+    [SerializeField] private string _minigameSceneName;
+    //[SerializeField] private List<string> _minigameSceneNames;
     private int _position;
-
-
+    
     internal TileType Type { get => _type; set => _type = value; }
     public int Position { get => _position; set => _position = value; }
+    //public string MinigameSceneName { get => _minigameSceneName; set => _minigameSceneName = value; }
+
+    //public List<string> MinigameSceneNames { get => _minigameSceneNames; set => _minigameSceneNames = value; }
 
     private void Start()
     {
-        if (Type != TileType.None || Type != TileType.Wall)
+        if (_type != TileType.None || _type != TileType.Wall)
         {
-            _position = BoardManager.Instance.Tiles.IndexOf(this);
+            _position = BoardManager.Instance.PlayTiles.IndexOf(this);
         }
     }
 
@@ -76,7 +190,8 @@ public class Tile : MonoBehaviour
                 break;
             case TileType.Minigame:
                 Debug.Log("Tile Minigame");
-                LevelManager.Instance.LoadMinigameScene(_minigameSceneNames[Random.Range(0,_minigameSceneNames.Count)]);
+                //LevelManager.Instance.LoadMinigameScene(_minigameSceneNames[UnityEngine.Random.Range(0,_minigameSceneNames.Count)]);
+                LevelManager.Instance.LoadMinigameScene(_minigameSceneName);
                 break;
             case TileType.Start:
                 break;
@@ -85,9 +200,9 @@ public class Tile : MonoBehaviour
                 break;
             case TileType.SnakeHead:
                 Debug.Log("Tile Snake Head");
-                if (gotoTile != null)
+                if (_gotoTile != null)
                 {
-                    PlayerManager.Instance.CurrentPlayer.SetPosition(gotoTile.Position);
+                    PlayerManager.Instance.CurrentPlayer.SetPosition(_gotoTile.Position);
                 }
                 break;
             case TileType.SnakeTail:
@@ -96,9 +211,9 @@ public class Tile : MonoBehaviour
                 break;
             case TileType.LadderStart:
                 Debug.Log("Tile Ladder");
-                if (gotoTile != null)
+                if (_gotoTile != null)
                 {
-                    PlayerManager.Instance.CurrentPlayer.SetPosition(gotoTile.Position);
+                    PlayerManager.Instance.CurrentPlayer.SetPosition(_gotoTile.Position);
                 }
                 break;
             case TileType.LadderEnd:
@@ -109,4 +224,11 @@ public class Tile : MonoBehaviour
                 break;
         }
     }
+
+    public void ChangeSceneName(string name)
+    {
+        _minigameSceneName = name;
+    }
+
+
 }
