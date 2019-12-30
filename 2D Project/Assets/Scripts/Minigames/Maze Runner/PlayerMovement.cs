@@ -14,18 +14,18 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        body = GetComponent<Rigidbody2D>();
-        //Check if they have Gyro
-        if (SystemInfo.supportsGyroscope)
-        {
-            Input.gyro.enabled = true;
-            gyroCheck = true;
-        }
+        //body = GetComponent<Rigidbody2D>();
+        ////Check if they have Gyro
+        //if (SystemInfo.supportsGyroscope)
+        //{
+        //    Input.gyro.enabled = true;
+        //    gyroCheck = true;
+        //}
 
-        if (SystemInfo.supportsAccelerometer)
-        {
-            Accelerometer = true;
-        }
+        //if (SystemInfo.supportsAccelerometer)
+        //{
+        //    Accelerometer = true;
+        //}
     }
 
     // Update is called once per frame
@@ -37,9 +37,9 @@ public class PlayerMovement : MonoBehaviour
 
 
         //Input arrow key to test the game , uncomment to use key
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-        body.MovePosition(body.position + movement * speed * Time.deltaTime);
+        //movement.x = Input.GetAxisRaw("Horizontal");
+        //movement.y = Input.GetAxisRaw("Vertical");
+        //body.MovePosition(body.position + movement * speed * Time.deltaTime);
 
 
     }
