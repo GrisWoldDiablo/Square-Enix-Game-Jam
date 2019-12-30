@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/_Alex Misc/Board Scene.unity
     guid: 2a798083cf7579840a7961c5635a7126
   - enabled: 1
-    path: Assets/Scenes/Robert Mini Games.unity
+    path: Assets/Scenes/MazeRunner.unity
     guid: acfb34b220181874fb53390c7fa902f0
   - enabled: 1
     path: Assets/Scenes/Rockfall_Minigame.unity
