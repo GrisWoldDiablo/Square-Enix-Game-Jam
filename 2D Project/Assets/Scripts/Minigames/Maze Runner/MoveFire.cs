@@ -13,6 +13,7 @@ public class MoveFire : MonoBehaviour
     [SerializeField] float moveSpeed;
     //To save the current positio of the platform/object
     private Vector2 currentTarget;
+    private float timer = 6.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -23,17 +24,22 @@ public class MoveFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movingObject.transform.position = Vector2.MoveTowards(movingObject.transform.position, currentTarget, moveSpeed * Time.deltaTime);
+        timer -= Time.deltaTime;
 
-        //move the object from point a -> b
-        if (movingObject.transform.position.x == endPOint.position.x)
+        if (timer < 0)
         {
-            //currentTarget = startPoint.position;
-        }
-        //move the object from point b -> a
-        if (movingObject.transform.position.x == startPoint.position.x)
-        {
+            movingObject.transform.position = Vector2.MoveTowards(movingObject.transform.position, currentTarget, moveSpeed * Time.deltaTime);
 
+            //move the object from point a -> b
+            if (movingObject.transform.position.x == endPOint.position.x)
+            {
+                //currentTarget = startPoint.position;
+            }
+            ////move the object from point b -> a
+            //if (movingObject.transform.position.x == startPoint.position.x)
+            //{
+
+            //}
         }
     }
 
@@ -42,7 +48,8 @@ public class MoveFire : MonoBehaviour
         if(collision.gameObject.name == "Player")
         {
             moveSpeed = 0;
-            Time.timeScale = 0;
+           // Time.timeScale = 0;
+            GameManager.Instance.MinigameEnd(false,-1);
             Debug.Log("Game Over");
         }
     }

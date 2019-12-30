@@ -13941,6 +13941,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 99371066c7e481348948226823eb1113,
         type: 3}
+    - target: {fileID: 3259725270757879734, guid: c6a24e44391595f45989414a4f321975,
+        type: 3}
+      propertyPath: _minigames.Array.data[1].name
+      value: Rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 3259725270757879734, guid: c6a24e44391595f45989414a4f321975,
+        type: 3}
+      propertyPath: _minigames.Array.data[1].sceneName
+      value: Rockfall_Minigame
+      objectReference: {fileID: 0}
     - target: {fileID: 7314775245818294807, guid: c6a24e44391595f45989414a4f321975,
         type: 3}
       propertyPath: m_LocalPosition.x
