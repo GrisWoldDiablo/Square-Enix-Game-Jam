@@ -43,3 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e367871c2e24b48b2c896e9065cf41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _randomMinigameSprite: {fileID: 21300000, guid: 1e7b75735a2994043983d13b750d8dab,
+    type: 3}
+  _minigames:
+  - name: Rock Fall
+    sceneName: Rockfall_Minigame
+    minigameIcon: {fileID: 21300000, guid: ee79be1068544f241ade4cb9789aad91, type: 3}
+  - name: Rock Fall 2
+    sceneName: Rockfall_Minigame
+    minigameIcon: {fileID: 21300000, guid: 99371066c7e481348948226823eb1113, type: 3}

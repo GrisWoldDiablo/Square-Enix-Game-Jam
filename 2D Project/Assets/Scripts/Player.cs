@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _moveSpeed = 2.0f;
     public int Position { get => _position; }
     public string Name { get => _name; set => _name = value; }
-    public Tile CurrentTile { get => BoardManager.Instance.Tiles[_position]; }
+    public Tile CurrentTile { get => BoardManager.Instance.PlayTiles[_position]; }
     public Sprite PlayerSprite { get => _playerSprite; }
     public Color PlayerColor { get => _playerColor; }
     public int WonCount { get => _wonCount; }
@@ -28,15 +28,15 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
-        this.transform.position = BoardManager.Instance.Tiles[_position].transform.position;    
+        this.transform.position = BoardManager.Instance.PlayTiles[_position].transform.position;    
     }
 
     public void MovePosition(int value)
     {
         var futurePosition = _position + value;
-        if (futurePosition >= BoardManager.Instance.Tiles.Count)
+        if (futurePosition >= BoardManager.Instance.PlayTiles.Count)
         {
-            futurePosition = BoardManager.Instance.Tiles.Count - 1;
+            futurePosition = BoardManager.Instance.PlayTiles.Count - 1;
         }
         _positionToMove = futurePosition - _position;
 
@@ -46,17 +46,17 @@ public class Player : MonoBehaviour
         {
             _position = 0;
         }
-        if (_position >= BoardManager.Instance.Tiles.Count)
+        if (_position >= BoardManager.Instance.PlayTiles.Count)
         {
-            _position = BoardManager.Instance.Tiles.Count - 1;
+            _position = BoardManager.Instance.PlayTiles.Count - 1;
         }
-        this.transform.position = BoardManager.Instance.Tiles[_position].transform.position;
+        this.transform.position = BoardManager.Instance.PlayTiles[_position].transform.position;
     }
 
     public void SetPosition(int value)
     {
         _position = value;
-        this.transform.position = BoardManager.Instance.Tiles[_position].transform.position;
+        this.transform.position = BoardManager.Instance.PlayTiles[_position].transform.position;
         PlayerManager.Instance.CurrentPlayer.CurrentTile.Action();
     }
 
