@@ -40,11 +40,15 @@ public class GameManager : MonoBehaviour
 
     public void MovePlayer()
     {
-        UIManager.Instance.ToggleButtons(false);
-        PlayerManager.Instance.CurrentPlayer.MovePosition(rolledNumber);
-        //PlayerManager.Instance.CurrentPlayer.CurrentTile.Action();
-        rolledNumber = 0;
-        UIManager.Instance.ChangeDice(rolledNumber);
+        if(rolledNumber != 0) //...Jeff... , check if player has rolled something before moving
+        {
+            UIManager.Instance.ToggleButtons(false);
+            PlayerManager.Instance.CurrentPlayer.MovePosition(rolledNumber);
+            //PlayerManager.Instance.CurrentPlayer.CurrentTile.Action();
+            rolledNumber = 0;
+            UIManager.Instance.ChangeDice(rolledNumber);
+        }
+
     }
 
     public void RoundStart()

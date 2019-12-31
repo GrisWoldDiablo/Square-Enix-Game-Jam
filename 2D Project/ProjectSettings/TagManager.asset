@@ -8,6 +8,7 @@ TagManager:
   - Yellow
   - Green
   - Goal
+  - Slice
   layers:
   - Default
   - TransparentFX

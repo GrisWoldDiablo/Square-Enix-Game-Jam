@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button _moveButton;
 
     public Canvas MainCanvas { get => _mainCanvas; }
+    public object BouncesLeftUI { get; internal set; }
 
     void Awake()
     {

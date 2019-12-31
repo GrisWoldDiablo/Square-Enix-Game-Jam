@@ -4953,7 +4953,7 @@ PrefabInstance:
     - target: {fileID: 4717407584166422230, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
       propertyPath: m_Name
-      value: Tile Minigame Random
+      value: Tile Minigame (BounceBall)
       objectReference: {fileID: 0}
     - target: {fileID: 5112196501991763978, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
@@ -5018,7 +5018,7 @@ PrefabInstance:
     - target: {fileID: 6964660766818775090, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
       propertyPath: _minigameSceneName
-      value: random
+      value: BounceBall_Minigame
       objectReference: {fileID: 0}
     - target: {fileID: 8535788459212763631, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
@@ -10766,7 +10766,7 @@ PrefabInstance:
     - target: {fileID: 4717407584166422230, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
       propertyPath: m_Name
-      value: Tile Minigame Random
+      value: Tile Minigame (BounceBall)
       objectReference: {fileID: 0}
     - target: {fileID: 5112196501991763978, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
@@ -10831,7 +10831,7 @@ PrefabInstance:
     - target: {fileID: 6964660766818775090, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
       propertyPath: _minigameSceneName
-      value: random
+      value: BounceBall_Minigame
       objectReference: {fileID: 0}
     - target: {fileID: 8535788459212763631, guid: fe7b2bbaf027ca94f948381deb47d99b,
         type: 3}
@@ -13934,23 +13934,23 @@ PrefabInstance:
     - target: {fileID: 3259725270757879734, guid: c6a24e44391595f45989414a4f321975,
         type: 3}
       propertyPath: _minigames.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3259725270757879734, guid: c6a24e44391595f45989414a4f321975,
         type: 3}
       propertyPath: _minigames.Array.data[2].name
-      value: Rock Fall 2
+      value: BounceBall
       objectReference: {fileID: 0}
     - target: {fileID: 3259725270757879734, guid: c6a24e44391595f45989414a4f321975,
         type: 3}
       propertyPath: _minigames.Array.data[2].sceneName
-      value: Rockfall_Minigame
+      value: BounceBall_Minigame
       objectReference: {fileID: 0}
     - target: {fileID: 3259725270757879734, guid: c6a24e44391595f45989414a4f321975,
         type: 3}
       propertyPath: _minigames.Array.data[2].minigameIcon
       value: 
-      objectReference: {fileID: 21300000, guid: 99371066c7e481348948226823eb1113,
+      objectReference: {fileID: 21300000, guid: 1e7b75735a2994043983d13b750d8dab,
         type: 3}
     - target: {fileID: 3259725270757879734, guid: c6a24e44391595f45989414a4f321975,
         type: 3}
