@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigames/Rockfall_Minigame.unity
     guid: a98bf699e77deee44809174512ea2d56
+  - enabled: 1
+    path: Assets/Scenes/Minigames/BounceBall_Minigame.unity
+    guid: 06374582444417b4ab26240aef0f0aad
   m_configObjects: {}
