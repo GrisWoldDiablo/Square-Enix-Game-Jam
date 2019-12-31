@@ -24,15 +24,15 @@ public class InstructionManager : MonoBehaviour
 
     void StartGame()
     {
+        GameStarted = true;
         instructionUI.text = "";
         startTimerUI.text = "";
-        GameStarted = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (startTimer > 0)
+        if (startTimer > 0 && !GameStarted)
         {
             startTimer -= Time.deltaTime;
             startTimerUI.text = startTimer.ToString("F0");
