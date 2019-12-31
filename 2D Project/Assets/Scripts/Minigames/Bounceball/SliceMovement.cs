@@ -15,17 +15,7 @@ public class SliceMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(slider.value <= -175 )
-        {
-            slider.value = 172;
 
-        }
-        else if (slider.value >= 175)
-        {
-            slider.value = -173;
-
-
-        }
         var rotationVector = transform.rotation.eulerAngles;
         rotationVector.z = slider.value;
         transform.rotation = Quaternion.Euler(rotationVector);
