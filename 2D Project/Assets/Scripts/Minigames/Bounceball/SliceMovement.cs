@@ -15,8 +15,10 @@ public class SliceMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         var rotationVector = transform.rotation.eulerAngles;
         rotationVector.z = slider.value;
         transform.rotation = Quaternion.Euler(rotationVector);
+        
     }
 }
