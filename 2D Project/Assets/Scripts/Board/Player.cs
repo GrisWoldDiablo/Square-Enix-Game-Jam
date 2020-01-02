@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private int _position = 0;
     [SerializeField] private string _name = string.Empty;
+    private SpriteRenderer _spriteRenderer;
     private Sprite _playerSprite;
     private Color _playerColor;
     private int _wonCount = 0;
@@ -24,6 +25,11 @@ public class Player : MonoBehaviour
 
     public int WonCount { get => _wonCount; }
     public int LossCount { get => _lossCount; }
+
+    private void Start()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     public void MovePosition(int value, bool performAction = true)
     {
@@ -77,6 +83,15 @@ public class Player : MonoBehaviour
             {
                 _position--;
             }
+            var xOrientation = _currentPosition.x - BoardManager.Instance.PlayTiles[_position].transform.position.x;
+            if (xOrientation > 0)
+            {
+                _spriteRenderer.flipX = false;
+            }
+            else
+            {
+                _spriteRenderer.flipX = true;
+            }
             while (lerpValue > 0)
             {
                 lerpValue -=  Time.deltaTime / _speedPerTile;
@@ -100,6 +115,15 @@ public class Player : MonoBehaviour
         float lerpValue = 1.0f;
         _currentPosition = this.transform.position;
         _position = newPosition;
+        var xOrientation = _currentPosition.x - BoardManager.Instance.PlayTiles[_position].transform.position.x;
+        if (xOrientation > 0)
+        {
+            _spriteRenderer.flipX = false;
+        }
+        else
+        {
+            _spriteRenderer.flipX = true;
+        }
         while (lerpValue > 0)
         {
             lerpValue -= Time.deltaTime / _moveSpeed;
