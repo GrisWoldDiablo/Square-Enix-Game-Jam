@@ -44,19 +44,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _noneSprite: {fileID: 21300000, guid: c0eb1a6e18720054cac0df76c913a4fa, type: 3}
-  _wallSprite: {fileID: 21300000, guid: ebe4b8576815f574b849542028af820b, type: 3}
-  _pathSprite: {fileID: 21300000, guid: c8690ef3d2be4ac40b105049cba2597d, type: 3}
-  _startSprite: {fileID: 21300000, guid: 2af07216fee541849817de2ba64137c2, type: 3}
-  _endSprite: {fileID: 21300000, guid: 9950658224d7643449cf81fa0ab1c737, type: 3}
-  _snakeHeadSprite: {fileID: 21300000, guid: 5b4c26282b10cb64fb9ea46e2285dc58, type: 3}
-  _snakeTailSprite: {fileID: 21300000, guid: 3c4e881e059089f44923657ccdecbe37, type: 3}
-  _ladderStartSprite: {fileID: 21300000, guid: 6df1041a0c42d044eab2237f0b4646b0, type: 3}
-  _ladderEndSprite: {fileID: 21300000, guid: e8cd6fb2fc4e43e4795d043acecbf9c8, type: 3}
-  _minigameDefaultSprite: {fileID: 21300000, guid: 1e7b75735a2994043983d13b750d8dab,
+  _wallSprite: {fileID: 7096175553794104309, guid: 8573b9609dd0ea94e9bff3c3ad73a460,
+    type: 3}
+  _pathSprite: {fileID: -42934465945817767, guid: 8573b9609dd0ea94e9bff3c3ad73a460,
+    type: 3}
+  _startSprite: {fileID: -7222109177425090884, guid: 8573b9609dd0ea94e9bff3c3ad73a460,
+    type: 3}
+  _endSprite: {fileID: -4914266745437791109, guid: 8573b9609dd0ea94e9bff3c3ad73a460,
+    type: 3}
+  _snakeHeadSprite: {fileID: 8115266208924406823, guid: 8573b9609dd0ea94e9bff3c3ad73a460,
+    type: 3}
+  _snakeTailSprite: {fileID: -531248596987389721, guid: 8573b9609dd0ea94e9bff3c3ad73a460,
+    type: 3}
+  _ladderStartSprite: {fileID: 2667928221500255094, guid: 8573b9609dd0ea94e9bff3c3ad73a460,
+    type: 3}
+  _ladderEndSprite: {fileID: -6714876842680738742, guid: 8573b9609dd0ea94e9bff3c3ad73a460,
+    type: 3}
+  _minigameDefaultSprite: {fileID: 1275601078706573279, guid: 8573b9609dd0ea94e9bff3c3ad73a460,
     type: 3}
   _tileMap: {fileID: 0}
   playTiles:
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
