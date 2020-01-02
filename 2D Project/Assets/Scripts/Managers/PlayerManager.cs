@@ -54,6 +54,11 @@ public class PlayerManager : MonoBehaviour
         #endregion
     }
 
+    private void Start()
+    {
+        _panelPlayerSetup.SetActive(false);
+    }
+
     public void NextPlayer()
     {
         StartCoroutine(ScalePlayer(CurrentPlayer, true));
@@ -120,9 +125,8 @@ public class PlayerManager : MonoBehaviour
         player.name = $"Player ({_playerNameInput.text})";
         _players.Add(player);
         player.gameObject.SetActive(false);
-
+        player.Init();
         _colorToggles.Remove(toggleOn);
-        _colorToggles[0].isOn = true;
         _playerNameInput.text = string.Empty;
         _quantityOfPlayers--;
         if (_quantityOfPlayers <= 0)
@@ -133,6 +137,8 @@ public class PlayerManager : MonoBehaviour
                 async.allowSceneActivation = true;
                 _panelPlayerSetup.SetActive(false);
             }
+            return;
         }
+        _colorToggles[0].isOn = true;
     }
 }

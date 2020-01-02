@@ -20,6 +20,8 @@ public class AudioManager : MonoBehaviour
     }
     #endregion
 
+    [SerializeField] private AudioSource _sourceBMG;
+    [SerializeField] private List<AudioClip> _clipBMGs;
     void Awake()
     {
         #region Dont Destroy On Load
@@ -33,5 +35,11 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
         #endregion
+    }
+
+    private void Start()
+    {
+        _sourceBMG.clip = _clipBMGs[Random.Range(0, _clipBMGs.Count)];
+        _sourceBMG.Play();
     }
 }

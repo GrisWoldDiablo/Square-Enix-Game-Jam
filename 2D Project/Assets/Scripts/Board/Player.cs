@@ -25,16 +25,6 @@ public class Player : MonoBehaviour
     public int WonCount { get => _wonCount; }
     public int LossCount { get => _lossCount; }
 
-    private void Awake()
-    {
-        
-    }
-    private void Start()
-    {
-        _playerSprite = GetComponent<SpriteRenderer>().sprite;
-        _playerColor = GetComponent<SpriteRenderer>().color;
-    }
-
     public void MovePosition(int value, bool performAction = true)
     {
         var futurePosition = _position + value;
@@ -118,5 +108,11 @@ public class Player : MonoBehaviour
         }
 
         CurrentTile.Action();
+    }
+
+    public void Init()
+    {
+        _playerSprite = GetComponent<SpriteRenderer>().sprite;
+        _playerColor = GetComponent<SpriteRenderer>().color;
     }
 }
