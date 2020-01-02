@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigames/BounceBall_Minigame.unity
     guid: 06374582444417b4ab26240aef0f0aad
+  - enabled: 1
+    path: Assets/_Alex Misc/Start Scene.unity
+    guid: fb628fe55a2ee9344bd814230e3e2961
   m_configObjects: {}

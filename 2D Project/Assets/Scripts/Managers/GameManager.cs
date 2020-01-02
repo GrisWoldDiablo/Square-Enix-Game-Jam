@@ -25,12 +25,15 @@ public class GameManager : MonoBehaviour
         var objects = GameObject.FindObjectsOfType(this.GetType());
         if (objects.Length > 1)
         {
-            Destroy(this.gameObject);
+            DestroyImmediate(this.gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
         #endregion
     }
-
+    private void Start()
+    {
+        RoundStart();
+    }
     int rolledNumber;
     public void RollDice()
     {
@@ -53,11 +56,12 @@ public class GameManager : MonoBehaviour
 
     public void RoundStart()
     {
-
+        PlayerManager.Instance.PlayerInPlay();
     }
 
     public void MinigameEnd(bool playerWon, int positionChange = 0)
     {
+        BackToBoard();
         if (playerWon)
         {
             Debug.Log("Player win!");
@@ -68,9 +72,12 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player lost!");
             PlayerManager.Instance.CurrentPlayer.AddLost();
         }
-        PlayerManager.Instance.CurrentPlayer.MovePosition(positionChange);
-        BackToBoard();
-        RoundEnd();
+        if (positionChange == 0)
+        {
+            RoundEnd();
+            return;
+        }
+        PlayerManager.Instance.CurrentPlayer.MovePosition(positionChange, false);
     }
        
     public void BackToBoard()
@@ -85,6 +92,4 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.ToggleButtons(true);
         PlayerManager.Instance.NextPlayer();
     }
-
-    
 }
