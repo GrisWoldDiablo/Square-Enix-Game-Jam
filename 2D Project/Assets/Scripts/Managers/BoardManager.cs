@@ -58,10 +58,22 @@ public class BoardManager : MonoBehaviour
         var objects = GameObject.FindObjectsOfType(this.GetType());
         if (objects.Length > 1)
         {
-            Destroy(this.gameObject);
+            DestroyImmediate(this.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
         #endregion
     }
 
+    private void Start()
+    {
+        foreach (var player in PlayerManager.Instance.Players)
+        {
+            player.gameObject.transform.parent = _tileMap.transform;
+            player.transform.position = playTiles[0].transform.position;
+            player.gameObject.SetActive(true);
+        }
+    }
 }

@@ -50,3 +50,6 @@ MonoBehaviour:
   - name: Maze Runner
     sceneName: MazeRunner
     minigameIcon: {fileID: 21300000, guid: 99371066c7e481348948226823eb1113, type: 3}
+  - name: BounceBall
+    sceneName: BounceBall_Minigame
+    minigameIcon: {fileID: 21300000, guid: 1e7b75735a2994043983d13b750d8dab, type: 3}
