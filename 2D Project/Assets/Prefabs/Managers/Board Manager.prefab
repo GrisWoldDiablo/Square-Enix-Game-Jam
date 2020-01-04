@@ -43,16 +43,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ac273c9cc3d4545acefd54bf425412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boardWidth: 15
-  _boardHeigth: 9
+  _noneSprite: {fileID: 21300000, guid: c0eb1a6e18720054cac0df76c913a4fa, type: 3}
+  _wallSprite: {fileID: 7096175553794104309, guid: 8573b9609dd0ea94e9bff3c3ad73a460,
+    type: 3}
+  _pathSprite: {fileID: -42934465945817767, guid: 8573b9609dd0ea94e9bff3c3ad73a460,
+    type: 3}
+  _startSprite: {fileID: -7222109177425090884, guid: 8573b9609dd0ea94e9bff3c3ad73a460,
+    type: 3}
+  _endSprite: {fileID: -4914266745437791109, guid: 8573b9609dd0ea94e9bff3c3ad73a460,
+    type: 3}
+  _snakeHeadSprite: {fileID: 8115266208924406823, guid: 8573b9609dd0ea94e9bff3c3ad73a460,
+    type: 3}
+  _snakeTailSprite: {fileID: -531248596987389721, guid: 8573b9609dd0ea94e9bff3c3ad73a460,
+    type: 3}
+  _ladderStartSprite: {fileID: 2667928221500255094, guid: 8573b9609dd0ea94e9bff3c3ad73a460,
+    type: 3}
+  _ladderEndSprite: {fileID: -6714876842680738742, guid: 8573b9609dd0ea94e9bff3c3ad73a460,
+    type: 3}
+  _minigameDefaultSprite: {fileID: 1275601078706573279, guid: 8573b9609dd0ea94e9bff3c3ad73a460,
+    type: 3}
   _tileMap: {fileID: 0}
-  _tileWall: {fileID: 7703991039889603216, guid: 083d2c7e9ebfdb946a0b0dce5ccacf7a,
-    type: 3}
-  _tilePath: {fileID: 4105014132427854483, guid: 89ee726a9d0dfc745b93b19a20b1509a,
-    type: 3}
-  _tileMinigame: {fileID: 5457850465913397191, guid: d05b2041d703e0946821dae56109bb68,
-    type: 3}
-  _tileStart: {fileID: 4131205000143235837, guid: ac2b34cfc10660e4ca09527f405de5b0,
-    type: 3}
-  _tileEnd: {fileID: 9087133974298741281, guid: fd71323167e2dde499be9c5eb057534b,
-    type: 3}
+  playTiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

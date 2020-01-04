@@ -25,8 +25,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text _playerOrder;
     [SerializeField] private Image _currentPlayerSprite;
     [SerializeField] private Canvas _mainCanvas;
+    [SerializeField] private Button _rollButton;
+    [SerializeField] private Button _moveButton;
 
     public Canvas MainCanvas { get => _mainCanvas; }
+    public object BouncesLeftUI { get; internal set; }
 
     void Awake()
     {
@@ -34,9 +37,12 @@ public class UIManager : MonoBehaviour
         var objects = GameObject.FindObjectsOfType(this.GetType());
         if (objects.Length > 1)
         {
-            Destroy(this.gameObject);
+            DestroyImmediate(this.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject); 
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
         #endregion
     }
 
@@ -63,5 +69,11 @@ public class UIManager : MonoBehaviour
         {
             _playerOrder.text += $"{Player.Position} : {Player.Name}, W:{Player.WonCount},L:{Player.LossCount}\n";
         }
+    }
+
+    public void ToggleButtons(bool value)
+    {
+        _rollButton.interactable = value;
+        _moveButton.interactable = value;
     }
 }

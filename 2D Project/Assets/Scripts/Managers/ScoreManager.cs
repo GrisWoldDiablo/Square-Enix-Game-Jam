@@ -26,9 +26,12 @@ public class ScoreManager : MonoBehaviour
         var objects = GameObject.FindObjectsOfType(this.GetType());
         if (objects.Length > 1)
         {
-            Destroy(this.gameObject);
+            DestroyImmediate(this.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
         #endregion
     }
 }

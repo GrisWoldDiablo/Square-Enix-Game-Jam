@@ -25,12 +25,15 @@ public class GameManager : MonoBehaviour
         var objects = GameObject.FindObjectsOfType(this.GetType());
         if (objects.Length > 1)
         {
-            Destroy(this.gameObject);
+            DestroyImmediate(this.gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
         #endregion
     }
-
+    private void Start()
+    {
+        RoundStart();
+    }
     int rolledNumber;
     public void RollDice()
     {
@@ -40,19 +43,25 @@ public class GameManager : MonoBehaviour
 
     public void MovePlayer()
     {
-        PlayerManager.Instance.CurrentPlayer.MovePosition(rolledNumber);
-        PlayerManager.Instance.CurrentPlayer.CurrentTile.Action();
-        rolledNumber = 0;
-        UIManager.Instance.ChangeDice(rolledNumber);
+        if(rolledNumber != 0) //...Jeff... , check if player has rolled something before moving
+        {
+            UIManager.Instance.ToggleButtons(false);
+            PlayerManager.Instance.CurrentPlayer.MovePosition(rolledNumber);
+            //PlayerManager.Instance.CurrentPlayer.CurrentTile.Action();
+            rolledNumber = 0;
+            UIManager.Instance.ChangeDice(rolledNumber);
+        }
+
     }
 
     public void RoundStart()
     {
-
+        PlayerManager.Instance.PlayerInPlay();
     }
 
     public void MinigameEnd(bool playerWon, int positionChange = 0)
     {
+        BackToBoard();
         if (playerWon)
         {
             Debug.Log("Player win!");
@@ -63,9 +72,12 @@ public class GameManager : MonoBehaviour
             Debug.Log("Player lost!");
             PlayerManager.Instance.CurrentPlayer.AddLost();
         }
-        PlayerManager.Instance.CurrentPlayer.MovePosition(positionChange);
-        BackToBoard();
-        RoundEnd();
+        if (positionChange == 0)
+        {
+            RoundEnd();
+            return;
+        }
+        PlayerManager.Instance.CurrentPlayer.MovePosition(positionChange, false);
     }
        
     public void BackToBoard()
@@ -77,8 +89,7 @@ public class GameManager : MonoBehaviour
     
     public void RoundEnd()
     {
+        UIManager.Instance.ToggleButtons(true);
         PlayerManager.Instance.NextPlayer();
     }
-
-    
 }
