@@ -9,11 +9,11 @@ public class MuteButton : MonoBehaviour
 
     private void Start()
     {
-        _imageMute.enabled = !AudioManager.Instance.AudioListener.isActiveAndEnabled;
+        _imageMute.enabled = AudioManager.Instance.SourceBMG.mute;
     }
 
     public void PressMute()
     {
-        AudioManager.Instance.ToggleMute(_imageMute);
+        _imageMute.enabled = AudioManager.Instance.ToggleMute();
     }
 }

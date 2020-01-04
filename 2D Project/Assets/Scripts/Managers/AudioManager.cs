@@ -24,9 +24,9 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioMixer _audioMixer;
     [SerializeField] private List<AudioClip> _clipBMGs;
+
     private AudioSource _sourceBMG;
-    private AudioListener _audioListener;
-    public AudioListener AudioListener { get => _audioListener; }
+    public AudioSource SourceBMG { get => _sourceBMG; }
 
     void Awake()
     {
@@ -38,7 +38,6 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            _audioListener = GetComponent<AudioListener>();
             _sourceBMG = GetComponent<AudioSource>();
             DontDestroyOnLoad(this.gameObject);
         }
@@ -56,9 +55,9 @@ public class AudioManager : MonoBehaviour
         _audioMixer.SetFloat("VolumeMaster", sliderValue);
     }
 
-    public void ToggleMute(Image imageMute)
+    public bool ToggleMute()
     {
-        imageMute.enabled = !imageMute.isActiveAndEnabled;
-        _audioListener.enabled = !_audioListener.isActiveAndEnabled;
+        _sourceBMG.mute = !_sourceBMG.mute;
+        return _sourceBMG.mute;
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Green
   - Goal
   - Slice
+  - Plane
   layers:
   - Default
   - TransparentFX
