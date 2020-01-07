@@ -28,6 +28,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button _rollButton;
     [SerializeField] private Button _moveButton;
 
+    [Header("Winner Panel")]
+    [SerializeField] private GameObject _panelWinner;
+    [SerializeField] private Text _winnerPlayer;
+    [SerializeField] private Image _winnerPlayerSprite;
+
+
+
     public Canvas MainCanvas { get => _mainCanvas; }
     public object BouncesLeftUI { get; internal set; }
 
@@ -41,6 +48,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            ManagersList.Instance.Managers.Add(this.gameObject);
             DontDestroyOnLoad(this.gameObject);
         }
         #endregion
@@ -52,6 +60,8 @@ public class UIManager : MonoBehaviour
         {
             UpdateCurrentPlayer();
         }
+
+        _panelWinner.SetActive(false);
     }
 
     public void ChangeDice(int value)
@@ -75,5 +85,13 @@ public class UIManager : MonoBehaviour
     {
         _rollButton.interactable = value;
         _moveButton.interactable = value;
+    }
+
+    public void ShowWinnerPanel()
+    {
+        _panelWinner.SetActive(true);
+        _winnerPlayer.text = "Congratulation to " + PlayerManager.Instance.CurrentPlayer.Name;
+        _winnerPlayerSprite.sprite = PlayerManager.Instance.CurrentPlayer.PlayerSprite;
+        _winnerPlayerSprite.color = PlayerManager.Instance.CurrentPlayer.PlayerColor;
     }
 }

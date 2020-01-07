@@ -181,6 +181,7 @@ public class Tile : MonoBehaviour
                 break;
             case TileType.End:
                 Debug.Log("Tile End");
+                UIManager.Instance.ShowWinnerPanel();
                 break;
             case TileType.SnakeHead:
                 Debug.Log("Tile Snake Head");
