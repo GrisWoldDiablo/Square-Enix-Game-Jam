@@ -62,6 +62,7 @@ public class BoardManager : MonoBehaviour
         }
         else
         {
+            ManagersList.Instance.Managers.Add(this.gameObject);
             DontDestroyOnLoad(this.gameObject);
         }
         #endregion
