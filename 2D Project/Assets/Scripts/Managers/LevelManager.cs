@@ -45,6 +45,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            ManagersList.Instance.Managers.Add(this.gameObject);
             DontDestroyOnLoad(this.gameObject);
         }
         #endregion
@@ -74,5 +75,20 @@ public class LevelManager : MonoBehaviour
     {
         var currentScene = SceneManager.GetSceneAt(SceneManager.sceneCount-1);
         SceneManager.UnloadSceneAsync(currentScene);
+    }
+
+    public void LoadStartScene()
+    {
+        async = SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
+        if (async != null)
+        {
+            async.allowSceneActivation = true;
+            ManagersList.Instance.DestroyAllManagers();
+        }
+        else
+        {
+            Debug.Log("No Scene found");
+        }
+        
     }
 }

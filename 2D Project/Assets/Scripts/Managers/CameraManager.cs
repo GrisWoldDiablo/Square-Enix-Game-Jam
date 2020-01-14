@@ -29,6 +29,7 @@ public class CameraManager : MonoBehaviour
         }
         else
         {
+            ManagersList.Instance.Managers.Add(this.gameObject);
             DontDestroyOnLoad(this.gameObject);
         }
         #endregion

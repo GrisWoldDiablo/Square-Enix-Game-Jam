@@ -39,6 +39,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             _sourceBMG = GetComponent<AudioSource>();
+            ManagersList.Instance.Managers.Add(this.gameObject);
             DontDestroyOnLoad(this.gameObject);
         }
         #endregion

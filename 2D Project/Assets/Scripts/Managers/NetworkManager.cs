@@ -28,7 +28,11 @@ public class NetworkManager : MonoBehaviour
         {
             DestroyImmediate(this.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+        else
+        {
+            ManagersList.Instance.Managers.Add(this.gameObject);
+            DontDestroyOnLoad(this.gameObject); 
+        }
         #endregion
     }
 }
