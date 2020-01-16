@@ -38,6 +38,10 @@
       airconsole.message(AirConsole.SCREEN, {touch: value})
     }
 
+    function choice(value) {
+      airconsole.message(AirConsole.SCREEN, {choice: value})
+    }
+
     </script>
     <style type="text/css">
         .button {
@@ -45,15 +49,23 @@
             text-align: center;
             color: white;
             line-height: 220px;
+            
         }
     </style>
 </head>
 <body onload="init()">
-    <div class=button ontouchstart="touch(1)" ontouchend="touch(0)">
+    <!--<div class=button ontouchstart="touch(1)" ontouchend="touch(0)">
         <p>TOUCH ME</p>
     </div>
     <div class=button ontouchstart="touch(3)" ontouchend="touch(2)">
         <p>Now Touch Me</p>
+    </div>-->
+
+    <div class=button ontouchstart="choice('up-start')" ontouchend="choice('up-end')">
+        <p>Up</p>
+    </div>
+    <div class=button ontouchstart="choice('down-start')" ontouchend="choice('down-end')">
+        <p>Down</p>
     </div>
 </body>
 </html>

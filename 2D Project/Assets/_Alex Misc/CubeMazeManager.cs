@@ -42,6 +42,6 @@ public class CubeMazeManager : MonoBehaviour
     {
         _mazePlayer.transform.parent = CurrentCubeTile.transform;
         _mazePlayer.transform.SetPositionAndRotation(CurrentCubeTile.transform.position, _mainCamera.transform.rotation);
-        _mazePlayer.transform.position += _mazePlayer.transform.forward * -0.01f;
+        _mazePlayer.transform.position += _mazePlayer.transform.forward * -0.1f;
     }
 }
