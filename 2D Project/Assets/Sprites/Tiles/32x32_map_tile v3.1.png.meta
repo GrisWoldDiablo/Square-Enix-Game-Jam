@@ -3722,8 +3722,8 @@ TextureImporter:
       name: 32x32_map_tile v3.1_70
       rect:
         serializedVersion: 2
-        x: 34
-        y: 826
+        x: 263
+        y: 546
         width: 32
         height: 32
       alignment: 0

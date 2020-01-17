@@ -6,13 +6,13 @@ using UnityEngine;
 
 public class ScriptTest : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _cubes;
-    private List<int> _players;
-    private Dictionary<int,Coroutine> _playersCoroutines;
+    [SerializeField] private GameObject _playerPrefab;
+    //private List<int> _players;
+    private Dictionary<int, PlayerControl> _players;
     void Awake()
     {
-        _players = new List<int>();
-        _playersCoroutines = new Dictionary<int, Coroutine>();
+        //_players = new List<int>();
+        _players = new Dictionary<int, PlayerControl>();
         AirConsole.instance.onMessage += OnMessage;
         AirConsole.instance.onConnect += OnConnect;
         AirConsole.instance.onDisconnect += OnDisconnect;
@@ -21,67 +21,23 @@ public class ScriptTest : MonoBehaviour
     void OnMessage(int device_id, JToken data)
     {
         Debug.Log($"Received message from {device_id}.\nMessage = {data}");
-        MoveCube(device_id, (int)data["touch"]);
+        if (_players.ContainsKey(device_id))
+        {
+            _players[device_id].PlayerAction(data["choice"].ToString());
+        }
     }
 
     void OnConnect(int device_id)
     {
         Debug.Log($"Device {device_id} has connected.");
-        _players.Add(device_id);
+        if (!_players.ContainsKey(device_id))
+        {
+            _players.Add(device_id, Instantiate(_playerPrefab, null).GetComponent<PlayerControl>());
+        }
     }
 
     void OnDisconnect(int device_id)
     {
         Debug.Log($"Device {device_id} has disconnected.");
     }
-
-    void MoveCube(int id, int direction)
-    {
-        int index = _players.IndexOf(id);
-        if (index > 1)
-        {
-            index = 0;
-        }
-        switch (direction)
-        {
-            case 0:
-            case 2:
-                StopCoroutine(_playersCoroutines[id]);
-                break;
-            case 1:
-                if (!_playersCoroutines.ContainsKey(id))
-                {
-                    _playersCoroutines.Add(id, StartCoroutine(TransCube(_cubes[index],1)));
-                }
-                else
-                {
-                    _playersCoroutines[id] = StartCoroutine(TransCube(_cubes[index], 1));
-                }
-                break;
-            case 3:
-                if (!_playersCoroutines.ContainsKey(id))
-                {
-                    _playersCoroutines.Add(id, StartCoroutine(TransCube(_cubes[index], -1)));
-                }
-                else
-                {
-                    _playersCoroutines[id] = StartCoroutine(TransCube(_cubes[index], -1));
-
-                }
-                break;
-            default:
-                break;
-        }
-    }
-
-    IEnumerator TransCube(GameObject theCube, int direction)
-    {
-        while (true)
-        {
-            theCube.transform.position += Vector3.up * direction * Time.deltaTime;
-            yield return null;
-        }
-    }
-
 } // class
-
