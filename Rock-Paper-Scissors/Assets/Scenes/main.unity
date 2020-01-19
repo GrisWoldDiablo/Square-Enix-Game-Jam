@@ -144,7 +144,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9560048}
-  m_LocalRotation: {x: 0, y: 0.999864, z: -0.016492635, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
@@ -152,8 +152,8 @@ RectTransform:
   - {fileID: 1305392830}
   - {fileID: 1755050010}
   m_Father: {fileID: 863349978}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 1.89, y: 180, z: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -201, y: -3}
@@ -496,8 +496,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 9560049}
   - {fileID: 1885050800}
+  - {fileID: 9560049}
   m_Father: {fileID: 1078601166}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -520,13 +520,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalHealth: 3
   heartsP1:
-  - {fileID: 1710816296}
-  - {fileID: 1305392831}
-  - {fileID: 1755050011}
-  heartsP2:
   - {fileID: 381542110}
   - {fileID: 577068484}
   - {fileID: 368041206}
+  heartsP2:
+  - {fileID: 1710816296}
+  - {fileID: 1305392831}
+  - {fileID: 1755050011}
 --- !u!1 &1078601162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,7 +1196,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1885050799}
-  m_LocalRotation: {x: -0.008726465, y: 0, z: 0, w: 0.999962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
@@ -1204,8 +1204,8 @@ RectTransform:
   - {fileID: 577068483}
   - {fileID: 368041205}
   m_Father: {fileID: 863349978}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -1, y: 0, z: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 2, y: -4}
