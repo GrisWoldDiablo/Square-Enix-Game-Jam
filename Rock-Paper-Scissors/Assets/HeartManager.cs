@@ -16,6 +16,7 @@ public class HeartManager : MonoBehaviour
     {
         playerHealth[0] = totalHealth;
         playerHealth[1] = totalHealth;
+        
     }
 
     void TakeDamage(int player)
@@ -28,18 +29,21 @@ public class HeartManager : MonoBehaviour
         }
         else if (player == 1)
         {
-            Debug.Log("player1lose");
+            //P1 LOSE LOGIC
+            Debug.Log("Player 1 Lost");
         }
 
         //Player 2 Take damage
         if (player == 2 && playerHealth[1] > 0)
         {
-            heartsP1[playerHealth[1] - 1].enabled = false; //Remove heart at relevant index
+            heartsP2[playerHealth[1] - 1].enabled = false; //Remove heart at relevant index
             playerHealth[1]--;
+            Debug.Log("Damage second player");
         }
         else if (player == 2)
         {
-            Debug.Log("player2lose");
+            //P2 LOSE LOGIC
+            Debug.Log("Player 2 Lost");
         }
 
     }

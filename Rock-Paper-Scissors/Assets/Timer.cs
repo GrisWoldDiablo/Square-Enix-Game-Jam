@@ -19,7 +19,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animation>();
-        TimerActivate();
+        //TimerActivate();
     }
 
     // Update is called once per frame
@@ -53,5 +53,7 @@ public class Timer : MonoBehaviour
         anim.clip = timerEnd;
         anim.Play();
         timerStarted = false;
+
+        //Add Next player turn logic here
     }
 }
