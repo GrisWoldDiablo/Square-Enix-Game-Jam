@@ -18,16 +18,16 @@ public class PlayerSelection : MonoBehaviour
 
     public void RockChoice()
     {
-        Debug.Log(GameLogic.checkResult("Rock", GameLogic.RandomAI()));
+       // Debug.Log(GameLogic.checkResult("Rock", GameLogic.RandomAI()));
     }
 
     public void PaperChoice()
     {
-        Debug.Log(GameLogic.checkResult("Paper", GameLogic.RandomAI()));
+       // Debug.Log(GameLogic.checkResult("Paper", GameLogic.RandomAI()));
     }
 
     public void ScissorChoice()
     {
-        Debug.Log(GameLogic.checkResult("Scissor", GameLogic.RandomAI()));
+       // Debug.Log(GameLogic.checkResult("Scissor", GameLogic.RandomAI()));
     }
 }
