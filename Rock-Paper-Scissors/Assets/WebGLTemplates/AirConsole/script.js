@@ -1,9 +1,22 @@
 let airconsole;
 
+const MOVES = Object.freeze({
+  ROCK: 0,
+  PAPER: 1,
+  SCISSORS: 2,
+})
+
 function init() {
-  alert('init called')
-  airconsole = new AirConsole();
+  airconsole = new AirConsole({"orientation": "landscape"});
   setUpSupportForMouseEvents();
+}
+
+/**
+ * Send a message to screen with content: {'move': 0|1|2}
+ */
+function sendMove(move) {
+  alert('sending move: ', move)
+  airconsole.message(AirConsole.SCREEN, {move})
 }
 
 function setUpSupportForMouseEvents() {

@@ -1,0 +1,26 @@
+html, body {
+  background: white;
+}
+
+.move-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+  height: 50vh;
+}
+
+.move-registor {
+  text-align: center;
+  border: 5px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  max-width: 180px;
+  width: 100vh;
+  display: flex;
+}
+
+.move-img {
+  width: 150px;
+  margin: auto;
+}
