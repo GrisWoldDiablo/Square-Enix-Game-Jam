@@ -40,4 +40,4 @@ public class ScriptTest : MonoBehaviour
     {
         Debug.Log($"Device {device_id} has disconnected.");
     }
-} // class
+}
