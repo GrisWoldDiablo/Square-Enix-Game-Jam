@@ -6,20 +6,16 @@ const MOVES = Object.freeze({
   SCISSORS: 2,
 })
 
-function init() {
+const init = () => {
   airconsole = new AirConsole({"orientation": "landscape"});
   setUpSupportForMouseEvents();
 }
 
-/**
- * Send a message to screen with content: {'move': 0|1|2}
- */
-function sendMove(move) {
-  alert('sending move: ', move)
-  airconsole.message(AirConsole.SCREEN, {move})
+const sendMove = (move) => {
+  airconsole.message(AirConsole.SCREEN, { move });
 }
 
-function setUpSupportForMouseEvents() {
+const setUpSupportForMouseEvents = () => {
   /*
     * Here we are adding support for mouse events manually.
     * --> WE STRONGLY ENCOURAGE YOU TO USE THE AIRCONSOLE CONTROLS LIBRARY

@@ -1,4 +1,5 @@
 html, body {
+  font-family: 'Press Start 2P', cursive;
   background: white;
 }
 
@@ -15,7 +16,7 @@ html, body {
   border: 5px solid black;
   border-radius: 10px;
   cursor: pointer;
-  max-width: 180px;
+  max-width: 160px;
   width: 100vh;
   display: flex;
 }
@@ -23,4 +24,12 @@ html, body {
 .move-img {
   width: 150px;
   margin: auto;
+}
+
+.score-wrapper {
+  height: 20vh;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
