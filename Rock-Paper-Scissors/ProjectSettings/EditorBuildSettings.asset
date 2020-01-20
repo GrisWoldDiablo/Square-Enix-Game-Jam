@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/CoreScene.unity
+    guid: 0a91ed42101e1ad42a01cb3b3b070399
+  - enabled: 1
     path: Assets/_Alex/TestConnect.unity
     guid: b8005b9be6199f940ae298afbc14d310
+  - enabled: 1
+    path: Assets/Scenes/main.unity
+    guid: 1630468609684754f8c8b282729a9329
   m_configObjects: {}
