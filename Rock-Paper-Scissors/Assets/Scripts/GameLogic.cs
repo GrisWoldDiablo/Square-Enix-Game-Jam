@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,11 +41,19 @@ public class GameLogic : MonoBehaviour
 
     public static string PlayerMove(string player, string move)
     {
+        Dictionary<string, string> play = new Dictionary<string, string>();
+        if (!play.ContainsKey(player))
+        {
+            play.Add(player, move);
+        }
+        if(play.Count == 2)
+        {
+           return checkResultWithPlayer(play.Keys.ElementAt(0), play.Keys.ElementAt(1), play.Values.ElementAt(0), play.Values.ElementAt(1));
+        }
 
+        play.Clear();
 
-
-        return "k";
-        
+        return "Watting for all players input";
     }
 
 
