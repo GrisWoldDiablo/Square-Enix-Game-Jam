@@ -190,7 +190,7 @@ public class ACManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Sent a message to all AirConsole controllers telling them all the players are connected.
+    /// Sent a message to all AirConsole controllers that the round and ready to be played.
     /// </summary>
     public void RoundReady()
     {
