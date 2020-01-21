@@ -39,7 +39,7 @@ public class GameLogic : MonoBehaviour
     }
 
 
-    public static string PlayerMove(string player, string move)
+    public string PlayerMove(string player, string move)
     {
         Dictionary<string, string> play = new Dictionary<string, string>();
         if (!play.ContainsKey(player))
