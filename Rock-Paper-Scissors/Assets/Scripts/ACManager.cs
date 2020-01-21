@@ -1,4 +1,4 @@
-﻿using NDream.AirConsole;
+using NDream.AirConsole;
 using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -58,7 +58,7 @@ public class ACManager : MonoBehaviour
     private void OnMessage(int device_id, JToken data)
     {
         Debug.Log($"Received message from {device_id}.\nMessage = {data}");
-        if (_players.ContainsKey(device_id))
+        if (_players.Count >=MIN_PLAYERS && _players.ContainsKey(device_id))
         {
             if (data["menu"] != null)
             {
@@ -99,6 +99,7 @@ public class ACManager : MonoBehaviour
             if (_players.Count == MIN_PLAYERS)
             {
                 _panelWarning.SetActive(false);
+                AllPlayers();
             }
             UpdateTextWarning();
         }
@@ -115,6 +116,7 @@ public class ACManager : MonoBehaviour
         {
             _panelWarning.SetActive(true);
             UpdateTextWarning();
+            MissingPlayer();
         }
     }
 
@@ -150,6 +152,65 @@ public class ACManager : MonoBehaviour
                 {
                     yield return null;
                 }
+            }
+        }
+    }
+
+    // Message sent to AirConsole controllers.
+    /// <summary>
+    /// Send a message to all AirConsole controllers telling them they are in the menu.
+    /// </summary>
+    public void InMenu()
+    {
+        AirConsole.instance.Broadcast("inmenu");
+    }
+
+    /// <summary>
+    /// Send a message to all AirConsole controllers telling them they are in the game.
+    /// </summary>
+    public void InGame()
+    {
+        AirConsole.instance.Broadcast("ingame");
+    }
+
+    /// <summary>
+    /// Send a message to all AirConsole controllers telling them there is missing players.
+    /// </summary>
+    public void MissingPlayer()
+    {
+        AirConsole.instance.Broadcast("missingplayer");
+    }
+
+    /// <summary>
+    /// Sent a message to all AirConsole controllers telling them all the players are connected.
+    /// </summary>
+    public void AllPlayers()
+    {
+        AirConsole.instance.Broadcast("allplayers");
+    }
+
+    /// <summary>
+    /// Sent a message to all AirConsole controllers telling them all the players are connected.
+    /// </summary>
+    public void RoundReady()
+    {
+        AirConsole.instance.Broadcast("roundready");
+    }
+
+    /// <summary>
+    /// Sent a message to all AirConsole controllers telling a specific one that it won and the other that it lost.
+    /// </summary>
+    public void MatchResult(string winningPlayer)
+    {
+        foreach (var keyValuePair in _players)
+        {
+            if (keyValuePair.Value == winningPlayer)
+            {
+                AirConsole.instance.Message(keyValuePair.Key, "winner");
+            }
+            else
+            {
+                AirConsole.instance.Message(keyValuePair.Key, "loser");
             }
         }
     }
