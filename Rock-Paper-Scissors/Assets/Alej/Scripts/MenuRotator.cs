@@ -4,34 +4,52 @@ using UnityEngine;
 
 public class MenuRotator : MonoBehaviour
 {
-    [SerializeField] private float time = 5;
-    [SerializeField] private float speed = 5;
+    private static MenuRotator instance = null;
 
-    void Update()
-    {
-            
-    }
+    private bool isRotating = false;
 
-    public void RotateLeftCaller()
+    private void Awake()
     {
-        StartCoroutine(RotateLeft());
-    }
-
-    IEnumerator RotateLeft()
-    {
-        while (time > 0)
+        if (instance)
         {
-            transform.Rotate(0, - (Time.deltaTime * speed), 0);
-            time -= Time.deltaTime;
+            Debug.LogWarning("Only one instance of the MoveObject script in a scene is allowed");
+            return;
+        }
+        instance = this;
+    }
 
+    public void RotateLeft()
+    {
+        if (!isRotating)
+        {
+            isRotating = true;
+            StartCoroutine(Rotate(new Vector3(0, -90, 0), 0.5f));
+        }
+    }
+    public IEnumerator Rotate(Vector3 direction, float time)
+    {
+        Quaternion start = transform.rotation;
+        Quaternion end = start * Quaternion.Euler(direction);
+
+        float rate = 1.0f / time;
+        float timer = 0.0f;
+
+        while (timer < 1.0)
+        {
+            timer += Time.deltaTime * rate;
+            transform.rotation = Quaternion.Slerp(start, end, timer);
             yield return null;
         }
 
-        time = 2;
+        isRotating = false;
     }
 
     public void RotateRight()
     {
-        transform.Rotate(new Vector3(0, 90, 0));
+        if (!isRotating)
+        {
+            isRotating = true;
+            StartCoroutine(Rotate(new Vector3(0, 90, 0), 0.5f)); 
+        }
     }
 }
