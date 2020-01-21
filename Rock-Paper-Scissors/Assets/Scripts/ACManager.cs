@@ -80,7 +80,7 @@ public class ACManager : MonoBehaviour
 
     /// <summary>
     /// Add device to the player list and assign them a player name until there is a minimun
-    /// connected then it just discard the extra devices connecting.
+    /// connected then it just discard the extra devices connecting and tell them the game is full.
     /// </summary>
     /// <param name="device_id">incoming id of the device</param>
     private void OnConnect(int device_id)
@@ -102,6 +102,10 @@ public class ACManager : MonoBehaviour
                 AllPlayers();
             }
             UpdateTextWarning();
+        }
+        else
+        {
+            GameFull(device_id);
         }
     }
 
@@ -187,6 +191,15 @@ public class ACManager : MonoBehaviour
     public void AllPlayers()
     {
         AirConsole.instance.Broadcast("allplayers");
+    }
+
+    /// <summary>
+    /// Sent a message to the AirConsole controllers it that the game is full.
+    /// Meaning that 2 players are actually connected.
+    /// </summary>
+    public void GameFull(int device_id)
+    {
+        AirConsole.instance.Message(device_id,"gamefull");
     }
 
     /// <summary>
