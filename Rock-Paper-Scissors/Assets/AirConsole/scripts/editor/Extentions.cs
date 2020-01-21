@@ -1,5 +1,6 @@
 ﻿#if !DISABLE_AIRCONSOLE
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEditor;
 using System.Collections;
 using System.IO;
@@ -132,17 +133,22 @@ namespace NDream.AirConsole.Editor {
 
 		public static string GetLocalAddress () {
 
-			string localIP = "";
-  
-			foreach (IPAddress ip in Dns.GetHostEntry(Dns.GetHostName()).AddressList) {
-                
-				if (ip.AddressFamily == AddressFamily.InterNetwork) {
-					localIP = ip.ToString ();
-					break;
-				}
-			}
-			return localIP;
-		}
+            string localIP = "";
+
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (IPAddress ip in host.AddressList)
+            {
+
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    localIP = ip.ToString();
+                    break;
+                }
+            }
+            return localIP;
+           
+           
+        }
 	}
 }
 #endif
