@@ -6,7 +6,9 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour
 {
     public string rock = "Rock", paper = "Paper", scissor = "Scissor";
+    private static Dictionary<string, string> play = new Dictionary<string, string>();
 
+    public static Dictionary<string, string> Play { get => play; set => play = value; }
 
     #region Singleton
     private static GameLogic _instance = null;
@@ -39,9 +41,8 @@ public class GameLogic : MonoBehaviour
     }
 
 
-    public static string PlayerMove(string player, string move)
+    public string PlayerMove(string player, string move)
     {
-        Dictionary<string, string> play = new Dictionary<string, string>();
         if (!play.ContainsKey(player))
         {
             play.Add(player, move);
@@ -51,7 +52,7 @@ public class GameLogic : MonoBehaviour
            return checkResultWithPlayer(play.Keys.ElementAt(0), play.Keys.ElementAt(1), play.Values.ElementAt(0), play.Values.ElementAt(1));
         }
 
-        play.Clear();
+        //play.Clear();
 
         return "Watting for all players input";
     }
