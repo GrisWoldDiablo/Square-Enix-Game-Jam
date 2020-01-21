@@ -1,71 +1,29 @@
 <html>
-<head>
-    <script type="text/javascript"
-            src="https://www.airconsole.com/api/airconsole-1.7.0.js"></script>
-    <script type="text/javascript">
-
-    var airconsole;
-
-    function init() {
-      airconsole = new AirConsole();
-
-      /*
-      * Here we are adding support for mouse events manually.
-      * --> WE STRONGLY ENCOURAGE YOU TO USE THE AIRCONSOLE CONTROLS LIBRARY
-      * WHICH IS EVEN BETTER (BUT WE DONT WANT TO BLOAT THE CODE HERE).
-      * https://github.com/AirConsole/airconsole-controls/
-      * 
-      * DO NOT USE ONCLICK HANDLERS.
-      * THEY ADD A 200MS DELAY!
-      */
-      if (!("ontouchstart" in document.createElement("div"))) {
-        var elements = document.getElementsByTagName("*");
-        for (var i = 0; i < elements.length; ++i) {
-          var element = elements[i];
-          var ontouchstart = element.getAttribute("ontouchstart");
-          if (ontouchstart) {
-            element.setAttribute("onmousedown", ontouchstart);
-          }
-          var ontouchend = element.getAttribute("ontouchend");
-          if (ontouchend) {
-            element.setAttribute("onmouseup", ontouchend);
-          }
-        }
-      }
-    }
-
-    function touch(value) {
-      airconsole.message(AirConsole.SCREEN, {touch: value})
-    }
-
-    function choice(value) {
-      airconsole.message(AirConsole.SCREEN, {choice: value})
-    }
-
-    </script>
-    <style type="text/css">
-        .button {
-            background-color: black;
-            text-align: center;
-            color: white;
-            line-height: 220px;
-            
-        }
-    </style>
-</head>
-<body onload="init()">
-    <!--<div class=button ontouchstart="touch(1)" ontouchend="touch(0)">
-        <p>TOUCH ME</p>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="https://www.airconsole.com/api/airconsole-1.7.0.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body onload="init()">
+    <div class="score-wrapper">
+      <span>
+        You: <span id="player-score">0</span>
+      </span>
+      <span>
+        Opponent: <span id="opponent-score">0</span>
+      </span>
     </div>
-    <div class=button ontouchstart="touch(3)" ontouchend="touch(2)">
-        <p>Now Touch Me</p>
-    </div>-->
-
-    <div class=button ontouchstart="choice('up-start')" ontouchend="choice('up-end')">
-        <p>Up</p>
+    <div class="move-wrapper">
+      <div class="move-registor" onclick="sendMove(MOVES.ROCK)">
+        <img class="move-img" src="./Sprites/Rock.png">
+      </div>
+      <div class="move-registor" onclick="sendMove(MOVES.PAPER)">
+        <img class="move-img" src="./Sprites/Paper.png">
+      </div>
+      <div class="move-registor" onclick="sendMove(MOVES.SCISSORS)">
+        <img class="move-img" src="./Sprites/Scissors.png">
+      </div>
     </div>
-    <div class=button ontouchstart="choice('down-start')" ontouchend="choice('down-end')">
-        <p>Down</p>
-    </div>
-</body>
+  </body>
 </html>

@@ -20,10 +20,12 @@ public class ScriptTest : MonoBehaviour
 
     void OnMessage(int device_id, JToken data)
     {
+        Debug.Log("Received message from " + device_id);
+        Debug.Log("Move is " + data["move"]);
         Debug.Log($"Received message from {device_id}.\nMessage = {data}");
         if (_players.ContainsKey(device_id))
         {
-            _players[device_id].PlayerAction(data["choice"].ToString());
+            _players[device_id].PlayerAction(data["move"].ToString());
         }
     }
 
@@ -40,4 +42,4 @@ public class ScriptTest : MonoBehaviour
     {
         Debug.Log($"Device {device_id} has disconnected.");
     }
-} // class
+}
