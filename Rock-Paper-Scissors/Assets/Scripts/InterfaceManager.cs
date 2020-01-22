@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class HeartManager : MonoBehaviour
+public class InterfaceManager : MonoBehaviour
 {
 
     int[] playerHealth = new int[2];
@@ -16,14 +16,14 @@ public class HeartManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI ResultText;
 
     #region Singleton
-    private static HeartManager _instance = null;
-    public static HeartManager Instance
+    private static InterfaceManager _instance = null;
+    public static InterfaceManager Instance
     {
         get
         {
             if (_instance == null)
             {
-                _instance = GameObject.FindObjectOfType<HeartManager>();
+                _instance = GameObject.FindObjectOfType<InterfaceManager>();
             }
             return _instance;
         }
@@ -38,7 +38,7 @@ public class HeartManager : MonoBehaviour
         
     }
 
-    void TakeDamage(PlayerNumber player)
+    public void TakeDamage(PlayerNumber player)
     {
         //Player 1 Takes Damage
         if (player == PlayerNumber.Player1 && playerHealth[0] > 0)
