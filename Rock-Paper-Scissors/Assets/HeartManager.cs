@@ -36,7 +36,7 @@ public class HeartManager : MonoBehaviour
         
     }
 
-    void TakeDamage(int player)
+    public void TakeDamage(int player)
     {
         //Player 1 Takes Damage
         if (player == 1 && playerHealth[0] > 0)
