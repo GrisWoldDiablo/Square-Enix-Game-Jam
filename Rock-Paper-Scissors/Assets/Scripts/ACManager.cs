@@ -9,7 +9,8 @@ using UnityEngine.SceneManagement;
 public enum PlayerNumber
 {
     Player1,
-    Player2
+    Player2,
+    None
 }
 
 public class ACManager : MonoBehaviour
