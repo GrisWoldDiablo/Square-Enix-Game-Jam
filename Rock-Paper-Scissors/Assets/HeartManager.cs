@@ -38,38 +38,34 @@ public class HeartManager : MonoBehaviour
         
     }
 
-    void TakeDamage(int player)
+    void TakeDamage(PlayerNumber player)
     {
         //Player 1 Takes Damage
-        if (player == 1 && playerHealth[0] > 0)
+        if (player == PlayerNumber.Player1 && playerHealth[0] > 0)
         {
             heartsP1[playerHealth[0] - 1].enabled = false; //Remove heart at relevant index
             playerHealth[0]--;
-            DisplayWin(player);
         }
-        else if (player == 1)
+        else if (player == PlayerNumber.Player1)
         {
             //P1 LOSE LOGIC
             Debug.Log("Player 1 Lost");
         }
 
         //Player 2 Take damage
-        if (player == 2 && playerHealth[1] > 0)
+        if (player == PlayerNumber.Player2 && playerHealth[1] > 0)
         {
             heartsP2[playerHealth[1] - 1].enabled = false; //Remove heart at relevant index
             playerHealth[1]--;
-            DisplayWin(player);
-            Debug.Log("Damage second player");
         }
-        else if (player == 2)
+        else if (player == PlayerNumber.Player2)
         {
             //P2 LOSE LOGIC
             Debug.Log("Player 2 Lost");
         }
 
-        else if (player == 3)
+        else if ()
         {
-            DisplayWin(player);
         }
 
     }
