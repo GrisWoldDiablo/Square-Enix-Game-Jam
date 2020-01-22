@@ -1,0 +1,35 @@
+html, body {
+  font-family: 'Press Start 2P', cursive;
+  background: white;
+}
+
+.move-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+  height: 50vh;
+}
+
+.move-registor {
+  text-align: center;
+  border: 5px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  max-width: 160px;
+  width: 100vh;
+  display: flex;
+}
+
+.move-img {
+  width: 150px;
+  margin: auto;
+}
+
+.score-wrapper {
+  height: 20vh;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

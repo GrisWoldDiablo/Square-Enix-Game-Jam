@@ -1,0 +1,63 @@
+<html>
+<head>
+    <script type="text/javascript"
+            src="https://www.airconsole.com/api/airconsole-1.7.0.js"></script>
+    <script type="text/javascript">
+
+    var airconsole;
+
+    function init() {
+      airconsole = new AirConsole();
+
+      /*
+      * Here we are adding support for mouse events manually.
+      * --> WE STRONGLY ENCOURAGE YOU TO USE THE AIRCONSOLE CONTROLS LIBRARY
+      * WHICH IS EVEN BETTER (BUT WE DONT WANT TO BLOAT THE CODE HERE).
+      * https://github.com/AirConsole/airconsole-controls/
+      * 
+      * DO NOT USE ONCLICK HANDLERS.
+      * THEY ADD A 200MS DELAY!
+      */
+      if (!("ontouchstart" in document.createElement("div"))) {
+        var elements = document.getElementsByTagName("*");
+        for (var i = 0; i < elements.length; ++i) {
+          var element = elements[i];
+          var ontouchstart = element.getAttribute("ontouchstart");
+          if (ontouchstart) {
+            element.setAttribute("onmousedown", ontouchstart);
+          }
+        }
+      }
+    }
+
+    function menu(value) {
+      airconsole.message(AirConsole.SCREEN, {menu: value})
+    }
+
+    function move(value) {
+      airconsole.message(AirConsole.SCREEN, {move: value})
+    }
+
+    </script>
+    <style type="text/css">
+        .button {
+            background-color: black;
+            text-align: center;
+            color: white;
+            line-height: 150px;
+            
+        }
+    </style>
+</head>
+<body onload="init()">
+    <div class=button ontouchstart="menu('left')">
+        <p>Left</p>
+    </div>
+    <div class=button ontouchstart="menu('right')">
+        <p>Right</p>
+    </div>
+    <div class=button ontouchstart="move('rock')">
+        <p>Rock</p>
+    </div>
+</body>
+</html>
