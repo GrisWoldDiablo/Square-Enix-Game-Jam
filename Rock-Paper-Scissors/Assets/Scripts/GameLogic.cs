@@ -41,7 +41,7 @@ public class GameLogic : MonoBehaviour
     }
 
 
-    public string PlayerMove(string player, string move)
+    public void PlayerMove(string player, string move)
     {
         if (!play.ContainsKey(player))
         {
@@ -49,12 +49,12 @@ public class GameLogic : MonoBehaviour
         }
         if(play.Count == 2)
         {
-           return checkResultWithPlayer(play.Keys.ElementAt(0), play.Keys.ElementAt(1), play.Values.ElementAt(0), play.Values.ElementAt(1));
+            
+            checkResultWithPlayer(play.Keys.ElementAt(0), play.Keys.ElementAt(1), play.Values.ElementAt(0), play.Values.ElementAt(1));
+            play.Clear();
+            
         }
 
-        //play.Clear();
-
-        return "Watting for all players input";
     }
 
 
