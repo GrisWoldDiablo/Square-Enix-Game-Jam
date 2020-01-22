@@ -12,6 +12,23 @@ public class HeartManager : MonoBehaviour
     [SerializeField] Image[] heartsP1;
     [SerializeField] Image[] heartsP2;
 
+
+    #region Singleton
+    private static HeartManager _instance = null;
+    public static HeartManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<HeartManager>();
+            }
+            return _instance;
+        }
+    }
+    #endregion
+
+
     private void Start()
     {
         playerHealth[0] = totalHealth;
@@ -19,7 +36,7 @@ public class HeartManager : MonoBehaviour
         
     }
 
-    void TakeDamage(int player)
+    public void TakeDamage(int player)
     {
         //Player 1 Takes Damage
         if (player == 1 && playerHealth[0] > 0)

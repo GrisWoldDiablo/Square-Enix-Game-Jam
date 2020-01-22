@@ -6,7 +6,9 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour
 {
     public string rock = "Rock", paper = "Paper", scissor = "Scissor";
+    private static Dictionary<PlayerNumber, string> play = new Dictionary<PlayerNumber, string>();
 
+    public static Dictionary<PlayerNumber, string> Play { get => play; set => play = value; }
 
     #region Singleton
     private static GameLogic _instance = null;
@@ -39,76 +41,52 @@ public class GameLogic : MonoBehaviour
     }
 
 
-    public string PlayerMove(string player, string move)
+    public void PlayerMove(PlayerNumber player, string move)
     {
-        Dictionary<string, string> play = new Dictionary<string, string>();
         if (!play.ContainsKey(player))
         {
             play.Add(player, move);
         }
         if(play.Count == 2)
         {
-           return checkResultWithPlayer(play.Keys.ElementAt(0), play.Keys.ElementAt(1), play.Values.ElementAt(0), play.Values.ElementAt(1));
+            checkResultWithPlayer();
+            play.Clear();            
         }
 
-        play.Clear();
-
-        return "Watting for all players input";
     }
 
 
+    public static void checkResultWithPlayer(Dictionary<PlayerNumber, string> moves)
+    {        
+        
 
-
-
-
-
-    public static string RandomAI()
-    {
-        int AIChoice = Random.Range(1, 4);
-        if(AIChoice == 1)
+        if (moves.Values.ElementAt(0).Equals(moves.Values.ElementAt(1)))
         {
-            return "Rock";
+           
         }
-        else if(AIChoice == 2)
+        else if (moves.Values.ElementAt(0).Equals("Rock") && moves.Values.ElementAt(1).Equals("Paper"))
         {
-            return "Paper";
+            HeartManager.Instance.TakeDamage(moves.Keys.ElementAt(1));
+        }
+        else if (moves.Values.ElementAt(0).Equals("Rock") && moves.Values.ElementAt(1).Equals("Scissor"))
+        {
+            HeartManager.Instance.TakeDamage(moves.Keys.ElementAt(2));
+        }
+        else if (moves.Values.ElementAt(0).Equals("Paper") && moves.Values.ElementAt(1).Equals("Scissor"))
+        {
+            HeartManager.Instance.TakeDamage(moves.Keys.ElementAt(1));
+        }
+        else if (moves.Values.ElementAt(0).Equals("Paper") && moves.Values.ElementAt(1).Equals("Rock"))
+        {
+            HeartManager.Instance.TakeDamage(moves.Keys.ElementAt(2));
+        }
+        else if (moves.Values.ElementAt(0).Equals("Scissor") && moves.Values.ElementAt(1).Equals("Rock"))
+        {
+            HeartManager.Instance.TakeDamage(moves.Keys.ElementAt(1));
         }
         else
         {
-            return "Scissor";
-        }
-
-    }
-
-    public static string checkResultAI(string playerName,string playerMove, string aiMove)
-    {
-        if (playerMove.Equals(aiMove))
-        {
-            return "Draw";
-        }
-        else if (playerMove.Equals("Rock") && aiMove.Equals("Paper"))
-        {
-            return "AI Wins";
-        }
-        else if (playerMove.Equals("Rock") && aiMove.Equals("Scissor"))
-        {
-            return playerName + " Wins";
-        }
-        else if (playerMove.Equals("Paper") && aiMove.Equals("Scissor"))
-        {
-            return "AI Wins";
-        }
-        else if (playerMove.Equals("Paper") && aiMove.Equals("Rock"))
-        {
-            return playerName + " Wins";
-        }
-        else if (playerMove.Equals("Scissor") && aiMove.Equals("Rock"))
-        {
-            return "AI Wins";
-        }
-        else
-        {
-            return playerName + " Wins";
+            HeartManager.Instance.TakeDamage(moves.Keys.ElementAt(2));
         }
     }
 
@@ -116,36 +94,53 @@ public class GameLogic : MonoBehaviour
 
 
 
+    //public static string RandomAI()
+    //{
+    //    int AIChoice = Random.Range(1, 4);
+    //    if(AIChoice == 1)
+    //    {
+    //        return "Rock";
+    //    }
+    //    else if(AIChoice == 2)
+    //    {
+    //        return "Paper";
+    //    }
+    //    else
+    //    {
+    //        return "Scissor";
+    //    }
 
-    public static string checkResultWithPlayer(string playerOne, string playerTwo, string moveOne, string moveTwo)
-    {
-        if (moveOne.Equals(moveTwo))
-        {
-            return "Draw";
-        }
-        else if (moveOne.Equals("Rock") && moveTwo.Equals("Paper"))
-        {
-            return playerTwo + " Wins";
-        }
-        else if (moveOne.Equals("Rock") && moveTwo.Equals("Scissor"))
-        {
-            return playerOne + " Wins";
-        }
-        else if (moveOne.Equals("Paper") && moveTwo.Equals("Scissor"))
-        {
-            return playerTwo + " Wins";
-        }
-        else if(moveOne.Equals("Paper") && moveTwo.Equals("Rock"))
-        {
-            return playerOne + " Wins";
-        }
-        else if (moveOne.Equals("Scissor") && moveTwo.Equals("Rock"))
-        {
-            return playerTwo + " Wins";
-        }
-        else
-        {
-            return playerOne + " Wins";
-        }
-    }
+    //}
+
+    //public static string checkResultAI(string playerName,string playerMove, string aiMove)
+    //{
+    //    if (playerMove.Equals(aiMove))
+    //    {
+    //        return "Draw";
+    //    }
+    //    else if (playerMove.Equals("Rock") && aiMove.Equals("Paper"))
+    //    {
+    //        return "AI Wins";
+    //    }
+    //    else if (playerMove.Equals("Rock") && aiMove.Equals("Scissor"))
+    //    {
+    //        return playerName + " Wins";
+    //    }
+    //    else if (playerMove.Equals("Paper") && aiMove.Equals("Scissor"))
+    //    {
+    //        return "AI Wins";
+    //    }
+    //    else if (playerMove.Equals("Paper") && aiMove.Equals("Rock"))
+    //    {
+    //        return playerName + " Wins";
+    //    }
+    //    else if (playerMove.Equals("Scissor") && aiMove.Equals("Rock"))
+    //    {
+    //        return "AI Wins";
+    //    }
+    //    else
+    //    {
+    //        return playerName + " Wins";
+    //    }
+    //}
 }
