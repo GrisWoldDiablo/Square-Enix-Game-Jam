@@ -45,11 +45,12 @@ public class HeartManager : MonoBehaviour
         {
             heartsP1[playerHealth[0] - 1].enabled = false; //Remove heart at relevant index
             playerHealth[0]--;
+            ResultText.text = "Player 1 wins round";
         }
         else if (player == PlayerNumber.Player1)
         {
             //P1 LOSE LOGIC
-            Debug.Log("Player 1 Lost");
+            Debug.Log("Player 2 Wins the Game!");
         }
 
         //Player 2 Take damage
@@ -57,37 +58,22 @@ public class HeartManager : MonoBehaviour
         {
             heartsP2[playerHealth[1] - 1].enabled = false; //Remove heart at relevant index
             playerHealth[1]--;
+            ResultText.text = "Player 2 wins round";
         }
         else if (player == PlayerNumber.Player2)
         {
             //P2 LOSE LOGIC
-            Debug.Log("Player 2 Lost");
+            Debug.Log("Player 1 Wins the Game!");
         }
 
-        else if ()
-        {
-        }
-
-    }
-
-    public void DisplayWin(int player)
-    {
-        if(player == 1)
-        {
-            ResultText.text = "Player 1 wins";
-        }
-        else if(player == 2)
-        {
-            ResultText.text = "Player 2 wins";
-        }
-        else
+        else if (player == PlayerNumber.None)
         {
             ResultText.text = "It's a draw!";
         }
 
+
         ResultText.enabled = true;
-
-        //Using timer class set 3~sec timer before text dissapear and next round enabled
-
+        //Use timer class to disable text after x seconds
     }
+
 }
