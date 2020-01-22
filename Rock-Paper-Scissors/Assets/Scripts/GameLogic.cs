@@ -6,9 +6,9 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour
 {
     public string rock = "Rock", paper = "Paper", scissor = "Scissor";
-    private static Dictionary<string, string> play = new Dictionary<string, string>();
+    private static Dictionary<PlayerNumber, string> play = new Dictionary<PlayerNumber, string>();
 
-    public static Dictionary<string, string> Play { get => play; set => play = value; }
+    public static Dictionary<PlayerNumber, string> Play { get => play; set => play = value; }
 
     #region Singleton
     private static GameLogic _instance = null;
@@ -41,7 +41,7 @@ public class GameLogic : MonoBehaviour
     }
 
 
-    public void PlayerMove(string player, string move)
+    public void PlayerMove(PlayerNumber player, string move)
     {
         if (!play.ContainsKey(player))
         {
@@ -49,44 +49,44 @@ public class GameLogic : MonoBehaviour
         }
         if(play.Count == 2)
         {
-            checkResultWithPlayer(play.Keys.ElementAt(0), play.Keys.ElementAt(1), play.Values.ElementAt(0), play.Values.ElementAt(1));
+            checkResultWithPlayer();
             play.Clear();            
         }
 
     }
 
 
-    public static void checkResultWithPlayer(string first, string second, string moveOne, string moveTwo)
+    public static void checkResultWithPlayer(Dictionary<PlayerNumber, string> moves)
     {        
         
 
-        if (moveOne.Equals(moveTwo))
+        if (moves.Values.ElementAt(0).Equals(moves.Values.ElementAt(1)))
         {
            
         }
-        else if (moveOne.Equals("Rock") && moveTwo.Equals("Paper"))
+        else if (moves.Values.ElementAt(0).Equals("Rock") && moves.Values.ElementAt(1).Equals("Paper"))
         {
-            HeartManager.Instance.TakeDamage(1);
+            HeartManager.Instance.TakeDamage(moves.Keys.ElementAt(1));
         }
-        else if (moveOne.Equals("Rock") && moveTwo.Equals("Scissor"))
+        else if (moves.Values.ElementAt(0).Equals("Rock") && moves.Values.ElementAt(1).Equals("Scissor"))
         {
-            HeartManager.Instance.TakeDamage(2);
+            HeartManager.Instance.TakeDamage(moves.Keys.ElementAt(2));
         }
-        else if (moveOne.Equals("Paper") && moveTwo.Equals("Scissor"))
+        else if (moves.Values.ElementAt(0).Equals("Paper") && moves.Values.ElementAt(1).Equals("Scissor"))
         {
-            HeartManager.Instance.TakeDamage(1);
+            HeartManager.Instance.TakeDamage(moves.Keys.ElementAt(1));
         }
-        else if (moveOne.Equals("Paper") && moveTwo.Equals("Rock"))
+        else if (moves.Values.ElementAt(0).Equals("Paper") && moves.Values.ElementAt(1).Equals("Rock"))
         {
-            HeartManager.Instance.TakeDamage(2);
+            HeartManager.Instance.TakeDamage(moves.Keys.ElementAt(2));
         }
-        else if (moveOne.Equals("Scissor") && moveTwo.Equals("Rock"))
+        else if (moves.Values.ElementAt(0).Equals("Scissor") && moves.Values.ElementAt(1).Equals("Rock"))
         {
-            HeartManager.Instance.TakeDamage(1);
+            HeartManager.Instance.TakeDamage(moves.Keys.ElementAt(1));
         }
         else
         {
-            HeartManager.Instance.TakeDamage(2);
+            HeartManager.Instance.TakeDamage(moves.Keys.ElementAt(2));
         }
     }
 
