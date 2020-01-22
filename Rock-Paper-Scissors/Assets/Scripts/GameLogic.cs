@@ -49,7 +49,7 @@ public class GameLogic : MonoBehaviour
         }
         if(play.Count == 2)
         {
-            checkResultWithPlayer();
+            checkResultWithPlayer(play);
             play.Clear();            
         }
 
@@ -62,7 +62,7 @@ public class GameLogic : MonoBehaviour
 
         if (moves.Values.ElementAt(0).Equals(moves.Values.ElementAt(1)))
         {
-           
+            InterfaceManager.Instance.TakeDamage(PlayerNumber.None);
         }
         else if (moves.Values.ElementAt(0).Equals("Rock") && moves.Values.ElementAt(1).Equals("Paper"))
         {
