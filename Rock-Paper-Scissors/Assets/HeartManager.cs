@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class HeartManager : MonoBehaviour
@@ -12,6 +13,7 @@ public class HeartManager : MonoBehaviour
     [SerializeField] Image[] heartsP1;
     [SerializeField] Image[] heartsP2;
 
+    [SerializeField] TextMeshProUGUI ResultText;
 
     #region Singleton
     private static HeartManager _instance = null;
@@ -43,6 +45,7 @@ public class HeartManager : MonoBehaviour
         {
             heartsP1[playerHealth[0] - 1].enabled = false; //Remove heart at relevant index
             playerHealth[0]--;
+            DisplayWin(player);
         }
         else if (player == 1)
         {
@@ -55,6 +58,7 @@ public class HeartManager : MonoBehaviour
         {
             heartsP2[playerHealth[1] - 1].enabled = false; //Remove heart at relevant index
             playerHealth[1]--;
+            DisplayWin(player);
             Debug.Log("Damage second player");
         }
         else if (player == 2)
@@ -62,6 +66,32 @@ public class HeartManager : MonoBehaviour
             //P2 LOSE LOGIC
             Debug.Log("Player 2 Lost");
         }
+
+        else if (player == 3)
+        {
+            DisplayWin(player);
+        }
+
+    }
+
+    public void DisplayWin(int player)
+    {
+        if(player == 1)
+        {
+            ResultText.text = "Player 1 wins";
+        }
+        else if(player == 2)
+        {
+            ResultText.text = "Player 2 wins";
+        }
+        else
+        {
+            ResultText.text = "It's a draw!";
+        }
+
+        ResultText.enabled = true;
+
+        //Using timer class set 3~sec timer before text dissapear and next round enabled
 
     }
 }
