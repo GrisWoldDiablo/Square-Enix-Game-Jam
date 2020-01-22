@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuRotator : MonoBehaviour
+ public class MenuRotator : MonoBehaviour
 {
-    private static MenuRotator instance = null;
+    public static MenuRotator instance = null;
 
     private bool isRotating = false;
 
@@ -51,5 +51,11 @@ public class MenuRotator : MonoBehaviour
             isRotating = true;
             StartCoroutine(Rotate(new Vector3(0, 90, 0), 0.5f)); 
         }
+    }
+
+
+    void MenuIndex()
+    {
+
     }
 }

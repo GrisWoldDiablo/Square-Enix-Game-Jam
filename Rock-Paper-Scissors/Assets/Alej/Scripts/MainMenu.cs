@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     //Fields
     private AsyncOperation async;
+    private MenuRotator menuRotator;
 
     [SerializeField] private GameObject[] panels;
     [SerializeField] private Selectable[] defaultOptions;
@@ -15,12 +16,17 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         PanelToggle(0);
+
+        menuRotator = FindObjectOfType<MenuRotator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKey(KeyCode.RightArrow))
+            menuRotator.RotateRight();
+        else if (Input.GetKey(KeyCode.LeftArrow))
+            menuRotator.RotateLeft();
     }
 
     public void QuitBtn()
