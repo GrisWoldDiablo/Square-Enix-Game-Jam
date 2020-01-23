@@ -4,15 +4,32 @@ const MOVES = Object.freeze({
   ROCK: 0,
   PAPER: 1,
   SCISSORS: 2,
+});
+
+const MENU = Object.freeze({
+  LEFT: 'LEFT',
+  RIGHT: 'RIGHT',
+  ENTER: 'ENTER',
+  EXIT: 'EXIT',
 })
 
 const init = () => {
   airconsole = new AirConsole({"orientation": "landscape"});
+  airconsole.onMessage = onReceiveMessage; 
   setUpSupportForMouseEvents();
+}
+
+const onReceiveMessage = (device_id, data) => {
+  alert('Receiving message from device_id ' + device_id);
+  alert('data ' + data);
 }
 
 const sendMove = (move) => {
   airconsole.message(AirConsole.SCREEN, { move });
+}
+
+const sendMenuOption = (menu) => {
+  airconsole.message(AirConsole.SCREEN, { menu });
 }
 
 const setUpSupportForMouseEvents = () => {
@@ -40,9 +57,3 @@ const setUpSupportForMouseEvents = () => {
     }
   }
 }
-
-function choice(value) {
-  airconsole.message(AirConsole.SCREEN, {choice: value})
-}
-
-

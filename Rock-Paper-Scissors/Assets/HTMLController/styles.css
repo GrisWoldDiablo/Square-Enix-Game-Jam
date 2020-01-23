@@ -22,10 +22,6 @@ html, body {
   display: flex;
 }
 
-.move-registor:hover, .move-registor:active {
-  background-color: beige;
-}
-
 .move-img {
   width: 150px;
   margin: auto;
@@ -50,13 +46,14 @@ html, body {
 button {
   border: 2px solid black;
   border-radius: 10px;
-  margin: 0 .5rem;
+  padding: 0 1rem;
+  width: 100vh;
   font-size: xx-large;
 }
 
-button:active, button:hover {
+button:active {
   opacity: 0.7;
-  transition: opacity ease-in .2s;
+  transition: opacity ease-in .5s;
 }
 
 .menu-swiper {
