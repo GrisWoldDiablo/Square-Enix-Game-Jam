@@ -77,18 +77,18 @@ public class ACManagerUpdated : MonoBehaviour
     private void OnConnect(int device_id) {
       // if there's no current active players set by screen
       if (AirConsole.instance.GetActivePlayerDeviceIds.Count == 0) {
+        int numberOfConnectedDevices = AirConsole.instance.GetControllerDeviceIds().Count;
         // and there are 2 or more connected devices
-        if (AirConsole.instance.GetControllerDeviceIds().Count >= MAX_PLAYERS) {
-          NotifyPlayersStatus("GAME IS FULL");
+        if (numberOfConnectedDevices >= MAX_PLAYERS) {
           StartPlayersAssignmentRoutine();
         } else {
-          NotifyPlayersStatus("NEED MORE PLAYERS");
+          UpdateTextWarning("NEED MORE PLAYERS");
         }
       }
     }
 
     private void StartPlayersAssignmentRoutine() {
-      // Set all connected controllers to be active players, max is 2
+      /// Set all connected controllers to be active players, max is 2
       // This will assign each device id with a player number (0, 1, 2, etc.) 
       // In our case, since we only have maximum 2 players, the player numbers are 0 and 1 respectively
       AirConsole.instance.SetActivePlayers(MAX_PLAYERS);

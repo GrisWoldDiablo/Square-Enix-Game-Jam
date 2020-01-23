@@ -68,3 +68,8 @@ button:hover {
   flex-grow: 2;
 }
 
+#player-status {
+  text-align: center;
+  margin: 1rem 0;
+}
+

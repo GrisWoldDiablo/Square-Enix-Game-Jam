@@ -15,12 +15,29 @@ const MENU = Object.freeze({
 
 const init = () => {
   airconsole = new AirConsole({"orientation": "landscape"});
-  airconsole.onMessage = onReceiveMessage; 
+  airconsole.onMessage = onReceiveMessage;
+  airconsole.onActivePlayersChange = (player_number) => {
+    updatePlayersStatusText(player_number);
+  }
   setUpSupportForMouseEvents();
 }
 
 const onReceiveMessage = (device_id, data) => {
-  console.log("data========", data);
+  const {menu, gameResult} = data;
+  
+}
+
+const updatePlayersStatusText = (player_number) => {
+  const playerStatusDiv = document.getElementById('player-status');
+  if (airconsole.getActivePlayerDeviceIds().length == 0) {
+    playerStatusDiv.innerHTML = "Waiting for more players.";
+  } else if (player_number == undefined) {
+    playerStatusDiv.innerHTML = "This is a 2 player game";
+  } else if (player_number == 0) {
+    playerStatusDiv.innerHTML = "You are the first player";
+  } else if (player_number == 1) {
+    playerStatusDiv.innerHTML = "You are the second player";
+  };
 }
 
 const sendMove = (move) => {
