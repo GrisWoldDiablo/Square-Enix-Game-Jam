@@ -20,8 +20,7 @@ const init = () => {
 }
 
 const onReceiveMessage = (device_id, data) => {
-  alert('Receiving message from device_id ' + device_id);
-  alert('data ' + data);
+  console.log("data========", data);
 }
 
 const sendMove = (move) => {

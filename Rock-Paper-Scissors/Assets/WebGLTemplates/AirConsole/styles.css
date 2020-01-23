@@ -23,7 +23,8 @@ html, body {
 }
 
 .move-registor:hover, .move-registor:active {
-  background-color: beige;
+  border-color: lightgrey;
+  transition: border linear .3s;
 }
 
 .move-img {
@@ -54,7 +55,7 @@ button {
   font-size: xx-large;
 }
 
-button:active, button:hover {
+button:hover {
   opacity: 0.7;
   transition: opacity ease-in .2s;
 }
