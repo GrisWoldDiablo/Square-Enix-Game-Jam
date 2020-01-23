@@ -6,9 +6,9 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour
 {
     public string rock = "Rock", paper = "Paper", scissor = "Scissor";
-    private static Dictionary<string, string> play = new Dictionary<string, string>();
+    private static Dictionary<PlayerNumber, string> play = new Dictionary<PlayerNumber, string>();
 
-    public static Dictionary<string, string> Play { get => play; set => play = value; }
+    public static Dictionary<PlayerNumber, string> Play { get => play; set => play = value; }
 
     #region Singleton
     private static GameLogic _instance = null;
@@ -25,9 +25,6 @@ public class GameLogic : MonoBehaviour
     }
     #endregion
 
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +38,7 @@ public class GameLogic : MonoBehaviour
     }
 
 
-    public string PlayerMove(string player, string move)
+    public void PlayerMove(PlayerNumber player, string move)
     {
         if (!play.ContainsKey(player))
         {
@@ -49,104 +46,79 @@ public class GameLogic : MonoBehaviour
         }
         if(play.Count == 2)
         {
-           return checkResultWithPlayer(play.Keys.ElementAt(0), play.Keys.ElementAt(1), play.Values.ElementAt(0), play.Values.ElementAt(1));
-        }
-
-        //play.Clear();
-
-        return "Watting for all players input";
-    }
-
-
-
-
-
-
-
-    public static string RandomAI()
-    {
-        int AIChoice = Random.Range(1, 4);
-        if(AIChoice == 1)
-        {
-            return "Rock";
-        }
-        else if(AIChoice == 2)
-        {
-            return "Paper";
-        }
-        else
-        {
-            return "Scissor";
+            checkResultWithPlayer(play);
+            play.Clear();            
         }
 
     }
 
-    public static string checkResultAI(string playerName,string playerMove, string aiMove)
-    {
-        if (playerMove.Equals(aiMove))
+    public static void checkResultWithPlayer(Dictionary<PlayerNumber, string> moves)
+    {        
+       
+        if (moves.Values.ElementAt(0).Equals(moves.Values.ElementAt(1)))
         {
-            return "Draw";
+           InterfaceManager.Instance.TakeDamage(PlayerNumber.None);
         }
-        else if (playerMove.Equals("Rock") && aiMove.Equals("Paper"))
+        else if (moves.Values.ElementAt(0).Equals("Rock") && moves.Values.ElementAt(1).Equals("Paper"))
         {
-            return "AI Wins";
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1));
         }
-        else if (playerMove.Equals("Rock") && aiMove.Equals("Scissor"))
+        else if (moves.Values.ElementAt(0).Equals("Rock") && moves.Values.ElementAt(1).Equals("Scissor"))
         {
-            return playerName + " Wins";
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(2));
         }
-        else if (playerMove.Equals("Paper") && aiMove.Equals("Scissor"))
+        else if (moves.Values.ElementAt(0).Equals("Paper") && moves.Values.ElementAt(1).Equals("Scissor"))
         {
-            return "AI Wins";
-        }
-        else if (playerMove.Equals("Paper") && aiMove.Equals("Rock"))
-        {
-            return playerName + " Wins";
-        }
-        else if (playerMove.Equals("Scissor") && aiMove.Equals("Rock"))
-        {
-            return "AI Wins";
-        }
-        else
-        {
-            return playerName + " Wins";
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1));
         }
     }
+    //public static string RandomAI()
+    //{
+    //    int AIChoice = Random.Range(1, 4);
+    //    if(AIChoice == 1)
+    //    {
+    //        return "Rock";
+    //    }
+    //    else if(AIChoice == 2)
+    //    {
+    //        return "Paper";
+    //    }
+    //    else
+    //    {
+    //        return "Scissor";
+    //    }
 
+    //}
 
-
-
-
-
-    public static string checkResultWithPlayer(string playerOne, string playerTwo, string moveOne, string moveTwo)
-    {
-        if (moveOne.Equals(moveTwo))
-        {
-            return "Draw";
-        }
-        else if (moveOne.Equals("Rock") && moveTwo.Equals("Paper"))
-        {
-            return playerTwo + " Wins";
-        }
-        else if (moveOne.Equals("Rock") && moveTwo.Equals("Scissor"))
-        {
-            return playerOne + " Wins";
-        }
-        else if (moveOne.Equals("Paper") && moveTwo.Equals("Scissor"))
-        {
-            return playerTwo + " Wins";
-        }
-        else if(moveOne.Equals("Paper") && moveTwo.Equals("Rock"))
-        {
-            return playerOne + " Wins";
-        }
-        else if (moveOne.Equals("Scissor") && moveTwo.Equals("Rock"))
-        {
-            return playerTwo + " Wins";
-        }
-        else
-        {
-            return playerOne + " Wins";
-        }
-    }
+    //public static string checkResultAI(string playerName,string playerMove, string aiMove)
+    //{
+    //    if (playerMove.Equals(aiMove))
+    //    {
+    //        return "Draw";
+    //    }
+    //    else if (playerMove.Equals("Rock") && aiMove.Equals("Paper"))
+    //    {
+    //        return "AI Wins";
+    //    }
+    //    else if (playerMove.Equals("Rock") && aiMove.Equals("Scissor"))
+    //    {
+    //        return playerName + " Wins";
+    //    }
+    //    else if (playerMove.Equals("Paper") && aiMove.Equals("Scissor"))
+    //    {
+    //        return "AI Wins";
+    //    }
+    //    else if (playerMove.Equals("Paper") && aiMove.Equals("Rock"))
+    //    {
+    //        return playerName + " Wins";
+    //    }
+    //    else if (playerMove.Equals("Scissor") && aiMove.Equals("Rock"))
+    //    {
+    //        return "AI Wins";
+    //    }
+    //    else
+    //    {
+    //        return playerName + " Wins";
+    //    }
+    //}
 }
