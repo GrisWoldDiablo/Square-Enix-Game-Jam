@@ -6,14 +6,14 @@
     <script src="script.js"></script>
   </head>
   <body onload="init()">
-    <div class="score-wrapper">
+    <!-- <div class="score-wrapper">
       <span>
         You: <span id="player-score">0</span>
       </span>
       <span>
         Opponent: <span id="opponent-score">0</span>
       </span>
-    </div>
+    </div> -->
     <div class="move-wrapper">
       <div class="move-registor" onclick="sendMove(MOVES.ROCK)">
         <img class="move-img" src="./Sprites/Rock.png">
@@ -24,6 +24,12 @@
       <div class="move-registor" onclick="sendMove(MOVES.SCISSORS)">
         <img class="move-img" src="./Sprites/Scissors.png">
       </div>
+    </div>
+    <div class="menu-wrapper">
+      <button class="menu-swiper">Left</button>
+      <button class="menu-swiper">Right</button>
+      <button class="menu-action">Enter</button>
+      <button class="menu-action">Exit</button>
     </div>
   </body>
 </html>

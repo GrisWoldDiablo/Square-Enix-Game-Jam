@@ -4,6 +4,7 @@ html, body {
 }
 
 .move-wrapper {
+  margin-top: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -33,3 +34,16 @@ html, body {
   flex-direction: row;
   justify-content: space-between;
 }
+
+.menu-wrapper {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 30vh;
+}
+
+button {
+  width: 3rem;
+}
+
