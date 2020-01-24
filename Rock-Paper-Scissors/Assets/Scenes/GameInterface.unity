@@ -682,7 +682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerStart: {fileID: 7400000, guid: 8d6656db70860034a81551a72f941282, type: 2}
-  timerEnd: {fileID: 7400000, guid: 4d13642360db1c343ae82bc6028ada19, type: 2}
+  timerEnd: {fileID: 7400000, guid: 45c171cc681ca46b8ba4bf4820aecffd, type: 2}
   seconds: 5
   timerText: {fileID: 1764627133}
 --- !u!114 &1155887187
@@ -730,10 +730,10 @@ Animation:
   m_GameObject: {fileID: 1155887184}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 7400000, guid: 8d6656db70860034a81551a72f941282, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 8d6656db70860034a81551a72f941282, type: 2}
-  - {fileID: 7400000, guid: 4d13642360db1c343ae82bc6028ada19, type: 2}
+  - {fileID: 7400000, guid: 45c171cc681ca46b8ba4bf4820aecffd, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -1042,8 +1042,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1059,7 +1059,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1343,8 +1343,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 182.74
-  m_fontSizeBase: 182.74
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

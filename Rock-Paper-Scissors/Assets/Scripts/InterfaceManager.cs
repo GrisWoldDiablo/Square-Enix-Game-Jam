@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class InterfaceManager : MonoBehaviour
 {
 
+
     int[] playerHealth = new int[2];
 
     [SerializeField] int totalHealth;
@@ -33,47 +34,65 @@ public class InterfaceManager : MonoBehaviour
 
     private void Start()
     {
+        
         playerHealth[0] = totalHealth;
         playerHealth[1] = totalHealth;
-        
+        InvokeRepeating("Test", 2f,2f);
     }
 
-    public void TakeDamage(PlayerNumber player)
+    void Test()
+    {
+        TakeDamage(PlayerNumber.Player1, "paper", "rock");
+    }
+
+    public void TakeDamage(PlayerNumber player, string m1, string m2)
     {
         //Player 1 Takes Damage
-        if (player == PlayerNumber.Player1 && playerHealth[0] > 0)
+        if (player == PlayerNumber.Player1 && playerHealth[0] > 1)
         {
             heartsP1[playerHealth[0] - 1].enabled = false; //Remove heart at relevant index
             playerHealth[0]--;
-            ResultText.text = "Player 1 wins round";
+            RoundText("Player 1 wins the round : " + m1 + " vs. " + m2);
         }
         else if (player == PlayerNumber.Player1)
         {
             //P1 LOSE LOGIC
-            Debug.Log("Player 2 Wins the Game!");
+            heartsP1[playerHealth[0] - 1].enabled = false; //Remove heart at relevant index
+            playerHealth[0]--;
+            RoundText("Player 2 wins the game! " + m1 + " vs. " + m2);
         }
 
         //Player 2 Take damage
-        if (player == PlayerNumber.Player2 && playerHealth[1] > 0)
+        if (player == PlayerNumber.Player2 && playerHealth[1] > 1)
         {
             heartsP2[playerHealth[1] - 1].enabled = false; //Remove heart at relevant index
             playerHealth[1]--;
-            ResultText.text = "Player 2 wins round";
+            RoundText("Player 2 wins the round : " + m1 + " vs. " + m2);
         }
         else if (player == PlayerNumber.Player2)
         {
             //P2 LOSE LOGIC
-            Debug.Log("Player 1 Wins the Game!");
+            heartsP1[playerHealth[0] - 1].enabled = false; //Remove heart at relevant index
+            playerHealth[0]--;
+            Debug.Log("Player 1 Wins the Game! " + m1 + " vs. " + m2);
         }
 
         else if (player == PlayerNumber.None)
         {
-            ResultText.text = "It's a draw!";
+            RoundText("It's a draw! " + m1 + " vs. " + m2);
         }
+    }
 
-
+    void RoundText(string s)
+    {
+        ResultText.text = s;
         ResultText.enabled = true;
-        //Use timer class to disable text after x seconds
+        Invoke("HideResult", 3f);
+    }
+
+    void HideResult()
+    {
+        ResultText.enabled = false;
     }
 
 }
