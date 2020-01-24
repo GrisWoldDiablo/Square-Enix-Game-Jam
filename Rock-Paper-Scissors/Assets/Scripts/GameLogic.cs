@@ -37,6 +37,12 @@ public class GameLogic : MonoBehaviour
         
     }
 
+    public int NumberOfPlayer()
+    {
+        return play.Count;
+    }
+
+
 
     public void PlayerMove(PlayerNumber player, string move)
     {
@@ -48,6 +54,10 @@ public class GameLogic : MonoBehaviour
         {
             checkResultWithPlayer(play);
             play.Clear();            
+        }
+        if(play.Count == 1 )//&& //Timer Jeff)
+        {
+            //To do
         }
 
     }
@@ -61,15 +71,15 @@ public class GameLogic : MonoBehaviour
         }
         else if (moves.Values.ElementAt(0).Equals("Rock") && moves.Values.ElementAt(1).Equals("Paper"))
         {
-            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1));
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(0));
         }
         else if (moves.Values.ElementAt(0).Equals("Rock") && moves.Values.ElementAt(1).Equals("Scissor"))
         {
-            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(2));
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1));
         }
         else if (moves.Values.ElementAt(0).Equals("Paper") && moves.Values.ElementAt(1).Equals("Scissor"))
         {
-            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1));
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(0));
         }
     }
     //public static string RandomAI()
