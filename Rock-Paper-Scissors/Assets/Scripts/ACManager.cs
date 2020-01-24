@@ -6,6 +6,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+public enum PlayerNumber
+{
+    Player1,
+    Player2,
+    None
+}
 
 public class ACManager : MonoBehaviour
 {
@@ -35,12 +41,12 @@ public class ACManager : MonoBehaviour
     [SerializeField] private GameObject _panelWarning;
     [SerializeField] private Text _textWarning;
 
-    private Dictionary<int, string> _players;
+    private Dictionary<int, PlayerNumber> _players;
 
     private AsyncOperation _async;
     private void Awake()
     {
-        _players = new Dictionary<int, string>(); // Init the players list.
+        _players = new Dictionary<int, PlayerNumber>(); // Init the players list.
         StartCoroutine(LoadScenes()); // Load the required scenes.
 
         /// AirConsole's delegates.
@@ -72,7 +78,7 @@ public class ACManager : MonoBehaviour
                 Debug.Log($"Move button value : {data["move"]}");
                 // TODO 
                 // check if this syntax is proper.
-                //GameLogic.Instance.PlayerMove(_players[device_id], data["move"].ToString());
+                GameLogic.Instance.PlayerMove(_players[device_id], data["move"].ToString());
             }
             Debug.Log(_players[device_id]);
         }
@@ -88,13 +94,13 @@ public class ACManager : MonoBehaviour
         Debug.Log($"Device {device_id} has connected.");
         if (_players.Count < MIN_PLAYERS && !_players.ContainsKey(device_id))
         {
-            if (!_players.ContainsValue("player1"))
+            if (!_players.ContainsValue(PlayerNumber.Player1))
             {
-                _players.Add(device_id, "player1");
+                _players.Add(device_id, PlayerNumber.Player1);
             }
             else
             {
-                _players.Add(device_id, "player2");
+                _players.Add(device_id, PlayerNumber.Player2);
             }
             if (_players.Count == MIN_PLAYERS)
             {
@@ -213,8 +219,9 @@ public class ACManager : MonoBehaviour
     /// <summary>
     /// Sent a message to all AirConsole controllers telling a specific one that it won and the other that it lost.
     /// </summary>
-    public void MatchResult(string winningPlayer)
+    public void MatchResult(PlayerNumber winningPlayer)
     {
+       
         foreach (var keyValuePair in _players)
         {
             if (keyValuePair.Value == winningPlayer)
