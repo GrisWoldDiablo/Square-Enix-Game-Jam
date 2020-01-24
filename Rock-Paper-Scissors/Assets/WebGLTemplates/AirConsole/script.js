@@ -4,15 +4,48 @@ const MOVES = Object.freeze({
   ROCK: 0,
   PAPER: 1,
   SCISSORS: 2,
+});
+
+const MENU = Object.freeze({
+  LEFT: 'LEFT',
+  RIGHT: 'RIGHT',
+  ENTER: 'ENTER',
+  EXIT: 'EXIT',
 })
 
 const init = () => {
   airconsole = new AirConsole({"orientation": "landscape"});
+  airconsole.onMessage = onReceiveMessage;
+  airconsole.onActivePlayersChange = (player_number) => {
+    updatePlayersStatusText(player_number);
+  }
   setUpSupportForMouseEvents();
+}
+
+const onReceiveMessage = (device_id, data) => {
+  const {menu, gameResult} = data;
+  
+}
+
+const updatePlayersStatusText = (player_number) => {
+  const playerStatusDiv = document.getElementById('player-status');
+  if (airconsole.getActivePlayerDeviceIds().length == 0) {
+    playerStatusDiv.innerHTML = "Waiting for more players.";
+  } else if (player_number == undefined) {
+    playerStatusDiv.innerHTML = "This is a 2 player game";
+  } else if (player_number == 0) {
+    playerStatusDiv.innerHTML = "You are the first player";
+  } else if (player_number == 1) {
+    playerStatusDiv.innerHTML = "You are the second player";
+  };
 }
 
 const sendMove = (move) => {
   airconsole.message(AirConsole.SCREEN, { move });
+}
+
+const sendMenuOption = (menu) => {
+  airconsole.message(AirConsole.SCREEN, { menu });
 }
 
 const setUpSupportForMouseEvents = () => {
@@ -40,9 +73,3 @@ const setUpSupportForMouseEvents = () => {
     }
   }
 }
-
-function choice(value) {
-  airconsole.message(AirConsole.SCREEN, {choice: value})
-}
-
-

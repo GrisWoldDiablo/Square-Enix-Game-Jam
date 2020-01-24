@@ -25,9 +25,6 @@ public class GameLogic : MonoBehaviour
     }
     #endregion
 
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -49,20 +46,18 @@ public class GameLogic : MonoBehaviour
         }
         if(play.Count == 2)
         {
-            checkResultWithPlayer();
+            checkResultWithPlayer(play);
             play.Clear();            
         }
 
     }
 
-
     public static void checkResultWithPlayer(Dictionary<PlayerNumber, string> moves)
     {        
-        
-
+       
         if (moves.Values.ElementAt(0).Equals(moves.Values.ElementAt(1)))
         {
-           
+           InterfaceManager.Instance.TakeDamage(PlayerNumber.None);
         }
         else if (moves.Values.ElementAt(0).Equals("Rock") && moves.Values.ElementAt(1).Equals("Paper"))
         {
@@ -76,24 +71,7 @@ public class GameLogic : MonoBehaviour
         {
             InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1));
         }
-        else if (moves.Values.ElementAt(0).Equals("Paper") && moves.Values.ElementAt(1).Equals("Rock"))
-        {
-            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(2));
-        }
-        else if (moves.Values.ElementAt(0).Equals("Scissor") && moves.Values.ElementAt(1).Equals("Rock"))
-        {
-            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1));
-        }
-        else
-        {
-            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(2));
-        }
     }
-
-
-
-
-
     //public static string RandomAI()
     //{
     //    int AIChoice = Random.Range(1, 4);
