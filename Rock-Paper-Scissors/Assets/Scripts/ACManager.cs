@@ -69,9 +69,7 @@ public class ACManager : MonoBehaviour
             if (data["menu"] != null)
             {
                 Debug.Log($"Menu button value : {data["menu"]}");
-                // TODO
-                // Add proper function name here.
-                // MenuManager.Instance.Action(data["menu"].ToString());
+                MainMenuManager.Instance.Action(data["menu"].ToString());
             }
             else if (data["move"] != null)
             {
