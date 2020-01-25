@@ -63,20 +63,22 @@ public class GameLogic : MonoBehaviour
 
     }
 
-    public static void TimerExpire()
+    public void TimerExpire()
     {
         //Need to see if timer expire then && count == 1
         if (play.Keys.ElementAt(0) == PlayerNumber.Player1)
         {
-            InterfaceManager.Instance.TakeDamage(PlayerNumber.Player2, play.Values.ElementAt(0), " ");
+            InterfaceManager.Instance.TakeDamage(PlayerNumber.Player2, play.Values.ElementAt(0), "Absolutely Nothing");
+            play.Clear();
         }
         else
         {
-            InterfaceManager.Instance.TakeDamage(PlayerNumber.Player1, play.Values.ElementAt(0), " ");
+            InterfaceManager.Instance.TakeDamage(PlayerNumber.Player1, play.Values.ElementAt(0), "Absolutely Nothing");
+            play.Clear();
         }
     }
        
-    public static void checkResultWithPlayer(Dictionary<PlayerNumber, string> moves)
+    public void checkResultWithPlayer(Dictionary<PlayerNumber, string> moves)
     {            
         //Rock 0 , Paper 1, Scissor 2
         if (moves.Values.ElementAt(0).Equals(moves.Values.ElementAt(1)))

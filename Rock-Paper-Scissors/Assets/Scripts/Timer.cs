@@ -34,8 +34,6 @@ public class Timer : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animation>();
-        //TimerActivate();
-        //Invoke("TimerComplete", 3f);
 
     }
 
@@ -50,7 +48,7 @@ public class Timer : MonoBehaviour
         else if (timerStarted && seconds <= 0)
         {
             timerStarted = false;
-            TimerComplete();
+            TimerComplete(true);
         }
     }
 
@@ -64,12 +62,25 @@ public class Timer : MonoBehaviour
         timerStarted = true;
     }
 
-    public void TimerComplete()
+    public void TimerComplete(bool expired = false)
     {
-        seconds = 0;
-        anim.clip = timerEnd;
-        anim.Play();
-        timerStarted = false;
+        if(!expired)
+        {
+            seconds = 0;
+            anim.clip = timerEnd;
+            anim.Play();
+            timerStarted = false;
+
+        }
+
+        else
+        {
+            seconds = 0;
+            anim.clip = timerEnd;
+            anim.Play();
+            timerStarted = false;
+            GameLogic.Instance.TimerExpire(); //Will damage player that didn't throw move
+        }
 
         //Add Next player turn logic here
     }
