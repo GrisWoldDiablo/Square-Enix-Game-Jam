@@ -51,7 +51,6 @@ public class MainMenuManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Return))
                 MenuRotatorIndex(menuRotator.MenuRotatorIndex);
-
         }
         else if (panelIndex == 1 && inMenu)
         {
@@ -75,6 +74,8 @@ public class MainMenuManager : MonoBehaviour
         {
             case 0:
                 InMenu(false);
+                InterfaceManager.Instance.InGame(true);
+                GameLogic.Instance.CanPlay = true;
                 break;
             case 1:
                 PanelToggle(1);
