@@ -42,7 +42,7 @@ public class InterfaceManager : MonoBehaviour
 
     void Test()
     {
-        TakeDamage(PlayerNumber.Player1, "paper", "rock");
+        TakeDamage(PlayerNumber.Player1, "Paper", "Rock");
     }
 
     public void TakeDamage(PlayerNumber player, string m1, string m2)
