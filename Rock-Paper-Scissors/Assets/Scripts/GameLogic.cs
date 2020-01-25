@@ -43,45 +43,79 @@ public class GameLogic : MonoBehaviour
     }
 
 
-
     public void PlayerMove(PlayerNumber player, string move)
     {
         if (!play.ContainsKey(player))
         {
             play.Add(player, move);
+            Timer.Instance.TimerActivate();
         }
         if(play.Count == 2)
         {
             checkResultWithPlayer(play);
-            play.Clear();            
+            play.Clear();
+            Timer.Instance.TimerComplete();
         }
         if(play.Count == 1 )//&& //Timer Jeff)
         {
-            //To do
+            //Call Jeff function
         }
 
     }
 
-    public static void checkResultWithPlayer(Dictionary<PlayerNumber, string> moves)
-    {        
+    public void TimerExpire()
+    {
+        //Need to see if timer expire then && count == 1
+        if (play.Keys.ElementAt(0) == PlayerNumber.Player1)
+        {
+            InterfaceManager.Instance.TakeDamage(PlayerNumber.Player2, play.Values.ElementAt(0), "Absolutely Nothing");
+            play.Clear();
+        }
+        else
+        {
+            InterfaceManager.Instance.TakeDamage(PlayerNumber.Player1, play.Values.ElementAt(0), "Absolutely Nothing");
+            play.Clear();
+        }
+    }
        
+    public void checkResultWithPlayer(Dictionary<PlayerNumber, string> moves)
+    {            
+        //Rock 0 , Paper 1, Scissor 2
         if (moves.Values.ElementAt(0).Equals(moves.Values.ElementAt(1)))
         {
-           InterfaceManager.Instance.TakeDamage(PlayerNumber.None);
+           InterfaceManager.Instance.TakeDamage(PlayerNumber.None, moves.Values.ElementAt(0), moves.Values.ElementAt(1));
         }
-        else if (moves.Values.ElementAt(0).Equals("Rock") && moves.Values.ElementAt(1).Equals("Paper"))
+        //Rock vs Paper
+        else if (moves.Values.ElementAt(0).Equals("0") && moves.Values.ElementAt(1).Equals("1"))
         {
-            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(0));
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(0), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
         }
-        else if (moves.Values.ElementAt(0).Equals("Rock") && moves.Values.ElementAt(1).Equals("Scissor"))
+        //Rock vs Scissor
+        else if (moves.Values.ElementAt(0).Equals("0") && moves.Values.ElementAt(1).Equals("2"))
         {
-            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1));
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
         }
-        else if (moves.Values.ElementAt(0).Equals("Paper") && moves.Values.ElementAt(1).Equals("Scissor"))
+        //Paper vs Scissor
+        else if (moves.Values.ElementAt(0).Equals("1") && moves.Values.ElementAt(1).Equals("2"))
         {
-            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(0));
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(0), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
+        }
+        //Paper vs Rock
+        else if (moves.Values.ElementAt(0).Equals("1") && moves.Values.ElementAt(1).Equals("0"))
+        {
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
+        }
+        //Scissor vs Paper
+        else if (moves.Values.ElementAt(0).Equals("2") && moves.Values.ElementAt(1).Equals("1"))
+        {
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
+        }
+        else
+        {//Scissor vs Rock
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(0), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
         }
     }
+
     //public static string RandomAI()
     //{
     //    int AIChoice = Random.Range(1, 4);

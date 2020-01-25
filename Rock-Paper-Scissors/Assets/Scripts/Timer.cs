@@ -15,11 +15,26 @@ public class Timer : MonoBehaviour
 
     bool timerStarted;
 
+    #region Singleton
+    private static Timer _instance = null;
+    public static Timer Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<Timer>();
+            }
+            return _instance;
+        }
+    }
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animation>();
-        //TimerActivate();
+
     }
 
     // Update is called once per frame
@@ -33,7 +48,7 @@ public class Timer : MonoBehaviour
         else if (timerStarted && seconds <= 0)
         {
             timerStarted = false;
-            TimerComplete();
+            TimerComplete(true);
         }
     }
 
@@ -47,12 +62,25 @@ public class Timer : MonoBehaviour
         timerStarted = true;
     }
 
-    public void TimerComplete()
+    public void TimerComplete(bool expired = false)
     {
-        seconds = 0;
-        anim.clip = timerEnd;
-        anim.Play();
-        timerStarted = false;
+        if(!expired)
+        {
+            seconds = 0;
+            anim.clip = timerEnd;
+            anim.Play();
+            timerStarted = false;
+
+        }
+
+        else
+        {
+            seconds = 0;
+            anim.clip = timerEnd;
+            anim.Play();
+            timerStarted = false;
+            GameLogic.Instance.TimerExpire(); //Will damage player that didn't throw move
+        }
 
         //Add Next player turn logic here
     }

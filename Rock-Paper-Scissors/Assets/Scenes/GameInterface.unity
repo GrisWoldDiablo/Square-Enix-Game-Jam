@@ -528,6 +528,7 @@ MonoBehaviour:
   - {fileID: 1305392831}
   - {fileID: 1755050011}
   ResultText: {fileID: 1918947005}
+  gameInterface: {fileID: 1078601162}
 --- !u!1 &1078601162
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,7 +683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerStart: {fileID: 7400000, guid: 8d6656db70860034a81551a72f941282, type: 2}
-  timerEnd: {fileID: 7400000, guid: 4d13642360db1c343ae82bc6028ada19, type: 2}
+  timerEnd: {fileID: 7400000, guid: 45c171cc681ca46b8ba4bf4820aecffd, type: 2}
   seconds: 5
   timerText: {fileID: 1764627133}
 --- !u!114 &1155887187
@@ -730,10 +731,10 @@ Animation:
   m_GameObject: {fileID: 1155887184}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 7400000, guid: 8d6656db70860034a81551a72f941282, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 8d6656db70860034a81551a72f941282, type: 2}
-  - {fileID: 7400000, guid: 4d13642360db1c343ae82bc6028ada19, type: 2}
+  - {fileID: 7400000, guid: 45c171cc681ca46b8ba4bf4820aecffd, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
@@ -811,6 +812,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305392829}
   m_CullTransparentMesh: 0
+--- !u!1 &1514515560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1514515562}
+  - component: {fileID: 1514515561}
+  m_Layer: 0
+  m_Name: GameLogic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1514515561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514515560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da167c151c9f20344b8ce18b92a19176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rock: Rock
+  paper: Paper
+  scissor: Scissor
+--- !u!4 &1514515562
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514515560}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1710816294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1042,8 +1089,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1059,7 +1106,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1187,7 +1234,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1909776938}
   - component: {fileID: 1909776937}
-  - component: {fileID: 1909776936}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1195,14 +1241,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1909776936
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909776935}
-  m_Enabled: 1
 --- !u!20 &1909776937
 Camera:
   m_ObjectHideFlags: 0
@@ -1343,8 +1381,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 182.74
-  m_fontSizeBase: 182.74
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

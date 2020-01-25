@@ -23,7 +23,7 @@ public class MainMenuManager : MonoBehaviour
 
     //Fields
     private int panelIndex = 0;
-    private bool inMenu = true;
+    public bool inMenu = true;
 
     private AsyncOperation async;
     private MenuRotator menuRotator;
@@ -74,6 +74,7 @@ public class MainMenuManager : MonoBehaviour
         switch (index)
         {
             case 0:
+                InMenu(false);
                 break;
             case 1:
                 PanelToggle(1);
