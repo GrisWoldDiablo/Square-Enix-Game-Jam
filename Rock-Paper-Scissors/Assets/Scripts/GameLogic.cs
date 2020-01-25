@@ -76,29 +76,42 @@ public class GameLogic : MonoBehaviour
         }
     }
        
-
-   
-
     public static void checkResultWithPlayer(Dictionary<PlayerNumber, string> moves)
-    {        
-       
+    {            
+        //Rock 0 , Paper 1, Scissor 2
         if (moves.Values.ElementAt(0).Equals(moves.Values.ElementAt(1)))
         {
            InterfaceManager.Instance.TakeDamage(PlayerNumber.None, moves.Values.ElementAt(0), moves.Values.ElementAt(1));
         }
+        //Rock vs Paper
         else if (moves.Values.ElementAt(0).Equals("0") && moves.Values.ElementAt(1).Equals("1"))
         {
             InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(0), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
         }
+        //Rock vs Scissor
         else if (moves.Values.ElementAt(0).Equals("0") && moves.Values.ElementAt(1).Equals("2"))
         {
             InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
         }
+        //Paper vs Scissor
         else if (moves.Values.ElementAt(0).Equals("1") && moves.Values.ElementAt(1).Equals("2"))
         {
             InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(0), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
         }
-
+        //Paper vs Rock
+        else if (moves.Values.ElementAt(0).Equals("1") && moves.Values.ElementAt(1).Equals("0"))
+        {
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
+        }
+        //Scissor vs Paper
+        else if (moves.Values.ElementAt(0).Equals("2") && moves.Values.ElementAt(1).Equals("1"))
+        {
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
+        }
+        else
+        {//Scissor vs Rock
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(0), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
+        }
     }
 
     //public static string RandomAI()
