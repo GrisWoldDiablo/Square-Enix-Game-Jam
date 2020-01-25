@@ -36,15 +36,16 @@ public class GameLogic : MonoBehaviour
     {
         
     }
-
+    //Return the player count
     public int NumberOfPlayer()
     {
         return play.Count;
     }
 
-
+    //Add a player to the dict , Enum Player and their move
     public void PlayerMove(PlayerNumber player, string move)
     {
+        //Only add if player does not exist, remove spamming problem.
         if (!play.ContainsKey(player))
         {
             play.Add(player, move);
@@ -56,13 +57,9 @@ public class GameLogic : MonoBehaviour
             play.Clear();
             Timer.Instance.TimerComplete();
         }
-        if(play.Count == 1 )//&& //Timer Jeff)
-        {
-            //Call Jeff function
-        }
-
     }
 
+    //If player one play a move and timer expire before the second player played
     public void TimerExpire()
     {
         //Need to see if timer expire then && count == 1
