@@ -31,11 +31,10 @@ public class ACManager : MonoBehaviour
     #endregion
 
     private const int MIN_PLAYERS = 2;
-    // TODO 
-    // change scene names
+
     private readonly string[] SCENE_TO_LOAD = new string[] {
-        "TestConnect",
-        "main"
+        "GameInterface",
+        "MainMenu"
     }; // name of the scene to be loaded.
 
     [SerializeField] private GameObject _panelWarning;
@@ -69,15 +68,11 @@ public class ACManager : MonoBehaviour
             if (data["menu"] != null)
             {
                 Debug.Log($"Menu button value : {data["menu"]}");
-                // TODO
-                // Add proper function name here.
-                // MenuManager.Instance.Action(data["menu"].ToString());
+                MainMenuManager.Instance.Action(data["menu"].ToString());
             }
             else if (data["move"] != null)
             {
                 Debug.Log($"Move button value : {data["move"]}");
-                // TODO 
-                // check if this syntax is proper.
                 GameLogic.Instance.PlayerMove(_players[device_id], data["move"].ToString());
             }
             Debug.Log(_players[device_id]);
