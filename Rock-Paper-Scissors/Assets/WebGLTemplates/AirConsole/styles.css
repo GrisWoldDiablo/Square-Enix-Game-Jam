@@ -4,6 +4,7 @@ html, body {
 }
 
 .move-wrapper {
+  margin-top: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -21,6 +22,11 @@ html, body {
   display: flex;
 }
 
+.move-registor:hover, .move-registor:active {
+  border-color: lightgrey;
+  transition: border linear .3s;
+}
+
 .move-img {
   width: 150px;
   margin: auto;
@@ -33,3 +39,37 @@ html, body {
   flex-direction: row;
   justify-content: space-between;
 }
+
+.menu-wrapper {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 20vh;
+}
+
+button {
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 0 .5rem;
+  font-size: xx-large;
+}
+
+button:hover {
+  opacity: 0.7;
+  transition: opacity ease-in .2s;
+}
+
+.menu-swiper {
+  flex-grow: 3;
+}
+
+.menu-action {
+  flex-grow: 2;
+}
+
+#player-status {
+  text-align: center;
+  margin: 1rem 0;
+}
+
