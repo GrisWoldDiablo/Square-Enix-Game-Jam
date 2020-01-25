@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class InterfaceManager : MonoBehaviour
 {
-
-
     int[] playerHealth = new int[2];
 
     [SerializeField] int totalHealth;
@@ -37,22 +35,16 @@ public class InterfaceManager : MonoBehaviour
     {
         playerHealth[0] = totalHealth;
         playerHealth[1] = totalHealth;
-        //InvokeRepeating("Test", 2f,2f);
-    }
-
-    void Test()
-    {
-        TakeDamage(PlayerNumber.Player1, "Paper", "Rock");
     }
 
     public void TakeDamage(PlayerNumber player, string m1, string m2)
     {
         if (m1.Equals("0")) m1 = m1.Replace("0", "Rock");
-        else if (m1.Equals("1")) m2 = m2.Replace("1", "Paper");
+        else if (m1.Equals("1")) m1 = m1.Replace("1", "Paper");
         else if(m1.Equals("2")) m1 = m1.Replace("2", "Scissors");
 
         if(m2.Equals("0")) m2 = m2.Replace("0", "Rock");
-        else if(m2.Equals("1")) m1 = m1.Replace("1", "Paper");
+        else if(m2.Equals("1")) m2 = m2.Replace("1", "Paper");
         else if(m2.Equals("2")) m2 = m2.Replace("2", "Scissors");
 
         //Player 1 Takes Damage
@@ -68,6 +60,8 @@ public class InterfaceManager : MonoBehaviour
             heartsP1[playerHealth[0] - 1].enabled = false; //Remove heart at relevant index
             playerHealth[0]--;
             RoundText("Player 1 wins the game! " + m1 + " vs. " + m2);
+            MainMenuManager.Instance.InMenu(true);
+            //ACManager InMenu, Talk to controller to display win on devices, show menu
         }
 
         //Player 2 Take damage
@@ -83,6 +77,7 @@ public class InterfaceManager : MonoBehaviour
             heartsP1[playerHealth[0] - 1].enabled = false; //Remove heart at relevant index
             playerHealth[0]--;
             Debug.Log("Player 2 Wins the Game! " + m1 + " vs. " + m2);
+            MainMenuManager.Instance.InMenu(true);
         }
 
         else if (player == PlayerNumber.None)
