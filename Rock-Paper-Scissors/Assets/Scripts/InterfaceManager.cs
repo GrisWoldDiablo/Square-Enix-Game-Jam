@@ -35,7 +35,6 @@ public class InterfaceManager : MonoBehaviour
 
     private void Start()
     {
-        
         playerHealth[0] = totalHealth;
         playerHealth[1] = totalHealth;
         //InvokeRepeating("Test", 2f,2f);
