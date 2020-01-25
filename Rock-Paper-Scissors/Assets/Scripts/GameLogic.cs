@@ -86,17 +86,17 @@ public class GameLogic : MonoBehaviour
         {
            InterfaceManager.Instance.TakeDamage(PlayerNumber.None, moves.Values.ElementAt(0), moves.Values.ElementAt(1));
         }
-        else if (moves.Values.ElementAt(0).Equals("Rock") && moves.Values.ElementAt(1).Equals("Paper"))
+        else if (moves.Values.ElementAt(0).Equals("0") && moves.Values.ElementAt(1).Equals("1"))
         {
-            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1), moves.Values.ElementAt(0), moves.Values.ElementAt(1).ToString());
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(0), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
         }
-        else if (moves.Values.ElementAt(0).Equals("Rock") && moves.Values.ElementAt(1).Equals("Scissor"))
+        else if (moves.Values.ElementAt(0).Equals("0") && moves.Values.ElementAt(1).Equals("2"))
         {
-            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(2), moves.Values.ElementAt(0), moves.Values.ElementAt(1).ToString());
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
         }
-        else if (moves.Values.ElementAt(0).Equals("Paper") && moves.Values.ElementAt(1).Equals("Scissor"))
+        else if (moves.Values.ElementAt(0).Equals("1") && moves.Values.ElementAt(1).Equals("2"))
         {
-            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1), moves.Values.ElementAt(0), moves.Values.ElementAt(1).ToString());
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(0), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
         }
 
     }
