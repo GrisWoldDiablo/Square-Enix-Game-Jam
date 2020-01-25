@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class MainMenuManager : MonoBehaviour
         {
             if (instance == null)
                 instance = FindObjectOfType<MainMenuManager>();
-            
+
             return instance;
         }
     }
@@ -25,21 +25,18 @@ public class MainMenuManager : MonoBehaviour
     private int panelIndex = 0;
     public bool inMenu = true;
 
-    private AsyncOperation async;
     private MenuRotator menuRotator;
 
     [SerializeField] private GameObject[] panels;
     [SerializeField] private GameObject[] mainMenuObjects;
     [SerializeField] private Slider soundSlider;
-
+    [SerializeField] private AudioMixer audioMixer;
     private void Start()
     {
-        PanelToggle(panelIndex);
-
         menuRotator = FindObjectOfType<MenuRotator>();
+        PanelToggle(panelIndex);
     }
 
-    // Update is called once per frame
     private void Update()
     {
         if (panelIndex == 0 && inMenu)
@@ -67,6 +64,7 @@ public class MainMenuManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
             InMenu(!inMenu);
 
+        audioMixer.SetFloat("MasterVolume", soundSlider.value);
     }
 
     private void MenuRotatorIndex(int index)

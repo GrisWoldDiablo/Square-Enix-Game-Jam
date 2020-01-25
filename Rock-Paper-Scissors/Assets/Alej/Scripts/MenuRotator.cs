@@ -6,6 +6,7 @@ using UnityEngine.UI;
  public class MenuRotator : MonoBehaviour
 {
     [SerializeField] private GameObject[] buttons;
+    [SerializeField] private float rotatingTime;
     private int menuIndex = 0;
     private bool isRotating = false;
 
@@ -17,15 +18,15 @@ using UnityEngine.UI;
         {
             isRotating = true;
             MenuIndex(-1);
-            StartCoroutine(Rotate(new Vector3(0, -90, 0), 0.5f));
+            StartCoroutine(Rotate(new Vector3(0, -90, 0)));
         }
     }
-    public IEnumerator Rotate(Vector3 direction, float time)
+    public IEnumerator Rotate(Vector3 direction)
     {
         Quaternion start = transform.rotation;
         Quaternion end = start * Quaternion.Euler(direction);
 
-        float rate = 1.0f / time;
+        float rate = 1.0f / rotatingTime;
         float timer = 0.0f;
 
         while (timer < 1.0)
@@ -45,11 +46,11 @@ using UnityEngine.UI;
         {
             isRotating = true;
             MenuIndex(1);
-            StartCoroutine(Rotate(new Vector3(0, 90, 0), 0.5f)); 
+            StartCoroutine(Rotate(new Vector3(0, 90, 0))); 
         }
     }
 
-    void MenuIndex(int direction)
+    void MenuIndex(int direction) // 1 Right, -1 left
     {
         buttons[menuIndex].GetComponent<Image>().color = new Color(1, 1, 1);
 
