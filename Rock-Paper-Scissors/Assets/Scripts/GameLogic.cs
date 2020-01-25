@@ -43,7 +43,6 @@ public class GameLogic : MonoBehaviour
     }
 
 
-
     public void PlayerMove(PlayerNumber player, string move)
     {
         if (!play.ContainsKey(player))
@@ -59,10 +58,26 @@ public class GameLogic : MonoBehaviour
         }
         if(play.Count == 1 )//&& //Timer Jeff)
         {
-            //To do
+            //Call Jeff function
         }
 
     }
+
+    public static void TimerExpire()
+    {
+        //Need to see if timer expire then && count == 1
+        if (play.Keys.ElementAt(0) == PlayerNumber.Player1)
+        {
+            InterfaceManager.Instance.TakeDamage(PlayerNumber.Player2, play.Values.ElementAt(0), " ");
+        }
+        else
+        {
+            InterfaceManager.Instance.TakeDamage(PlayerNumber.Player1, play.Values.ElementAt(0), " ");
+        }
+    }
+       
+
+   
 
     public static void checkResultWithPlayer(Dictionary<PlayerNumber, string> moves)
     {        
@@ -71,7 +86,7 @@ public class GameLogic : MonoBehaviour
         {
            InterfaceManager.Instance.TakeDamage(PlayerNumber.None, moves.Values.ElementAt(0), moves.Values.ElementAt(1));
         }
-        else if (moves.Values.ElementAt(0).ToString().Equals("Rock") && moves.Values.ElementAt(1).Equals("Paper"))
+        else if (moves.Values.ElementAt(0).Equals("Rock") && moves.Values.ElementAt(1).Equals("Paper"))
         {
             InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1), moves.Values.ElementAt(0), moves.Values.ElementAt(1).ToString());
         }
@@ -83,7 +98,9 @@ public class GameLogic : MonoBehaviour
         {
             InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1), moves.Values.ElementAt(0), moves.Values.ElementAt(1).ToString());
         }
+
     }
+
     //public static string RandomAI()
     //{
     //    int AIChoice = Random.Range(1, 4);
