@@ -71,17 +71,17 @@ public class GameLogic : MonoBehaviour
         {
            InterfaceManager.Instance.TakeDamage(PlayerNumber.None, moves.Values.ElementAt(0), moves.Values.ElementAt(1));
         }
-        else if (moves.Values.ElementAt(0).Equals("Rock") && moves.Values.ElementAt(1).Equals("Paper"))
+        else if (moves.Values.ElementAt(0).ToString().Equals("Rock") && moves.Values.ElementAt(1).Equals("Paper"))
         {
-            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1), moves.Values.ElementAt(0), moves.Values.ElementAt(1).ToString());
         }
         else if (moves.Values.ElementAt(0).Equals("Rock") && moves.Values.ElementAt(1).Equals("Scissor"))
         {
-            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(2), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(2), moves.Values.ElementAt(0), moves.Values.ElementAt(1).ToString());
         }
         else if (moves.Values.ElementAt(0).Equals("Paper") && moves.Values.ElementAt(1).Equals("Scissor"))
         {
-            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
+            InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1), moves.Values.ElementAt(0), moves.Values.ElementAt(1).ToString());
         }
     }
     //public static string RandomAI()
