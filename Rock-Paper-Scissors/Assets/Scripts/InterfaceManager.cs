@@ -114,6 +114,7 @@ public class InterfaceManager : MonoBehaviour
 
     void RoundText(string s)
     {
+        CancelInvoke();
         ResultText.text = s;
         ResultText.enabled = true;
         Invoke("HideResult", 3f);
