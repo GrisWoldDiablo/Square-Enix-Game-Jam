@@ -23,7 +23,11 @@ public class GameLogic : MonoBehaviour
             return _instance;
         }
     }
+
+    public bool CanPlay { get => canPlay; set => canPlay = value; }
     #endregion
+
+    bool canPlay;
 
     // Start is called before the first frame update
     void Start()
@@ -36,48 +40,47 @@ public class GameLogic : MonoBehaviour
     {
         
     }
-
+    //Return the player count
     public int NumberOfPlayer()
     {
         return play.Count;
     }
 
-
+    //Add a player to the dict , Enum Player and their move
     public void PlayerMove(PlayerNumber player, string move)
     {
-        if (!play.ContainsKey(player))
+        if (!play.ContainsKey(player) && canPlay)
         {
             play.Add(player, move);
             Timer.Instance.TimerActivate();
         }
-        if(play.Count == 2)
+        if(play.Count == 2 && canPlay)
         {
             checkResultWithPlayer(play);
             play.Clear();
             Timer.Instance.TimerComplete();
         }
-        if(play.Count == 1 )//&& //Timer Jeff)
-        {
-            //Call Jeff function
-        }
-
     }
 
-    public static void TimerExpire()
+    //If player one play a move and timer expire before the second player played
+    public void TimerExpire()
     {
         //Need to see if timer expire then && count == 1
         if (play.Keys.ElementAt(0) == PlayerNumber.Player1)
         {
-            InterfaceManager.Instance.TakeDamage(PlayerNumber.Player2, play.Values.ElementAt(0), " ");
+            InterfaceManager.Instance.TakeDamage(PlayerNumber.Player2, play.Values.ElementAt(0), "Absolutely Nothing");
+            play.Clear();
         }
         else
         {
-            InterfaceManager.Instance.TakeDamage(PlayerNumber.Player1, play.Values.ElementAt(0), " ");
+            InterfaceManager.Instance.TakeDamage(PlayerNumber.Player1, play.Values.ElementAt(0), "Absolutely Nothing");
+            play.Clear();
         }
     }
        
-    public static void checkResultWithPlayer(Dictionary<PlayerNumber, string> moves)
+    public void checkResultWithPlayer(Dictionary<PlayerNumber, string> moves)
     {            
+        
         //Rock 0 , Paper 1, Scissor 2
         if (moves.Values.ElementAt(0).Equals(moves.Values.ElementAt(1)))
         {
@@ -108,7 +111,7 @@ public class GameLogic : MonoBehaviour
         {
             InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
         }
-        else
+        else if (moves.Values.ElementAt(1).Equals("0") && moves.Values.ElementAt(0).Equals("2"))
         {//Scissor vs Rock
             InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(0), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
         }
