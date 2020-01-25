@@ -15,11 +15,28 @@ public class Timer : MonoBehaviour
 
     bool timerStarted;
 
+    #region Singleton
+    private static Timer _instance = null;
+    public static Timer Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = GameObject.FindObjectOfType<Timer>();
+            }
+            return _instance;
+        }
+    }
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animation>();
         //TimerActivate();
+        //Invoke("TimerComplete", 3f);
+
     }
 
     // Update is called once per frame
