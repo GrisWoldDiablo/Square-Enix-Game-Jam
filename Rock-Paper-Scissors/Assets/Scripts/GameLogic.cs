@@ -40,13 +40,13 @@ public class GameLogic : MonoBehaviour
     {
         
     }
-
+    //Return the player count
     public int NumberOfPlayer()
     {
         return play.Count;
     }
 
-
+    //Add a player to the dict , Enum Player and their move
     public void PlayerMove(PlayerNumber player, string move)
     {
         if (!play.ContainsKey(player) && canPlay)
@@ -62,6 +62,7 @@ public class GameLogic : MonoBehaviour
         }
     }
 
+    //If player one play a move and timer expire before the second player played
     public void TimerExpire()
     {
         //Need to see if timer expire then && count == 1
