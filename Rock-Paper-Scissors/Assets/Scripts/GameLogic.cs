@@ -23,7 +23,11 @@ public class GameLogic : MonoBehaviour
             return _instance;
         }
     }
+
+    public bool CanPlay { get => canPlay; set => canPlay = value; }
     #endregion
+
+    bool canPlay;
 
     // Start is called before the first frame update
     void Start()
@@ -45,13 +49,12 @@ public class GameLogic : MonoBehaviour
     //Add a player to the dict , Enum Player and their move
     public void PlayerMove(PlayerNumber player, string move)
     {
-        //Only add if player does not exist, remove spamming problem.
-        if (!play.ContainsKey(player))
+        if (!play.ContainsKey(player) && canPlay)
         {
             play.Add(player, move);
             Timer.Instance.TimerActivate();
         }
-        if(play.Count == 2)
+        if(play.Count == 2 && canPlay)
         {
             checkResultWithPlayer(play);
             play.Clear();
@@ -77,6 +80,7 @@ public class GameLogic : MonoBehaviour
        
     public void checkResultWithPlayer(Dictionary<PlayerNumber, string> moves)
     {            
+        
         //Rock 0 , Paper 1, Scissor 2
         if (moves.Values.ElementAt(0).Equals(moves.Values.ElementAt(1)))
         {
@@ -107,7 +111,7 @@ public class GameLogic : MonoBehaviour
         {
             InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(1), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
         }
-        else
+        else if (moves.Values.ElementAt(1).Equals("0") && moves.Values.ElementAt(0).Equals("2"))
         {//Scissor vs Rock
             InterfaceManager.Instance.TakeDamage(moves.Keys.ElementAt(0), moves.Values.ElementAt(0), moves.Values.ElementAt(1));
         }

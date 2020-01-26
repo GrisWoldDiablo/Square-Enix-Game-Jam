@@ -528,7 +528,7 @@ MonoBehaviour:
   - {fileID: 1305392831}
   - {fileID: 1755050011}
   ResultText: {fileID: 1918947005}
-  gameInterface: {fileID: 1078601162}
+  gameInterface: {fileID: 1078601165}
 --- !u!1 &1078601162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,8 +1381,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 55
+  m_fontSizeBase: 55
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

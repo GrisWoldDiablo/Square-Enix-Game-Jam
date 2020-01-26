@@ -92,10 +92,14 @@ public class ACManager : MonoBehaviour
             if (!_players.ContainsValue(PlayerNumber.Player1))
             {
                 _players.Add(device_id, PlayerNumber.Player1);
+                AirConsole.instance.Message(device_id, "PLAYER1");
+                InitStatus(device_id);
             }
             else
             {
                 _players.Add(device_id, PlayerNumber.Player2);
+                AirConsole.instance.Message(device_id, "PLAYER2");
+                InitStatus(device_id);
             }
             if (_players.Count == MIN_PLAYERS)
             {
@@ -163,11 +167,27 @@ public class ACManager : MonoBehaviour
 
     // Message sent to AirConsole controllers.
     /// <summary>
+    /// Sends to the current device id the status of the game. 
+    /// is it in the menu or in the game.
+    /// </summary>
+    /// <param name="device_id"></param>
+    private void InitStatus(int device_id)
+    {
+        if (!MainMenuManager.Instance.inMenu)
+        {
+            AirConsole.instance.Message(device_id,"INMENU");
+        }
+        else
+        {
+            AirConsole.instance.Message(device_id, "INGAME");
+        }
+    }
+    /// <summary>
     /// Send a message to all AirConsole controllers telling them they are in the menu.
     /// </summary>
     public void InMenu()
     {
-        AirConsole.instance.Broadcast("inmenu");
+        AirConsole.instance.Broadcast("INMENU");
         AudioManager.Instance.PlayMainMenuMusic();
     }
 
@@ -176,7 +196,7 @@ public class ACManager : MonoBehaviour
     /// </summary>
     public void InGame()
     {
-        AirConsole.instance.Broadcast("ingame");
+        AirConsole.instance.Broadcast("INGAME");
         AudioManager.Instance.PlayGameInterfaceMusic();
     }
 
@@ -185,7 +205,7 @@ public class ACManager : MonoBehaviour
     /// </summary>
     public void MissingPlayer()
     {
-        AirConsole.instance.Broadcast("missingplayer");
+        AirConsole.instance.Broadcast("MISSINGPLAYERS");
     }
 
     /// <summary>
@@ -193,7 +213,7 @@ public class ACManager : MonoBehaviour
     /// </summary>
     public void AllPlayers()
     {
-        AirConsole.instance.Broadcast("allplayers");
+        AirConsole.instance.Broadcast("ALLPLAYERS");
         AudioManager.Instance.PlayConnectedSFX();
     }
 
@@ -203,7 +223,7 @@ public class ACManager : MonoBehaviour
     /// </summary>
     public void GameFull(int device_id)
     {
-        AirConsole.instance.Message(device_id,"gamefull");
+        AirConsole.instance.Message(device_id,"GAMEFULL");
     }
 
     /// <summary>
@@ -211,7 +231,7 @@ public class ACManager : MonoBehaviour
     /// </summary>
     public void RoundReady()
     {
-        AirConsole.instance.Broadcast("roundready");
+        AirConsole.instance.Broadcast("ROUNDREADY");
         AudioManager.Instance.PlayGameInterfaceMusic();
     }
 
@@ -225,13 +245,14 @@ public class ACManager : MonoBehaviour
         {
             if (keyValuePair.Value == winningPlayer)
             {
-                AirConsole.instance.Message(keyValuePair.Key, "winner");
+                AirConsole.instance.Message(keyValuePair.Key, "WINNER");
             }
             else
             {
-                AirConsole.instance.Message(keyValuePair.Key, "loser");
+                AirConsole.instance.Message(keyValuePair.Key, "LOSER");
             }
         }
     }
+
 
 } //class
