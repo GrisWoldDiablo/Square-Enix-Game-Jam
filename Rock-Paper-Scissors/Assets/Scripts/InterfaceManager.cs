@@ -13,7 +13,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] Image[] heartsP2;
 
     [SerializeField] TextMeshProUGUI ResultText;
-
+    [SerializeField] Canvas gameInterface;
 
     #region Singleton
     private static InterfaceManager _instance = null;
@@ -30,9 +30,9 @@ public class InterfaceManager : MonoBehaviour
     }
     #endregion
 
-
     private void Start()
     {
+        InGame(false);
         playerHealth[0] = totalHealth;
         playerHealth[1] = totalHealth;
     }
@@ -56,12 +56,13 @@ public class InterfaceManager : MonoBehaviour
         }
         else if (player == PlayerNumber.Player1)
         {
-            //P1 LOSE LOGIC
+            //P1 Win LOGIC
             heartsP1[playerHealth[0] - 1].enabled = false; //Remove heart at relevant index
             playerHealth[0]--;
             RoundText("Player 1 wins the game! " + m1 + " vs. " + m2);
-            MainMenuManager.Instance.InMenu(true);
-            //ACManager InMenu, Talk to controller to display win on devices, show menu
+            GameLogic.Instance.CanPlay = false;
+            Invoke("FinishGame", 3f);
+            ACManager.Instance.MatchResult(player);
         }
 
         //Player 2 Take damage
@@ -73,11 +74,13 @@ public class InterfaceManager : MonoBehaviour
         }
         else if (player == PlayerNumber.Player2)
         {
-            //P2 LOSE LOGIC
-            heartsP1[playerHealth[0] - 1].enabled = false; //Remove heart at relevant index
-            playerHealth[0]--;
-            Debug.Log("Player 2 Wins the Game! " + m1 + " vs. " + m2);
-            MainMenuManager.Instance.InMenu(true);
+            //P2 Win LOGIC
+            heartsP2[playerHealth[1] - 1].enabled = false; //Remove heart at relevant index
+            playerHealth[1]--;
+            RoundText("Player 2 wins the game : " + m1 + " vs. " + m2);
+            GameLogic.Instance.CanPlay = false;
+            Invoke("FinishGame", 3f);
+            ACManager.Instance.MatchResult(player);
         }
 
         else if (player == PlayerNumber.None)
@@ -86,8 +89,33 @@ public class InterfaceManager : MonoBehaviour
         }
     }
 
+    void FinishGame()
+    {
+      
+        foreach(var heart in heartsP1)
+        {
+            heart.enabled = true;
+        }
+
+        foreach(var heart in heartsP2)
+        {
+            heart.enabled = true;
+        }
+        playerHealth[0] = totalHealth;
+        playerHealth[1] = totalHealth;
+
+        InGame(false);
+        MainMenuManager.Instance.InMenu(true);
+    }
+
+    public void InGame(bool game = true)
+    {
+        gameInterface.enabled = game;
+    }
+
     void RoundText(string s)
     {
+        CancelInvoke();
         ResultText.text = s;
         ResultText.enabled = true;
         Invoke("HideResult", 3f);

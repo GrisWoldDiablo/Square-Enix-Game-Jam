@@ -48,7 +48,6 @@ public class MainMenuManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Return))
                 MenuRotatorIndex(menuRotator.MenuRotatorIndex);
-
         }
         else if (panelIndex == 1 && inMenu)
         {
@@ -73,6 +72,8 @@ public class MainMenuManager : MonoBehaviour
         {
             case 0:
                 InMenu(false);
+                InterfaceManager.Instance.InGame(true);
+                GameLogic.Instance.CanPlay = true;
                 break;
             case 1:
                 PanelToggle(1);
@@ -88,6 +89,15 @@ public class MainMenuManager : MonoBehaviour
 
     public void InMenu(bool isInMenu)
     {
+        if (isInMenu)
+        {
+            ACManager.Instance.InMenu();
+        }
+        else
+        {
+            ACManager.Instance.InGame();
+        }
+
         inMenu = isInMenu;
 
         for (int i = 0; i < mainMenuObjects.Length; i++)
@@ -96,6 +106,10 @@ public class MainMenuManager : MonoBehaviour
 
     public void Action(string action)
     {
+        if (!inMenu)
+        {
+            return;
+        }
         switch (action)
         {
             case "LEFT":
