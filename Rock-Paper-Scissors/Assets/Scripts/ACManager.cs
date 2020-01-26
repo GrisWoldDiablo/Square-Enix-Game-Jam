@@ -188,6 +188,7 @@ public class ACManager : MonoBehaviour
     public void InMenu()
     {
         AirConsole.instance.Broadcast("INMENU");
+        AudioManager.Instance.PlayMainMenuMusic();
     }
 
     /// <summary>
@@ -196,6 +197,7 @@ public class ACManager : MonoBehaviour
     public void InGame()
     {
         AirConsole.instance.Broadcast("INGAME");
+        AudioManager.Instance.PlayGameInterfaceMusic();
     }
 
     /// <summary>
@@ -212,6 +214,7 @@ public class ACManager : MonoBehaviour
     public void AllPlayers()
     {
         AirConsole.instance.Broadcast("ALLPLAYERS");
+        AudioManager.Instance.PlayConnectedSFX();
     }
 
     /// <summary>
@@ -229,6 +232,7 @@ public class ACManager : MonoBehaviour
     public void RoundReady()
     {
         AirConsole.instance.Broadcast("ROUNDREADY");
+        AudioManager.Instance.PlayGameInterfaceMusic();
     }
 
     /// <summary>

@@ -238,5 +238,106 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 24100000, guid: 3a02d9c0420a5d5468babb65c9bfe7bc,
         type: 2}
+    - target: {fileID: 8273842338951407133, guid: 375369360bcf7aa43aa63ca454233331,
+        type: 3}
+      propertyPath: m_Text
+      value: '
+
+
+        MADE BY
+
+        Alexandre Lepage, Jeffrey White Couture, Minh Trinh
+
+        Robert Tran, Alejandro Flores and Angeline Siv
+
+
+        LaSalle College
+
+        Prof. Felix Soumpholphakdy'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8273842338951407133, guid: 375369360bcf7aa43aa63ca454233331,
+        type: 3}
+      propertyPath: m_FontData.m_AlignByGeometry
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8273842338951407133, guid: 375369360bcf7aa43aa63ca454233331,
+        type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8273842338951407133, guid: 375369360bcf7aa43aa63ca454233331,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 375369360bcf7aa43aa63ca454233331, type: 3}
+--- !u!1001 &968700200
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2555912464779608658, guid: c596033bfb97b6649b03b90ec99be4c7,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2555912464779608662, guid: c596033bfb97b6649b03b90ec99be4c7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 247.35527
+      objectReference: {fileID: 0}
+    - target: {fileID: 2555912464779608662, guid: c596033bfb97b6649b03b90ec99be4c7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1002.31995
+      objectReference: {fileID: 0}
+    - target: {fileID: 2555912464779608662, guid: c596033bfb97b6649b03b90ec99be4c7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.39118
+      objectReference: {fileID: 0}
+    - target: {fileID: 2555912464779608662, guid: c596033bfb97b6649b03b90ec99be4c7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2555912464779608662, guid: c596033bfb97b6649b03b90ec99be4c7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2555912464779608662, guid: c596033bfb97b6649b03b90ec99be4c7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2555912464779608662, guid: c596033bfb97b6649b03b90ec99be4c7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2555912464779608662, guid: c596033bfb97b6649b03b90ec99be4c7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2555912464779608662, guid: c596033bfb97b6649b03b90ec99be4c7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2555912464779608662, guid: c596033bfb97b6649b03b90ec99be4c7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2555912464779608662, guid: c596033bfb97b6649b03b90ec99be4c7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c596033bfb97b6649b03b90ec99be4c7, type: 3}
