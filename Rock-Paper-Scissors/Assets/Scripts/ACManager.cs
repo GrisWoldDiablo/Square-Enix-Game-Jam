@@ -106,6 +106,10 @@ public class ACManager : MonoBehaviour
                 _panelWarning.SetActive(false);
                 AllPlayers();
             }
+            else
+            {
+                MissingPlayer();
+            }
             UpdateTextWarning();
         }
         else
@@ -173,7 +177,7 @@ public class ACManager : MonoBehaviour
     /// <param name="device_id"></param>
     private void InitStatus(int device_id)
     {
-        if (!MainMenuManager.Instance.inMenu)
+        if (MainMenuManager.Instance.inMenu)
         {
             AirConsole.instance.Message(device_id,"INMENU");
         }

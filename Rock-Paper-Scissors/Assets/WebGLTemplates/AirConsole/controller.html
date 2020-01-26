@@ -8,22 +8,22 @@
   </head>
   <body onload="init()">
     <div id="player-status">Status here!</div>
-    <div class="move-wrapper">
-      <div class="move-registor" onclick="sendMove(MOVES.ROCK)">
+    <div id="gamebutton" class="move-wrapper">
+      <div id="mrock" class="move-registor" onclick="sendMove(MOVES.ROCK)">
         <img class="move-img" src="./Sprites/Rock.png">
       </div>
-      <div class="move-registor" onclick="sendMove(MOVES.PAPER)">
+      <div id="mpaper" class="move-registor" onclick="sendMove(MOVES.PAPER)">
         <img class="move-img" src="./Sprites/Paper.png">
       </div>
-      <div class="move-registor" onclick="sendMove(MOVES.SCISSORS)">
+      <div id="mscissors"class="move-registor" onclick="sendMove(MOVES.SCISSORS)">
         <img class="move-img" src="./Sprites/Scissors.png">
       </div>
     </div>
-    <div class="menu-wrapper">
+    <div id="menubutton" class="menu-wrapper">
       <button class="menu-swiper" style="background-color: 	#ffa700;" onclick="sendMenuOption(MENU.LEFT)"><i class="fas fa-angle-left"></i></button>
       <button class="menu-swiper" style="background-color: 	#ffa700;" onclick="sendMenuOption(MENU.RIGHT)"><i class="fas fa-angle-right"></i></button>
       <button class="menu-action" style="background-color: #008744;" onclick="sendMenuOption(MENU.ENTER)"><i class="fas fa-check"></i></button>
       <button class="menu-action" style="background-color: #d62d20;"onclick="sendMenuOption(MENU.EXIT)"><i class="fas fa-times"></i></button>
-    </div>
+    </divid="mwrap">
   </body>
 </html>
