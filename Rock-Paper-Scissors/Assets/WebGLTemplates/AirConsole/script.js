@@ -16,15 +16,15 @@ const MENU = Object.freeze({
 const init = () => {
   airconsole = new AirConsole({"orientation": "landscape"});
   airconsole.onMessage = onReceiveMessage;
-  airconsole.onActivePlayersChange = (player_number) => {
-    updatePlayersStatusText(player_number);
-  }
+  //airconsole.onActivePlayersChange = (player_number) => {
+  //  updatePlayersStatusText(player_number);
+  //}
   setUpSupportForMouseEvents();
 }
 
 const onReceiveMessage = (device_id, data) => {
-  const {menu, gameResult} = data;
-  
+  //const {menu, gameResult} = data;
+    document.getElementById('player-status').innerHTML = data;
 }
 
 const updatePlayersStatusText = (player_number) => {

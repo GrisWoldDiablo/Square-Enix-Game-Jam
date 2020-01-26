@@ -29,17 +29,6 @@ public class GameLogic : MonoBehaviour
 
     bool canPlay;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     //Return the player count
     public int NumberOfPlayer()
     {
@@ -52,7 +41,10 @@ public class GameLogic : MonoBehaviour
         if (!play.ContainsKey(player) && canPlay)
         {
             play.Add(player, move);
-            Timer.Instance.TimerActivate();
+            if (play.Count < 2)
+            {
+                Timer.Instance.TimerActivate();
+            }
         }
         if(play.Count == 2 && canPlay)
         {
