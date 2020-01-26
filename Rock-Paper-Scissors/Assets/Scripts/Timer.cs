@@ -60,6 +60,7 @@ public class Timer : MonoBehaviour
         timerText.text = seconds.ToString();
         timerText.enabled = true;
         timerStarted = true;
+        AudioManager.Instance.PlayTimerMusic();
     }
 
     public void TimerComplete(bool expired = false)
@@ -81,6 +82,7 @@ public class Timer : MonoBehaviour
             timerStarted = false;
             GameLogic.Instance.TimerExpire(); //Will damage player that didn't throw move
         }
+        AudioManager.Instance.StopTimerMusic();
         ACManager.Instance.RoundReady();
         //Add Next player turn logic here
     }
