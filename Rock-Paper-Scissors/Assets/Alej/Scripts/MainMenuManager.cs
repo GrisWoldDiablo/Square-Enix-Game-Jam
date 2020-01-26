@@ -114,21 +114,33 @@ public class MainMenuManager : MonoBehaviour
         {
             case "LEFT":
                 if (panelIndex == 0)
+                {
                     menuRotator.RotateLeft();
+                    AudioManager.Instance.PlayMenuSelectableSFX();
+                }
                 else if (panelIndex == 1)
+                {
                     soundSlider.value -= 10;
+                }
                 break;
             case "RIGHT":
                 if (panelIndex == 0)
+                {
                     menuRotator.RotateRight();
+                    AudioManager.Instance.PlayMenuSelectableSFX();
+                }
                 else if (panelIndex == 1)
+                {
                     soundSlider.value += 10;
+                }
                 break;
             case "ENTER":
                 MenuRotatorIndex(menuRotator.MenuRotatorIndex);
+                AudioManager.Instance.PlayAcceptButtonSFX();
                 break;
             case "EXIT":
                 PanelToggle(0);
+                AudioManager.Instance.PlayCancelButtonSFX();
                 break;
         }
     }

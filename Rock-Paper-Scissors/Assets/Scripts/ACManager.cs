@@ -232,7 +232,7 @@ public class ACManager : MonoBehaviour
     public void RoundReady()
     {
         AirConsole.instance.Broadcast("ROUNDREADY");
-        AudioManager.Instance.PlayGameInterfaceMusic();
+        //AudioManager.Instance.PlayGameInterfaceMusic();
     }
 
     /// <summary>
