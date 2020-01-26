@@ -19,6 +19,26 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-3811413459018296395
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: b7a84843b9236c348a27568a4492a961
+  m_EffectName: Normalize
+  m_MixLevel: 00ad18ae59b66de40a751c296814515d
+  m_Parameters:
+  - m_ParameterName: Fade in time
+    m_GUID: 4df9f7c611a98304485e123633fd2205
+  - m_ParameterName: Lowest volume
+    m_GUID: 30a37cc0e6cf3ab4fb5c8985ce24a2e8
+  - m_ParameterName: Maximum amp
+    m_GUID: 7ce6626f707ddef438e76e47cecffe28
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-1608272507679201203
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -81,7 +101,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: 24400004}
-  - {fileID: 7270182452898321754}
+  - {fileID: -3811413459018296395}
   m_UserColorIndex: 2
   m_Mute: 0
   m_Solo: 0
@@ -112,6 +132,7 @@ AudioMixerSnapshotController:
   m_FloatValues:
     22d59760e7afba64682c5b1d6159ce92: 0.15
     ccbfa6bb4d8a25247b4d8f38d97dddde: 1
+    7ce6626f707ddef438e76e47cecffe28: 0.15
   m_TransitionOverrides: {}
 --- !u!244 &4577183047049181115
 AudioMixerEffectController:
@@ -138,26 +159,6 @@ AudioMixerEffectController:
   m_EffectName: Attenuation
   m_MixLevel: dd64493fa8860d04b8f22851101f5f36
   m_Parameters: []
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
---- !u!244 &7270182452898321754
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_EffectID: afc95cd287ca59a478ff2a59bfd341f5
-  m_EffectName: Normalize
-  m_MixLevel: d507a477acffd1d42b33840a8b02a371
-  m_Parameters:
-  - m_ParameterName: Fade in time
-    m_GUID: 67a8f94f7354e86409ee7b45b42a7d09
-  - m_ParameterName: Lowest volume
-    m_GUID: caf430fc73393b04ca039138d4ae79ce
-  - m_ParameterName: Maximum amp
-    m_GUID: 22d59760e7afba64682c5b1d6159ce92
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
