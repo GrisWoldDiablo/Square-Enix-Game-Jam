@@ -30,7 +30,7 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     public void Awake()
     {
-        musicSource.playOnAwake = false;
+        musicSource.playOnAwake = true;
         musicSource.loop = true;
 
         sfxSource.playOnAwake = false;
@@ -83,12 +83,16 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    public void PlayGameTimerMusic()
+    public void PlayTimerMusic()
     {
-        if(musicSource.clip == musicFiles[1])
-        {
-            musicSource.Pause();
-            musicSource.PlayOneShot(musicFiles[2]);
-        }
+        sfxSource.loop = true;
+        sfxSource.clip = sfxFiles[5];
+        sfxSource.Play();
+    }
+
+    public void StopTimerMusic()
+    {
+        sfxSource.loop = false;
+        sfxSource.PlayOneShot(sfxFiles[4]);
     }
 }
