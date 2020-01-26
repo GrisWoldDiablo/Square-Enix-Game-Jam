@@ -4,4 +4,6 @@ Square Enix Game Jam at Montréal Joue 2020
 
 LaSalle College
 
-Team: Alexandre Lepage, Robert Tran, Jeffrey White-Couture, Alejandro Flores, Minh Anh Trinh, Angeline Siv.
+Team Members: Alexandre Lepage, Robert Tran, Jeffrey White-Couture, Alejandro Flores, Minh Anh Trinh, Angeline Siv.
+
+Supervised by: Felix Soumpholphakdy
