@@ -89,6 +89,15 @@ public class MainMenuManager : MonoBehaviour
 
     public void InMenu(bool isInMenu)
     {
+        if (isInMenu)
+        {
+            ACManager.Instance.InMenu();
+        }
+        else
+        {
+            ACManager.Instance.InGame();
+        }
+
         inMenu = isInMenu;
 
         for (int i = 0; i < mainMenuObjects.Length; i++)
@@ -97,6 +106,10 @@ public class MainMenuManager : MonoBehaviour
 
     public void Action(string action)
     {
+        if (!inMenu)
+        {
+            return;
+        }
         switch (action)
         {
             case "LEFT":

@@ -81,7 +81,7 @@ public class Timer : MonoBehaviour
             timerStarted = false;
             GameLogic.Instance.TimerExpire(); //Will damage player that didn't throw move
         }
-
+        ACManager.Instance.RoundReady();
         //Add Next player turn logic here
     }
 }

@@ -56,13 +56,13 @@ public class InterfaceManager : MonoBehaviour
         }
         else if (player == PlayerNumber.Player1)
         {
-            //P1 LOSE LOGIC
+            //P1 Win LOGIC
             heartsP1[playerHealth[0] - 1].enabled = false; //Remove heart at relevant index
             playerHealth[0]--;
             RoundText("Player 1 wins the game! " + m1 + " vs. " + m2);
             GameLogic.Instance.CanPlay = false;
             Invoke("FinishGame", 3f);
-            //ACManager InMenu, Talk to controller to display win on devices, show menu
+            ACManager.Instance.MatchResult(player);
         }
 
         //Player 2 Take damage
@@ -74,12 +74,13 @@ public class InterfaceManager : MonoBehaviour
         }
         else if (player == PlayerNumber.Player2)
         {
-            //P2 LOSE LOGIC
+            //P2 Win LOGIC
             heartsP2[playerHealth[1] - 1].enabled = false; //Remove heart at relevant index
             playerHealth[1]--;
-            RoundText("Player 1 wins the round : " + m1 + " vs. " + m2);
+            RoundText("Player 2 wins the game : " + m1 + " vs. " + m2);
             GameLogic.Instance.CanPlay = false;
             Invoke("FinishGame", 3f);
+            ACManager.Instance.MatchResult(player);
         }
 
         else if (player == PlayerNumber.None)
