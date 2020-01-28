@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2343806979004721129}
   - component: {fileID: 2343806979004721124}
   - component: {fileID: 2343806979004721131}
+  - component: {fileID: 1524809021050921481}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -73,6 +74,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &1524809021050921481
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2343806979004721128}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9c1ba4e225b06aa469846d8254c842d5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2343806979114992551
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,6 +650,7 @@ GameObject:
   - component: {fileID: 2343806979778401379}
   - component: {fileID: 2343806979778401438}
   - component: {fileID: 2343806979778401437}
+  - component: {fileID: 680059684930312079}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -692,6 +713,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &680059684930312079
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2343806979778401378}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9c1ba4e225b06aa469846d8254c842d5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2343806979870821156
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,6 +956,7 @@ GameObject:
   - component: {fileID: 2343806980256807051}
   - component: {fileID: 2343806980256807046}
   - component: {fileID: 2343806980256807045}
+  - component: {fileID: 3664903393008673150}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -978,6 +1019,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &3664903393008673150
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2343806980256807050}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9c1ba4e225b06aa469846d8254c842d5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2343806980368451824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,6 +1524,7 @@ GameObject:
   - component: {fileID: 2343806980858608483}
   - component: {fileID: 2343806980858608542}
   - component: {fileID: 2343806980858608541}
+  - component: {fileID: 7108848677802527556}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -1526,6 +1587,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &7108848677802527556
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2343806980858608482}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9c1ba4e225b06aa469846d8254c842d5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2343806980921150184
 GameObject:
   m_ObjectHideFlags: 0
