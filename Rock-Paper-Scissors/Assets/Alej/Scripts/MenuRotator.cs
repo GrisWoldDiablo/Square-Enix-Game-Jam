@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Animations;
 
  public class MenuRotator : MonoBehaviour
 {
     [SerializeField] private GameObject[] buttons;
     [SerializeField] private float rotatingTime;
+
     private int menuIndex = 0;
     private bool isRotating = false;
 
@@ -36,7 +38,8 @@ using UnityEngine.UI;
             yield return null;
         }
 
-        buttons[menuIndex].GetComponent<Image>().color = new Color(0.7f, 0.7f, 0.7f);
+        buttons[menuIndex].GetComponent<Image>().color = new Color(0.95f, 0.95f, 0);
+        buttons[menuIndex].GetComponent<Animator>().SetBool("Selected", true);
         isRotating = false;
     }
 
@@ -53,6 +56,7 @@ using UnityEngine.UI;
     void MenuIndex(int direction) // 1 Right, -1 left
     {
         buttons[menuIndex].GetComponent<Image>().color = new Color(1, 1, 1);
+        buttons[menuIndex].GetComponent<Animator>().SetBool("Selected", false);
 
         menuIndex += direction;
 
