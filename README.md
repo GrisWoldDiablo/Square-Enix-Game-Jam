@@ -1,6 +1,4 @@
-Practice Exercises with Unity 2019
-
-Square Enix Game Jam at Montréal Joue 2020
+Practice Exercises with Unity in preparation for Square Enix Game Jam at Montréal Joue 2020.
 
 LaSalle College
 
